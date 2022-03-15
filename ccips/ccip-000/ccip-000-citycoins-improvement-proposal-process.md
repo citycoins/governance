@@ -213,7 +213,7 @@ Each CCIP must identify at least one acceptable license in its preamble. Source 
 
 ## Related Work
 
-The governance process proposed in this CCIP is inspired by the Stacks Blockchain SIP process [^1], which drew inspiration from the Python PEP process [^2], the Bitcoin BIP2 process [^3], the Ethereum Improvement Proposal [^4] processes, the Zcash governance process [^5], and the Debian GNU/Linux distribution governance process [^6].
+The governance process proposed in this CCIP is inspired by the Stacks Blockchain SIP process[^1], which drew inspiration from the Python PEP process[^2], the Bitcoin BIP2 process[^3], the Ethereum Improvement Proposal[^4] processes, the Zcash governance process[^5], and the Debian GNU/Linux distribution governance process[^6].
 
 [^1]: https://github.com/stacksgov/sips
 [^2]: https://www.python.org/dev/peps/pep-0001/
