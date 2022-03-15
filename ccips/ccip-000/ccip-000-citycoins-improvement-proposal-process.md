@@ -108,7 +108,7 @@ A CCIP's consideration determines the particular steps needed to ratify the CCIP
 
 A CCIP can have more than one consideration, since a CCIP may need to be vetted by different users with different domains of expertise.
 
-- _Technical._ The CCIP is technical in nature, and must be vetted by users with the relevant technical expertise.
+- _Technical._ The CCIP is technical in nature, must be vetted by users with the relevant technical expertise, and must adhere to [RFC 2119](http://www.faqs.org/rfcs/rfc2119.html).
 - _Economic._ The CCIP concerns the protocol's token economics.
 - _Governance._ The CCIP concerns the governance of the CityCoins Protocol, including the CCIP process. This includes amendments to the CCIP Ratification Process, as well as structural considerations such as the creation (or removal) of various committees, editorial bodies, and formally recognized special interest groups.
 - _Ethics._ This CCIP concerns the behaviors of those involved in the CCIP Ratification Process that can affect its widespread adoption. Such CCIPs describe what behaviors shall be deemed acceptable, and which behaviors shall be considered harmful to this end (including any remediation or loss of privileges that misbehavior may entail). CCIPs that propose formalizations of ethics like codes of conduct, procedures for conflict resolution, criteria for involvement in governance, and so on would belong in this CCIP consideration.
