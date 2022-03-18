@@ -86,11 +86,11 @@ NewYorkCityCoin Contracts:
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://www.hiro.so/blog/five-useful-clarity-keywords-functions
 [^5]: In the initial `v1.0.0` implementation for MiamiCoin, the `burn` function was only allowed to be called by a core contract and not implemented in the core contract code, however this was updated in the `v1.0.1` release starting with NewYorkCityCoin.
-[^6]: https://explorer.stacks.co/txid/0x9751f503896ca13ba797e119d1b62d990b854bee3a63301e737fa9d3ebf8ffa6?chain=mainnet
-[^7]: https://explorer.stacks.co/txid/0xf64fedb420622d0403154465c176e06ecbbed306ec2337f9fb8f7bbe6c6a8575?chain=mainnet
-[^8]: https://explorer.stacks.co/txid/0x3c9303ada7f0dbf6f814722cb4a6c13752f187bde0b800bd6f84a342505e006b?chain=mainnet
-[^9]: https://explorer.stacks.co/txid/0x224eb853ab072591c382b1c917136dcdd6590df80ab646bfed432d779612258f?chain=mainnet
-[^10]: https://explorer.stacks.co/txid/0xc513b769c261233865c43f101438bd6359636ecacfe34576e6424d6c2629174e?chain=mainnet
-[^11]: https://explorer.stacks.co/txid/0x7df54b8594149b20567120f25663885cf798526951b956cc160f2ec908723bb3?chain=mainnet
+[^6]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.citycoin-core-trait?chain=mainnet
+[^7]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.citycoin-token-trait?chain=mainnet
+[^8]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-auth?chain=mainnet
+[^9]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-core-v1?chain=mainnet
+[^10]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token?chain=mainnet
+[^11]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-auth?chain=mainnet
 [^12]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
-[^13]: https://explorer.stacks.co/txid/0x9c8ddc44fcfdfc67af5425c4174833fc5814627936d573fe38fc29a46ba746e6?chain=mainnet
+[^13]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token?chain=mainnet
