@@ -62,12 +62,22 @@ None, as this proposal is the initial implementation.
 
 ## Reference Implementations
 
+General CityCoins Protocol Contracts:
+
 - `citycoin-core-trait` deployed on the Stacks mainnet[^6]
 - `citycoin-token-trait` deployed on the Stacks mainnet[^7]
-- `miamicoin-core-v1` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line 005[^8]
-- `miamicoin-token` deployed on the Stacks mainnet, implementing the `citycoin-token-trait` on line 020[^9]
-- `newyorkcitycoin-core-v1` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line 006[^10]
-- `newyorkcitycoin-token` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line [^11]
+
+MiamiCoin Contracts:
+
+- `miamicoin-auth` deployed on the Stacks mainnet, using the core contract trait on line 007, and using the token contract trait on line 008[^8]
+- `miamicoin-core-v1` deployed on the Stacks mainnet, implementing the core contract trait on line 005[^9]
+- `miamicoin-token` deployed on the Stacks mainnet, implementing the token contract trait on line 009, and using the core contract trait on line 010[^10]
+
+NewYorkCityCoin Contracts:
+
+- `newyorkcitycoin-auth` deployed on the Stacks mainnet, using the core contract trait on line 008, and using the token contract trait on line 009[^11]
+- `newyorkcitycoin-core-v1` deployed on the Stacks mainnet, implementing the core contract trait on line 006[^12]
+- `newyorkcitycoin-token` deployed on the Stacks mainnet, implementing the core contract trait on line 010, and using the core contract trait on line 011[^13]
 
 ## Footnotes
 
@@ -78,7 +88,9 @@ None, as this proposal is the initial implementation.
 [^5]: In the initial `v1.0.0` implementation for MiamiCoin, the `burn` function was only allowed to be called by a core contract and not implemented in the core contract code, however this was updated in the `v1.0.1` release starting with NewYorkCityCoin.
 [^6]: https://explorer.stacks.co/txid/0x9751f503896ca13ba797e119d1b62d990b854bee3a63301e737fa9d3ebf8ffa6?chain=mainnet
 [^7]: https://explorer.stacks.co/txid/0xf64fedb420622d0403154465c176e06ecbbed306ec2337f9fb8f7bbe6c6a8575?chain=mainnet
-[^8]: https://explorer.stacks.co/txid/0x224eb853ab072591c382b1c917136dcdd6590df80ab646bfed432d779612258f?chain=mainnet
-[^9]: https://explorer.stacks.co/txid/0xc513b769c261233865c43f101438bd6359636ecacfe34576e6424d6c2629174e?chain=mainnet
-[^10]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
-[^11]: https://explorer.stacks.co/txid/0x9c8ddc44fcfdfc67af5425c4174833fc5814627936d573fe38fc29a46ba746e6?chain=mainnet
+[^8]: https://explorer.stacks.co/txid/0x3c9303ada7f0dbf6f814722cb4a6c13752f187bde0b800bd6f84a342505e006b?chain=mainnet
+[^9]: https://explorer.stacks.co/txid/0x224eb853ab072591c382b1c917136dcdd6590df80ab646bfed432d779612258f?chain=mainnet
+[^10]: https://explorer.stacks.co/txid/0xc513b769c261233865c43f101438bd6359636ecacfe34576e6424d6c2629174e?chain=mainnet
+[^11]: https://explorer.stacks.co/txid/0x7df54b8594149b20567120f25663885cf798526951b956cc160f2ec908723bb3?chain=mainnet
+[^12]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
+[^13]: https://explorer.stacks.co/txid/0x9c8ddc44fcfdfc67af5425c4174833fc5814627936d573fe38fc29a46ba746e6?chain=mainnet
