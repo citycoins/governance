@@ -1,8 +1,8 @@
-# CCIP-001
+# CCIP-002
 
 ## Preamble
 
-| CCIP Number   | 001                                   |
+| CCIP Number   | 002                                   |
 | ------------- | ------------------------------------- |
 | Title         | CityCoins Activation                  |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
@@ -28,7 +28,9 @@ This proposal describes the registration and activation process for a CityCoin.
 
 ## Specification
 
-After a set of CityCoin contracts are deployed, an additional activation step must occur before any additional functions become available.
+After a set of CityCoin contracts are deployed, an additional activation step is required before the functions for mining and stacking become available.
+
+Within the core contract are variables to track the
 
 A threshold is set within the contract through which anyone can send a transaction as a signal for activating the CityCoin.
 
@@ -40,7 +42,7 @@ There are no CityCoins minted or distributed prior to the start of mining.
 
 ## Backwards Compatibility
 
-None, intial implementation-style.
+None, initial implementation-style.
 
 ## Activation
 

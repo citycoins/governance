@@ -1,8 +1,8 @@
-# CCIP-004
+# CCIP-005
 
 ## Preamble
 
-| CCIP Number   | 004                                   |
+| CCIP Number   | 005                                   |
 | ------------- | ------------------------------------- |
 | Title         | CityCoins SIP-010 Token               |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |

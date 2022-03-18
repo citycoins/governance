@@ -4,7 +4,7 @@
 
 | CCIP Number   | 003                                   |
 | ------------- | ------------------------------------- |
-| Title         | CityCoins Stacking                    |
+| Title         | CityCoins Mining                      |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical                             |
 | Type          | Standard                              |
@@ -20,7 +20,7 @@ Taking this concept a level further, a new token (a "CityCoin") is created on th
 
 CityCoins leverage similar properties from the Proof of Transfer (PoX) consensus mechanism[^3] of the Stacks blockchain, programmed through a smart contract in Clarity.
 
-This proposal describes the stacking functionality for a CityCoin.
+This proposal describes the mining functionality for a CityCoin.
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
@@ -28,7 +28,7 @@ This proposal describes the stacking functionality for a CityCoin.
 
 ## Specification
 
-Anyone can Stack CityCoins by locking them in a CityCoins smart contract for selected reward cycles, and receive a portion of the remaining 70% of the STX sent by miners.
+Anyone can mine CityCoins by submitting STX into a CityCoins smart contract on the Stacks blockchain. 30% of the STX that miners forward is sent directly to a reserved wallet for the city.
 
 ## Related Work
 
