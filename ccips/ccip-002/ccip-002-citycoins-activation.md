@@ -22,32 +22,47 @@ CityCoins leverage similar properties from the Proof of Transfer (PoX) consensus
 
 This proposal describes the registration and activation process for a CityCoin.
 
-[^1]: https://stacking.club
-[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
-[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
-
 ## Specification
 
 After a set of CityCoin contracts are deployed, an additional activation step is required before the functions for mining and stacking become available.
 
-Within the core contract are variables to track the
-
-A threshold is set within the contract through which anyone can send a transaction as a signal for activating the CityCoin.
-
-Once that threshold is met, the current block height of the final transaction is added to the activation delay set in the contract, calculating the block height at which mining and stacking become available.
-
 There are no CityCoins minted or distributed prior to the start of mining.
 
-## Related Work
+Within the core contract are variables to track the activation status, block height, delay, threshold, and registered users count.
+
+Through the `register-user` function, a principal can register their Stacks address as a user until the threshold is reached. This allows for a the required threshold of independent wallets to signal that the CityCoin should be activated.
+
+Once the activation threshold is reached, the core contract:
+
+- records the current block height of the final registration transaction, and adds it to the activation delay set in the contract
+- the calculated block height is the first block at which mining and stacking will become available in the core contract
+- the calculated block height is sent to the auth contract via `activate-core-contract` to set the core contract in an active state and record the activation block height
+- the calculated block height is sent to the token contract via `activate-token` to set the token as activated and calculate the coinbase thresholds based on the emissions schedule
+
+After the activation threshold is reached, the `register-user` function no longer serves a purpose and fails with `err ERR_ACTIVATION_THRESHOLD_REACHED` when called.
 
 ## Backwards Compatibility
 
-None, initial implementation-style.
+None, as this proposal is the initial implementation.
 
 ## Activation
 
+None, as this proposal is the initial implementation.
+
 ## Reference Implementations
 
-MiamiCoin (MIA)
+MiamiCoin Contracts:
 
-NewYorkCityCoin (NYC)
+- `miamicoin-core-v1` deployed on the Stacks mainnet, implementing the `register-user` function on lines 128-167[^4]
+
+NewYorkCityCoin Contracts:
+
+- `newyorkcitycoin-core-v1` deployed on the Stacks mainnet, implementing the `register-user` function on lines 129-168[^5]
+
+## Footnotes
+
+[^1]: https://stacking.club
+[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-core-v1?chain=mainnet
+[^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
