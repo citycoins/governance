@@ -79,10 +79,22 @@ None, as this proposal is the initial implementation.
 
 MiamiCoin Contracts:
 
+- `miamicoin-core-v1` deployed on the Stacks mainnet[^4], implementing:
+  - the `mine-tokens` function on lines 279-287
+  - the `mine-many` function on lines 289-307
+  - the `claim-mining-reward` function on lines 434-440
+
 NewYorkCityCoin Contracts:
+
+- `newyorkcitycoin-core-v1` deployed on the Stacks mainnet[^5], implementing:
+  - the `mine-tokens` function on lines 280-288
+  - the `mine-many` function on lines 290-312
+  - the `claim-mining-reward` function on lines 439-445
 
 ## Footnotes
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-core-v1?chain=mainnet
+[^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
