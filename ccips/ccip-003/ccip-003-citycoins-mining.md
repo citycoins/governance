@@ -32,10 +32,10 @@ CityCoins mining occurs 1:1 with the production of Stacks blocks.
 
 Through the `mine-tokens` function, a principal can submit:
 
-- the amount of STX to bid
-- an optional memo, written on-chain
+- the amount of STX to commit
+- an optional memo, printed on-chain
 
-Through the `mine-many` function, a principal can submit a list of bids up to 200 in length.
+Through the `mine-many` function, a principal can submit a list of commits up to 200 in length, allowing their mining .
 
 Miners compete against each other and the winner is selected by a Verifiable Random Function (VRF) weighted by the miner's individual contribution against the total contribution in that block.
 
@@ -50,12 +50,17 @@ Within the core contract are variables to track:
 - the high value of the current block, that increments with each miner commitment
 - the user ID of the miner that won the block
 
-30% of the STX that miners forward is sent directly to a reserved wallet for the city.
+When a principal submits a commit to mine in a block, the contract then:
 
-The remaining 70% are distributed in one of two ways:
-
-- If stacking is not active in the current reward cycle, it is sent to the city's reserved wallet.
-- If stacking is active in the current reward cycle, it is distributed to the addresses that temporarily lock ("stack") their CityCoins.
+- obtains the user ID for the principal, or creates one if it does not already exist
+- verifies the contract is activated and the principal has not mined in this block already
+- verifies the amount of STX submitted is greater than zero and less than the principal's balance
+- updates the mining statistics, miner statistics, and high value for the block
+- If stacking is active, updates the stacking stats for the cycle
+- distributes a percentage of the STX that miners forward directly to a reserved wallet for the city.
+- distributes the remaining percentage in one of two ways:
+  - If stacking is not active in the current reward cycle, it is sent to the city's reserved wallet.
+  - If stacking is active in the current reward cycle, it is distributed to the addresses that temporarily lock ("stack") their CityCoins.
 
 More information about Stacking can be found in [CCIP-004](../ccip-004/ccip-004-citycoins-stacking.md).
 
@@ -66,6 +71,13 @@ The winning miner can claim newly minted CityCoins at any time after the maturit
 The amount of CityCoins the miner can claim is based on the emissions schedule and the block height they won.
 
 Through the `claim-mining-reward` function, a principal can submit the block height they won, and if verified as the winner of the block the new CityCoins are minted to the caller.
+
+When a principal submits a block to claim, the contract then:
+
+- verifies the reward was not already claimed
+- verifies the principal did win the block
+- updates the mining statistics, miner statistics, and block winner
+- submits the mint transaction to the token contract with the block height
 
 ## Backwards Compatibility
 
