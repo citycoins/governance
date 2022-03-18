@@ -22,18 +22,67 @@ CityCoins leverage similar properties from the Proof of Transfer (PoX) consensus
 
 This proposal describes the mining functionality for a CityCoin.
 
-[^1]: https://stacking.club
-[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
-[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
-
 ## Specification
 
-Anyone can mine CityCoins by submitting STX into a CityCoins smart contract on the Stacks blockchain. 30% of the STX that miners forward is sent directly to a reserved wallet for the city.
+### Mining
 
-## Related Work
+Anyone can mine CityCoins by submitting STX into a CityCoins smart contract on the Stacks blockchain.
+
+CityCoins mining occurs 1:1 with the production of Stacks blocks.
+
+Through the `mine-tokens` function, a principal can submit:
+
+- the amount of STX to bid
+- an optional memo, written on-chain
+
+Through the `mine-many` function, a principal can submit a list of bids up to 200 in length.
+
+Miners compete against each other and the winner is selected by a Verifiable Random Function (VRF) weighted by the miner's individual contribution against the total contribution in that block.
+
+Miners can only participate once per block, and STX sent to the contract for mining are not returned.
+
+Within the core contract are variables to track:
+
+- the percentage of the total STX that is sent to the city's reserved wallet
+- the number of blocks a winning miner must wait to claim their reward
+- the mining statistics for a given block
+- the miner statistics for a given block and user ID
+- the high value of the current block, that increments with each miner commitment
+- the user ID of the miner that won the block
+
+30% of the STX that miners forward is sent directly to a reserved wallet for the city.
+
+The remaining 70% are distributed in one of two ways:
+
+- If stacking is not active in the current reward cycle, it is sent to the city's reserved wallet.
+- If stacking is active in the current reward cycle, it is distributed to the addresses that temporarily lock ("stack") their CityCoins.
+
+More information about Stacking can be found in [CCIP-004](../ccip-004/ccip-004-citycoins-stacking.md).
+
+### Mining Claims
+
+The winning miner can claim newly minted CityCoins at any time after the maturity window passes from the block height they won.
+
+The amount of CityCoins the miner can claim is based on the emissions schedule and the block height they won.
+
+Through the `claim-mining-reward` function, a principal can submit the block height they won, and if verified as the winner of the block the new CityCoins are minted to the caller.
 
 ## Backwards Compatibility
 
+None, as this proposal is the initial implementation.
+
 ## Activation
 
+None, as this proposal is the initial implementation.
+
 ## Reference Implementations
+
+MiamiCoin Contracts:
+
+NewYorkCityCoin Contracts:
+
+## Footnotes
+
+[^1]: https://stacking.club
+[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
