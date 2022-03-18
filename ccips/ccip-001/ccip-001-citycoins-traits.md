@@ -46,13 +46,39 @@ The `citycoin-token` trait defines the token functionality of a CityCoin, includ
 
 - `activate-token`: Allows a core contract to set an activation block height and coinbase thresholds for the emissions schedule. _(see CCIP-002)_
 - `set-token-uri`: Allows the auth contract to set the token URI variable for a CityCoin. _(see CCIP-007)_
-- `mint`: Allows a core contract to mint new CityCoins.
-- `burn`: Allows a user to burn CityCoins.[^5]
+- `mint`: Allows a core contract to mint new CityCoins. _(see CCIP-005)_
+- `burn`: Allows a principal to burn CityCoins they own.[^5] _(see CCIP-005)_
+- `send-many`: Allows a principal to send up to two hundred MiamiCoin transfers in a single transaction. _(see CCIP-005)_
 
 Note: All CityCoin token contracts also follow the SIP-010] trait specification[^2].
+
+## Backwards Compatibility
+
+None, as this proposal is the initial implementation.
+
+## Activation
+
+None, as this proposal is the initial implementation.
+
+## Reference Implementations
+
+- `citycoin-core-trait` deployed on the Stacks mainnet[^6]
+- `citycoin-token-trait` deployed on the Stacks mainnet[^7]
+- `miamicoin-core-v1` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line 005[^8]
+- `miamicoin-token` deployed on the Stacks mainnet, implementing the `citycoin-token-trait` on line 020[^9]
+- `newyorkcitycoin-core-v1` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line 006[^10]
+- `newyorkcitycoin-token` deployed on the Stacks mainnet, implementing the `citycoin-core-trait` on line [^11]
+
+## Footnotes
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://www.hiro.so/blog/five-useful-clarity-keywords-functions
-[^5]: In the initial `v1.0.0` implementation for MiamiCoin, the `burn` function was only allowed to be called by a core contract, however this was updated in `v1.0.1` released starting with NewYorkCityCoin.
+[^5]: In the initial `v1.0.0` implementation for MiamiCoin, the `burn` function was only allowed to be called by a core contract and not implemented in the core contract code, however this was updated in the `v1.0.1` release starting with NewYorkCityCoin.
+[^6]: https://explorer.stacks.co/txid/0x9751f503896ca13ba797e119d1b62d990b854bee3a63301e737fa9d3ebf8ffa6?chain=mainnet
+[^7]: https://explorer.stacks.co/txid/0xf64fedb420622d0403154465c176e06ecbbed306ec2337f9fb8f7bbe6c6a8575?chain=mainnet
+[^8]: https://explorer.stacks.co/txid/0x224eb853ab072591c382b1c917136dcdd6590df80ab646bfed432d779612258f?chain=mainnet
+[^9]: https://explorer.stacks.co/txid/0xc513b769c261233865c43f101438bd6359636ecacfe34576e6424d6c2629174e?chain=mainnet
+[^10]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-core-v1?chain=mainnet
+[^11]: https://explorer.stacks.co/txid/0x9c8ddc44fcfdfc67af5425c4174833fc5814627936d573fe38fc29a46ba746e6?chain=mainnet
