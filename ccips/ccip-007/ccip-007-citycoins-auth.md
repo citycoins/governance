@@ -175,22 +175,22 @@ None, as this proposal is the initial implementation.
 MiamiCoin Contracts:
 
 - `miamicoin-auth` deployed on the Stacks mainnet[^4], implementing:
-  - the `set-city-wallet` function on lines
-  - the `execute-set-city-wallet-job` function on lines
-  - the `upgrade-core-contract` function on lines
-  - the `execute-upgrade-core-contract-job` function on lines
-  - the `set-token-uri` function on lines
-  - the `execute-replace-approver-job` function on lines
+  - the `upgrade-core-contract` function on lines 423-452
+  - the `execute-upgrade-core-contract-job` function on lines 454-485
+  - the `set-city-wallet` function on lines 497-510
+  - the `execute-set-city-wallet-job` function on lines 512-525
+  - the `set-token-uri` function on lines 534-540
+  - the `execute-replace-approver-job` function on lines 544-555
 
 NewYorkCityCoin Contracts:
 
 - `newyorkcitycoin-auth` deployed on the Stacks mainnet[^5], implementing:
-  - the `set-city-wallet` function on lines
-  - the `execute-set-city-wallet-job` function on lines
-  - the `upgrade-core-contract` function on lines
-  - the `execute-upgrade-core-contract-job` function on lines
-  - the `set-token-uri` function on lines
-  - the `execute-replace-approver-job` function on lines
+  - the `upgrade-core-contract` function on lines 424-453
+  - the `execute-upgrade-core-contract-job` function on lines 455-486
+  - the `set-city-wallet` function on lines 498-511
+  - the `execute-set-city-wallet-job` function on lines 513-526
+  - the `set-token-uri` function on lines 535-541
+  - the `execute-replace-approver-job` function on lines 545-556
 
 ## Footnotes
 
