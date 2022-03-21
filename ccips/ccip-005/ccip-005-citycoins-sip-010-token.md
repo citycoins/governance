@@ -20,21 +20,25 @@ Taking this concept a level further, a new token (a "CityCoin") is created on th
 
 CityCoins leverage similar properties from the Proof of Transfer (PoX) consensus mechanism[^3] of the Stacks blockchain, programmed through a smart contract in Clarity.
 
-This proposal describes the SIP-010 token functionality for a CityCoin.
-
-[^1]: https://stacking.club
-[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
-[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+This proposal describes the token functionality for a CityCoin.
 
 ## Specification
 
 ### Token Configuration
 
-CityCoins are fungible tokens on the Stacks blockchain with no ICO, no pre-sale, and no pre-mine.
+CityCoins are fungible tokens on the Stacks blockchain that adhere to the SIP-010 fungible token standard[^2]. This includes specific functions defined in the SIP for transfer, name, symbol, decimals, balances, total supply, and token URI.
 
-Once a CityCoin is deployed and activated, the emission schedule begins and winning miners mint the CityCoin into existence.
+CityCoins can be sent and received on the Stacks blockchain, interact with smart contracts, and be used by any interface that accepts a SIP-010 fungible token.
 
-CityCoins can be sent and received using a STX address, used for payment in smart contracts, and more.
+CityCoins also follow the CityCoin Token Trait, defined in [CCIP-001](../ccip-001/ccip-001-citycoins-traits.md).
+
+### Token Activation
+
+Once a CityCoin is deployed and activated, the emission schedule begins starting from the activation block height of the CityCoin core contract.
+
+More information about Activation can be found in [CCIP-002](../ccip-002/ccip-002-citycoins-activation.md).
+
+CityCoins have no ICO, no pre-sale, and no pre-mine. CityCoins are only mined into existence.
 
 ### Emissions Schedule
 
@@ -54,10 +58,20 @@ The issuance schedule does not begin until mining is activated, and once it begi
 
 After the final halving at 1,050,000 Stacks blocks past the Stacks block height recorded at activation, the total supply is estimated to be `42,187,500,000` and will increase indefinitely by `164,062,500` per year.
 
-## Related Work
-
 ## Backwards Compatibility
+
+None, as this proposal is the initial implementation.
 
 ## Activation
 
+None, as this proposal is the initial implementation.
+
 ## Reference Implementations
+
+- `miamicoin-token` deployed on the Stacks mainnet, implementing
+
+## Footnotes
+
+[^1]: https://stacking.club
+[^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
+[^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
