@@ -28,7 +28,9 @@ This proposal describes the mining functionality for a CityCoin.
 
 Anyone can mine CityCoins by submitting STX into a CityCoins smart contract on the Stacks blockchain.
 
-CityCoins mining occurs 1:1 with the production of Stacks blocks.
+CityCoins mining occurs 1:1 with the production of Stacks blocks starting from the activation block height of the CityCoin contract.
+
+More information about Activation can be found in [CCIP-002](../ccip-002/ccip-002-citycoins-activation.md).
 
 Through the `mine-tokens` function, a principal can submit:
 
@@ -66,7 +68,7 @@ More information about Stacking can be found in [CCIP-004](../ccip-004/ccip-004-
 
 ### Mining Claims
 
-The winning miner can claim newly minted CityCoins at any time after the maturity window passes from the block height they won.
+The winning miner can claim newly minted CityCoins at any time after the maturity window passes from the block height they won. The maturity window protects the VRF seed from being known in advance.
 
 The amount of CityCoins the miner can claim is based on the emissions schedule and the block height they won.
 
@@ -78,6 +80,8 @@ When a principal submits a block to claim, the contract then:
 - verifies the principal did win the block
 - updates the mining statistics, miner statistics, and block winner
 - submits the mint transaction to the token contract with the block height
+
+New CityCoins are not minted until they are claimed.
 
 ## Backwards Compatibility
 
