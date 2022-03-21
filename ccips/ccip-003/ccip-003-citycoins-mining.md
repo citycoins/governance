@@ -28,7 +28,7 @@ This proposal describes the mining functionality for a CityCoin.
 
 Anyone can mine CityCoins by submitting STX into a CityCoins smart contract on the Stacks blockchain.
 
-CityCoins mining occurs 1:1 with the production of Stacks blocks starting from the activation block height of the CityCoin contract.
+CityCoins mining occurs 1:1 with the production of Stacks blocks starting from the activation block height of the CityCoin core contract.
 
 More information about Activation can be found in [CCIP-002](../ccip-002/ccip-002-citycoins-activation.md).
 

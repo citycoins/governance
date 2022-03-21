@@ -28,7 +28,7 @@ This proposal describes the stacking functionality for a CityCoin.
 
 Anyone can Stack CityCoins by temporarily locking them in a CityCoins smart contract for a selected number of reward cycles. By doing so, stackers receive a portion of the remaining 70% of the STX sent by miners.
 
-Stacking occurs over cycles that are 2,100 Stacks blocks in length, starting from the activation block height of the CityCoin contract.
+Stacking occurs over cycles that are 2,100 Stacks blocks in length, starting from the activation block height of the CityCoin core contract.
 
 More information about Activation can be found in [CCIP-002](../ccip-002/ccip-002-citycoins-activation.md).
 
