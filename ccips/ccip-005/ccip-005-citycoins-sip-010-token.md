@@ -28,9 +28,18 @@ This proposal describes the token functionality for a CityCoin.
 
 CityCoins are fungible tokens on the Stacks blockchain that adhere to the SIP-010 fungible token standard[^2]. This includes specific functions defined in the SIP for transfer, name, symbol, decimals, balances, total supply, and token URI.
 
+The token URI can only be updated from the auth contract.
+
 CityCoins can be sent and received on the Stacks blockchain, interact with smart contracts, and be used by any interface that accepts a SIP-010 fungible token.
 
 CityCoins also follow the CityCoin Token Trait, defined in [CCIP-001](../ccip-001/ccip-001-citycoins-traits.md).
+
+Within the token contract are variables to track:
+
+- the number of Stacks blocks before a halving occurs
+- the Stacks block thresholds set for each halving
+- the activation status of the token contract
+- the core contract states
 
 ### Token Activation
 
@@ -68,10 +77,19 @@ None, as this proposal is the initial implementation.
 
 ## Reference Implementations
 
-- `miamicoin-token` deployed on the Stacks mainnet, implementing
+- `miamicoin-token` deployed on the Stacks mainnet[^4], implementing:
+
+  - the SIP-010 functions on lines 018-059
+  - the citycoin-token-trait on lines 081-146, 153-179
+
+- `newyorkcitycoin-token` deployed on the Stacks mainnet[^5], implementing:
+  - the SIP-010 functions on lines 019-060
+  - the citycoin-token-trait on lines 082-144, 151-177
 
 ## Footnotes
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token?chain=mainnet
+[^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token?chain=mainnet
