@@ -57,7 +57,9 @@ When a principal submits a commit to mine in a block, the contract then:
 - obtains the user ID for the principal, or creates one if it does not already exist
 - verifies the contract is activated and the principal has not mined in this block already
 - verifies the amount of STX submitted is greater than zero and less than the principal's balance
-- updates the mining statistics, miner statistics, and high value for the block
+- updates the totals for that block in mining statistics
+- updates the commited amount and low/high values in the miner statistics
+- updates the high value for the block (total commit)
 - If stacking is active, updates the stacking stats for the cycle
 - distributes a percentage of the STX that miners forward directly to a reserved wallet for the city.
 - distributes the remaining percentage in one of two ways:
@@ -76,12 +78,19 @@ Through the `claim-mining-reward` function, a principal can submit the block hei
 
 When a principal submits a block to claim, the contract then:
 
+- calculates the winning value using:
+  - a random integer from the `citycoin-vrf`
+  - the total committed within that block
+  - formula: `vrfSample mod commitTotal`
 - verifies the reward was not already claimed
 - verifies the principal did win the block
-- updates the mining statistics, miner statistics, and block winner
+- updates the reward claimed in mining statistics
+- updates the winner value in miner statistics
 - submits the mint transaction to the token contract with the block height
 
-New CityCoins are not minted until they are claimed.
+More information about the CityCoins VRF can be found in [CCIP-006](../ccip-006/ccip-006-citycoins-vrf.md).
+
+Note: new CityCoins are not minted until they are claimed.
 
 ## Backwards Compatibility
 
