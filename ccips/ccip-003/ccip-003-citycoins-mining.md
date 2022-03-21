@@ -35,7 +35,7 @@ Through the `mine-tokens` function, a principal can submit:
 - the amount of STX to commit
 - an optional memo, printed on-chain
 
-Through the `mine-many` function, a principal can submit a list of commits up to 200 in length, allowing their mining .
+Through the `mine-many` function, a principal can submit a list of commits up to 200 in length, which are then applied to the selected number of blocks starting with the first block height of the successful transaction.
 
 Miners compete against each other and the winner is selected by a Verifiable Random Function (VRF) weighted by the miner's individual contribution against the total contribution in that block.
 
