@@ -77,11 +77,11 @@ Related to jobs and approvals:
 
 Core contracts states are defined below:
 
-| State           | uint | Description                                         |
-| --------------- | ---- | --------------------------------------------------- |
-| STATE_DEPLOYED  | u0   | Core contract deployed but not activated            |
-| STATE_ACTIVE    | u1   | Core contract activated, mining/stacking available  |
-| STATE_INACTIVED | u2   | Core contract shutdown, mining/stacking unavailable |
+| State          | uint | Description                                         |
+| -------------- | ---- | --------------------------------------------------- |
+| STATE_DEPLOYED | u0   | Core contract deployed but not activated            |
+| STATE_ACTIVE   | u1   | Core contract activated, mining/stacking available  |
+| STATE_INACTIVE | u2   | Core contract shutdown, mining/stacking unavailable |
 
 ### Updating the City Wallet Address
 

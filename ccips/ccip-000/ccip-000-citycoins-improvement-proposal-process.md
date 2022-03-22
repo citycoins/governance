@@ -20,7 +20,7 @@ Each CCIP shall provide a clear description of features, processes, and/or stand
 
 CCIPs are the canonical medium by which new features are proposed and described, and by which input from the CityCoins ecosystem participants is collected. The CCIP Ratification Process is also described in this document, and provides the means by which CCIPs may be proposed, vetted, edited, accepted, rejected, implemented, and finally incorporated into the CityCoins Protocol's design, governance, and operational procedures.
 
-The set of CCIPs that have been ratified shall sufficiently describe the design, governance, and operationalization of the CityCoins Protocol, as well as the means by which future changes to its official design, implementation, operation, and governance may be incorporated.
+The set of CCIPs that have been ratified shall sufficiently describe the design, governance, and operation of the CityCoins Protocol, as well as the means by which future changes to its official design, implementation, operation, and governance may be incorporated.
 
 The goals of this process are to ensure that anyone may submit a CCIP in good faith, that each CCIP will receive fair and speedy good-faith consideration by other people with the relevant expertise, and that any discussions and decision-making on each CCIP's ratification shall happen in public. To achieve these ends, this document proposes a standard way of presenting a CityCoins Improvement Proposal (CCIP), and a standard way of ratifying one.
 
@@ -62,7 +62,7 @@ Additional CCIP fields, which are sometimes required, include:
 
 - _Requires._ A list of CCIPs that must be implemented prior to this CCIP.
 - _Replaces._ A list of CCIPs that this CCIP replaces.
-- _Superceded-By._ A list of CCIPs that replace this CCIP.
+- _Superseded-By._ A list of CCIPs that replace this CCIP.
 
 **Introduction**
 
@@ -70,19 +70,19 @@ This section shall provide a high-level summary of the problem(s) that this CCIP
 
 **Specification**
 
-This section shall provide the detailed technical specification. It may include code snippits, diagrams, performance evaluations, and other supplemental data to justify particular design decisions. However, a copy of all external supplemental data (such as links to research papers) must be included with the CCIP, and must be made available under an approved copyright license.
+This section shall provide the detailed technical specification. It may include code snippets, diagrams, performance evaluations, and other supplemental data to justify particular design decisions. However, a copy of all external supplemental data (such as links to research papers) must be included with the CCIP, and must be made available under an approved copyright license.
 
 **Backwards Compatibility**
 
-This section shall address any backwards-incompatiblity concerns that may arise with the implementation of this CCIP, as well as describe (or reference) technical mitigations for breaking changes. This section may be left blank for non-technical CCIPs.
+This section shall address any backwards-incompatibility concerns that may arise with the implementation of this CCIP, as well as describe (or reference) technical mitigation for breaking changes. This section may be left blank for non-technical CCIPs.
 
 **Activation**
 
-This section shall describe the timeline, falsifiable criteria, and process for activating the CCIP once it is ratified. This applies to both technical and non-technical CCIPs. This section is used to unambiguously determine whether or not the CCIP has been accepted by the CityCoins users once it has been submitted for ratification (see below).
+This section shall describe the time line, falsifiable criteria, and process for activating the CCIP once it is ratified. This applies to both technical and non-technical CCIPs. This section is used to unambiguously determine whether or not the CCIP has been accepted by the CityCoins users once it has been submitted for ratification (see below).
 
 **Reference Implementations**
 
-This section shall include one or more references to one or more production-quality implementations of the CCIP, if applicable. This section is only informative — the CCIP ratification process is independent of any engineering processes (or other processes) that would be followed to produce implementations. If a particular implementation process is desired, then a detailed description of the process must be included in the Activation section. This section may be updated after a CCIP is ratified in order to include an up-to-date listing of any implementations or embodiments of the CCIP.
+This section shall include one or more references to one or more production-quality implementations of the CCIP, if applicable. This section is only informative, the CCIP ratification process is independent of any engineering processes (or other processes) that would be followed to produce implementations. If a particular implementation process is desired, then a detailed description of the process must be included in the Activation section. This section may be updated after a CCIP is ratified in order to include an up-to-date listing of any implementations or embodiment of the CCIP.
 
 **Footnotes**
 
@@ -111,7 +111,7 @@ A CCIP can have more than one consideration, since a CCIP may need to be vetted 
 - _Technical._ The CCIP is technical in nature, must be vetted by users with the relevant technical expertise, and must adhere to [RFC 2119](http://www.faqs.org/rfcs/rfc2119.html).
 - _Economic._ The CCIP concerns the protocol's token economics.
 - _Governance._ The CCIP concerns the governance of the CityCoins Protocol, including the CCIP process. This includes amendments to the CCIP Ratification Process, as well as structural considerations such as the creation (or removal) of various committees, editorial bodies, and formally recognized special interest groups.
-- _Ethics._ This CCIP concerns the behaviors of those involved in the CCIP Ratification Process that can affect its widespread adoption. Such CCIPs describe what behaviors shall be deemed acceptable, and which behaviors shall be considered harmful to this end (including any remediation or loss of privileges that misbehavior may entail). CCIPs that propose formalizations of ethics like codes of conduct, procedures for conflict resolution, criteria for involvement in governance, and so on would belong in this CCIP consideration.
+- _Ethics._ This CCIP concerns the behaviors of those involved in the CCIP Ratification Process that can affect its widespread adoption. Such CCIPs describe what behaviors shall be deemed acceptable, and which behaviors shall be considered harmful to this end (including any remediation or loss of privileges that misbehavior may entail). CCIPs that propose formalization of ethics like codes of conduct, procedures for conflict resolution, criteria for involvement in governance, and so on would belong in this CCIP consideration.
 - _Diversity._ This CCIP concerns proposals to grow the set of users, with an emphasis on including users who are traditionally not involved with open-source software projects. CCIPs that are concerned with evangelism, advertising, outreach, and so on must have this consideration.
 
 New considerations may be created via the ratification of a Meta-type CCIP under the governance consideration.

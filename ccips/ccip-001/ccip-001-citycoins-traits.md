@@ -50,7 +50,7 @@ The `citycoin-token` trait defines the token functionality of a CityCoin, includ
 - `burn`: Allows a principal to burn CityCoins they own.[^5] _(see CCIP-005)_
 - `send-many`: Allows a principal to send up to two hundred MiamiCoin transfers in a single transaction. _(see CCIP-005)_
 
-Note: All CityCoin token contracts also follow the SIP-010] trait specification[^2].
+Note: All CityCoin token contracts also follow the SIP-010 trait specification[^2].
 
 ## Backwards Compatibility
 

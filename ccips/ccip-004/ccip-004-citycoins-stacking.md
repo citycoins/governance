@@ -39,7 +39,7 @@ Through the `stack-tokens` function, a principal can submit:
 
 A stacker can participate in up to a maximum of 32 reward cycles at a time. Using the average block time of ten minutes per block, a single reward cycle is about two weeks in length and the maximum lock-up time is about sixteen months.
 
-Stacking always begins in the next reward cycle, and after the stacking cycles are complete the principal will be ineligible to stack for one cycle, or a "cooldown period".
+Stacking always begins in the next reward cycle, and after the stacking cycles are complete the principal will be ineligible to stack for one cycle, or a "cool down period".
 
 Stacked CityCoins are transferred to the contract, and can be reclaimed when the selected number of reward cycles have passed.
 

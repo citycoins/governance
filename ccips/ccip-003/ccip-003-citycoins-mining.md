@@ -58,7 +58,7 @@ When a principal submits a commit to mine in a block, the contract then:
 - verifies the contract is activated and the principal has not mined in this block already
 - verifies the amount of STX submitted is greater than zero and less than the principal's balance
 - updates the totals for that block in mining statistics
-- updates the commited amount and low/high values in the miner statistics
+- updates the committed amount and low/high values in the miner statistics
 - updates the high value for the block (total commit)
 - If stacking is active, updates the stacking stats for the cycle
 - distributes a percentage of the STX that miners forward directly to a reserved wallet for the city.
