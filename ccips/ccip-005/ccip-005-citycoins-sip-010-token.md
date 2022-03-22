@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical, Economic                   |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Ratified                              |
 | Created       | 2022-03-16                            |
 | License       | BSD-2-Clause                          |
 
@@ -69,11 +69,11 @@ After the final halving at 1,050,000 Stacks blocks past the Stacks block height 
 
 ## Backwards Compatibility
 
-None, as this proposal is the initial implementation.
+None, this is the initial implementation.
 
 ## Activation
 
-None, as this proposal is the initial implementation.
+None, this is the initial implementation.
 
 ## Reference Implementations
 

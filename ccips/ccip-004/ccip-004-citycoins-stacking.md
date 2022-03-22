@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical                             |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Ratified                              |
 | Created       | 2022-03-16                            |
 | License       | BSD-2-Clause                          |
 
@@ -89,11 +89,11 @@ Through the `claim-stacking-reward` function, a principal can submit the target 
 
 ## Backwards Compatibility
 
-None, as this proposal is the initial implementation.
+None, this is the initial implementation.
 
 ## Activation
 
-None, as this proposal is the initial implementation.
+None, this is the initial implementation.
 
 ## Reference Implementations
 

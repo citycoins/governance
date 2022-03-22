@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com  |
 | Consideration | Governance                             |
 | Type          | Meta                                   |
-| Status        | Draft                                  |
+| Status        | Ratified                               |
 | Created       | 2022-03-15                             |
 | License       | BSD-2-Clause                           |
 
