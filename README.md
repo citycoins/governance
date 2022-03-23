@@ -1,30 +1,31 @@
-# CityCoins Improvement Proposals
+# CityCoins Improvement Proposals (CCIPs)
 
-The CCIPs describe protocol-level changes for CityCoins.
+The CCIPs describe the design, implementation, and governance of the CityCoins Protocol. The CCIP process ([CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md)) describes how to create a CCIP and get it ratified. Anyone in the CityCoins community may submit a CCIP.
 
-Note: This is a WIP and more content will be added over the next week!
+## CCIPs in the Process of Being Activated
 
-## Basic Structure
+None at this time.
 
-- [Issues](https://github.com/citycoins/governance/issues) - create and discuss a formal proposal to be voted on
-- [Pull Requests](https://github.com/citycoins/governance/pulls) - officially record and vote on the proposal
+- [Issues](https://github.com/citycoins/governance/issues) - discussions about formal proposals
+- [Pull Requests](https://github.com/citycoins/governance/pulls) - official work-in-progress proposals
 
-Issues relate to discussions about a particular topic, likely coming from Discord.
+## Ratified CCIPs
 
-Proposals, stored in a directory and numbered, represent well-formed proposed changes.
+| CCIP Number                                                                     | Title                                  |
+| ------------------------------------------------------------------------------- | -------------------------------------- |
+| [CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md) | CityCoins Improvement Proposal Process |
+| [CCIP-001](./ccips/ccip-001/ccip-001-citycoins-traits.md)                       | CityCoins Traits                       |
+| [CCIP-002](./ccips/ccip-002/ccip-002-citycoins-activation.md)                   | CityCoins Activation                   |
+| [CCIP-003](./ccips/ccip-003/ccip-003-citycoins-mining.md)                       | CityCoins Mining                       |
+| [CCIP-004](./ccips/ccip-004/ccip-004-citycoins-stacking.md)                     | CityCoins Stacking                     |
+| [CCIP-005](./ccips/ccip-005/ccip-005-citycoins-sip-010-token.md)                | CityCoins SIP-010 Token                |
+| [CCIP-006](./ccips/ccip-006/ccip-006-citycoins-vrf.md)                          | CityCoins VRF                          |
+| [CCIP-007](./ccips/ccip-007/ccip-007-citycoins-auth.md)                         | CityCoins Auth                         |
 
-Proposals can then be voted for on-chain using a smart contract.
+## How to Get Involved
 
-## Contract Voting
+There are several ways you can get involved with the CCIP process:
 
-The contract would store proposal information, including a GitHub link and commit hash.
-
-Tags could be created for each new proposal as well.
-
-The contract would store total vote information as well as individual voter records.
-
-Voting would run between designated block heights.
-
-Addresses can only vote once, and their stacked amounts of MIA and NYC both count toward the total.
-
-Addresses can reverse their vote, if desired, but cannot withdraw their vote.
+- **Join the Community** - most ideas and discussions start in the [CityCoins Discord](https://discord.gg/citycoins), with this repository serving as an off-chain record of the official proposals within the protocol.
+- **CCIP Editor** - CCIP editors help CCIP authors make sure their CCIPs are well-formed and follow the right process. They help get CCIPs ready for review by advancing them from Draft to Accepted status. If you want to become a CCIP editor, open an issue with your name and email and ask to be added to the list of CCIP editors.
+- **CCIP Reviewer** - CCIP reviewers are responsible for reviewing an Accepted CCIP using their domain expertise, and giving the author feedback to help make the SIP workable. The current considerations for a CCIP are [available in CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md#ccip-considerations), and if you want to become a CCIP reviewer, open an issue with your name and email and ask to be added to the list of CCIP reviewers.
