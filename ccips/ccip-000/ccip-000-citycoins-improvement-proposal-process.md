@@ -56,7 +56,6 @@ The required fields in all cases shall be:
 - _Status._ This CCIP's point in the CCIP workflow ([defined below](#ccip-workflow)).
 - _Created._ The ISO 8601 date when this CCIP was created.
 - _License._ The content license for the CCIP (see below for permitted licenses).
-- _Sign-off._ The list of relevant persons and their titles who have worked to ratify the CCIP. This field is not filled in entirely until ratification, but is incrementally filled in as the CCIP progresses through the ratification process.
 
 Additional CCIP fields, which are sometimes required, include:
 
