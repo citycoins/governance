@@ -28,6 +28,8 @@ This proposal describes the token functionality for a CityCoin.
 
 CityCoins are fungible tokens on the Stacks blockchain that adhere to the SIP-010 fungible token standard[^2]. This includes specific functions defined in the SIP for transfer, name, symbol, decimals, balances, total supply, and token URI.
 
+CityCoins do not have any decimal places and 1 CityCoin represents the smallest unit.
+
 The token URI can only be updated from the auth contract.
 
 CityCoins can be sent and received on the Stacks blockchain, interact with smart contracts, and be used by any interface that accepts a SIP-010 fungible token.
