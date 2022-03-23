@@ -22,7 +22,7 @@ CCIPs are the canonical medium by which new features are proposed and described,
 
 The set of CCIPs that have been ratified shall sufficiently describe the design, governance, and operation of the CityCoins Protocol, as well as the means by which future changes to its official design, implementation, operation, and governance may be incorporated.
 
-The goals of this process are to ensure that anyone may submit a CCIP in good faith, that each CCIP will receive fair and speedy good-faith consideration by other people with the relevant expertise, and that any discussions and decision-making on each CCIP's ratification shall happen in public. To achieve these ends, this document proposes a standard way of presenting a CityCoins Improvement Proposal (CCIP), and a standard way of ratifying one.
+The goals of this process are to ensure that anyone may submit a CCIP in good faith, that each CCIP will receive fair and speedy good faith consideration by other people with the relevant expertise, and that any discussions and decision-making on each CCIP's ratification shall happen in public. To achieve these ends, this document proposes a standard way of presenting a CityCoins Improvement Proposal (CCIP), and a standard way of ratifying one.
 
 This document uses the word “users” to refer specifically to people who participate in the greater CityCoins ecosystem. This includes, but is not limited to, people who mine CityCoins, people who contribute code, people who develop applications that rely on the CityCoins protocol, people who use such applications, people involved in the project governance, and people involved in operating software deployments.
 
