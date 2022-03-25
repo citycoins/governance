@@ -58,15 +58,17 @@ Miners receive coinbase rewards for mining a CityCoin outlined in the table belo
 
 Following the token activation, the emissions schedule continues as follows:
 
-| Epoch | Epoch Length | Epoch End Block | Block Reward    | Total Supply           |
-| ----- | ------------ | --------------- | --------------- | ---------------------- |
-| 0     | 10,000       | 10,000          | 250,000,000,000 | 2,500,000,000,000,000  |
-| 1     | 25,000       | 35,000          | 100,000,000,000 | 5,000,000,000,000,000  |
-| 2     | 50,000       | 85,000          | 50,000,000,000  | 7,500,000,000,000,000  |
-| 3     | 100,000      | 185,000         | 25,000,000,000  | 10,000,000,000,000,000 |
-| 4     | 200,000      | 385,000         | 12,500,000,000  | 12,500,000,000,000,000 |
-| 5     | 400,000      | 785,000         | 6,250,000,000   | 15,000,000,000,000,000 |
-| 6     | 800,000      | 1,585,000       | 3,125,000,000   | 17,500,000,000,000,000 |
+| Epoch | Epoch Length | Epoch End Block | Block Reward | Total Supply   |
+| ----- | ------------ | --------------- | ------------ | -------------- |
+| 0     | 10,000       | 10,000          | 250,000      | 2,500,000,000  |
+| 1     | 25,000       | 35,000          | 100,000      | 5,000,000,000  |
+| 2     | 50,000       | 85,000          | 50,000       | 7,500,000,000  |
+| 3     | 100,000      | 185,000         | 25,000       | 10,000,000,000 |
+| 4     | 200,000      | 385,000         | 12,500       | 12,500,000,000 |
+| 5     | 400,000      | 785,000         | 6,250        | 15,000,000,000 |
+| 6     | 800,000      | 1,585,000       | 3,125        | 17,500,000,000 |
+
+Note: the values above are denoted in CityCoins, and the values in the contract and APIs the value will represent the reward/supply above multiplied by `1,000,000` to account for the 6 decimal places as micro-CityCoins.
 
 TODO: add spreadsheet reference (ODS format)
 
