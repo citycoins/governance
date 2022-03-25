@@ -29,7 +29,9 @@ This proposal describes the token functionality for a CityCoin.
 
 CityCoins are fungible tokens on the Stacks blockchain that adhere to the SIP-010 fungible token standard[^2]. This includes specific functions defined in the SIP for transfer, name, symbol, decimals, balances, total supply, and token URI.
 
-CityCoins have 6 decimal places, and the token URI can only be updated from the auth contract.
+CityCoins have 6 decimal places, where one million micro-CityCoins (e.g. uMIA) is equal to 1 CityCoin (e.g. MIA).
+
+The token URI can only be updated from the auth contract.
 
 CityCoins can be sent and received on the Stacks blockchain, interact with smart contracts, and be used by any interface that accepts a SIP-010 fungible token[^2].
 
@@ -52,18 +54,33 @@ CityCoins have no ICO, no pre-sale, and no pre-mine. CityCoins are only mined in
 
 ### Emissions Schedule
 
-TODO: New Emissions Schedule
-TODO: add spreadsheet references (ODS format)
+Miners receive coinbase rewards for mining a CityCoin outlined in the table below. The "halvings" are based on a doubling epoch model with an initial bonus period, in which the length of each epoch is twice as long as the last following epoch 0.
+
+Following the token activation, the emissions schedule continues as follows:
+
+| Epoch | Epoch Length | Epoch End Block | Block Reward    | Total Supply           |
+| ----- | ------------ | --------------- | --------------- | ---------------------- |
+| 0     | 10,000       | 10,000          | 250,000,000,000 | 2,500,000,000,000,000  |
+| 1     | 25,000       | 35,000          | 100,000,000,000 | 5,000,000,000,000,000  |
+| 2     | 50,000       | 85,000          | 50,000,000,000  | 7,500,000,000,000,000  |
+| 3     | 100,000      | 185,000         | 25,000,000,000  | 10,000,000,000,000,000 |
+| 4     | 200,000      | 385,000         | 12,500,000,000  | 12,500,000,000,000,000 |
+| 5     | 400,000      | 785,000         | 6,250,000,000   | 15,000,000,000,000,000 |
+| 6     | 800,000      | 1,585,000       | 3,125,000,000   | 17,500,000,000,000,000 |
+
+TODO: add spreadsheet reference (ODS format)
 
 ## Backwards Compatibility
 
-This CCIP replaces the token standard in CCIP-005 and is not backwards compatible.
+This CCIP replaces the token standard in CCIP-005 and is not backwards compatible, however any existing CityCoin deployed based on CCIP-005 can be converted to the equivalent CityCoin deployed based on this CCIP.
 
-TODO: Migration/Conversion
+### Token Conversion
+
+The CCIP-005 token contracts for MIA[^4] and NYC[^5] are currently deployed to the Stacks mainnet.
 
 ## Activation
 
-TODO: On-chain vote description
+This CCIP will be voted on using SIP-011[^6].
 
 ## Reference Implementations
 
