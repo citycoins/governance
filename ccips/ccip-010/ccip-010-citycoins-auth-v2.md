@@ -8,8 +8,8 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical                             |
 | Type          | Standard                              |
-| Status        | Ratified                              |
-| Created       | 2022-03-16                            |
+| Status        | Draft                                 |
+| Created       | 2022-03-25                            |
 | License       | BSD-2-Clause                          |
 | Replaces      | CCIP-007                              |
 
