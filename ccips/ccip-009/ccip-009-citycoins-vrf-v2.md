@@ -27,23 +27,45 @@ This proposal describes the verifiable random function (VRF) used to calculate t
 
 The VRF contract is used to determine the winner of a mined block.
 
-Through the `get-random-uint-at-block` function, the contract:
+This version introduces two functions to replace `get-random-uint-at-block` in CCIP-006:
 
-- fetches the on-chain VRF proof from the block height
-- converts the lower 16 bytes into a uint
-- returns the random integer
+- `get-rnd`: a read-only function that returns the random integer
+- `get-save-rnd`: a public function that saves the random integer to a map, then returns it
 
-More information on Stacks block assembly can be found in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#blocks).
+Through the `get-rnd` function, the contract:
+
+- checks the `BlockRnd` map to see if the random integer has been saved
+  - if yes, returns the saved random integer
+  - if no, it then:
+    - fetches the on-chain VRF proof for the given block height
+    - converts the lower 16 bytes into a uint
+    - returns the random integer
+
+Through the `get-save-rnd` function, the contract:
+
+- checks the `BlockRnd` map to see if the random integer has been saved
+  - if yes, returns the saved random integer
+  - if no, it then:
+    - fetches the on-chain VRF proof for the given block height
+    - converts the lower 16 bytes into a uint
+    - saves the random integer to the `BlockRnd` map
+    - returns the random integer
+
+The public function requires a private key and a Stacks transaction fee in order to send the transaction.
+
+More information on Stacks block assembly and the VRF proof can be found in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#blocks).
+
+### Cost Savings
+
+TODO: add comparison of old to new
+
+### Verification
+
+TODO: show side-by-side calls to verify accuracy
 
 ## Backwards Compatibility
 
-TODO: expand section
-
-Old version still available.
-
-New version used by new contracts.
-
-Same results, just more efficient.
+This CCIP replaces the VRF architecture in CCIP-006 and is not backwards compatible, however the original the original CCIP-006 implementation will remain available and returns the same result.
 
 ## Activation
 
