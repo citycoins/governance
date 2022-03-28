@@ -54,7 +54,7 @@ CityCoins have no ICO, no pre-sale, and no pre-mine. CityCoins are only mined in
 
 ### Emissions Schedule
 
-Miners receive coinbase rewards for mining a CityCoin outlined in the table below. The "halvings" are based on a doubling epoch model with an initial bonus period, in which the length of each epoch is twice as long as the last following epoch 0.
+Miners receive coinbase rewards for mining a CityCoin outlined in the table below. The "halvings" are based on a doubling epoch model with an initial bonus period, in which the length of each epoch is twice as long as the last following epoch 1.
 
 Following the token activation, the emissions schedule continues as follows:
 
@@ -74,15 +74,25 @@ TODO: add spreadsheet reference (ODS format)
 
 ## Backwards Compatibility
 
-This CCIP replaces the token standard in CCIP-005 and is not backwards compatible, however any existing CityCoin deployed based on CCIP-005 can be converted to the equivalent CityCoin deployed based on this CCIP.
+This CCIP replaces the token standard in CCIP-005 and is not backwards compatible, however any existing CityCoin deployed based on CCIP-005 can be converted to the equivalent CityCoin deployed based on procedures set forth in this CCIP.
+
+TODO: Need to frame this in reference to an exit block height
 
 ### Token Conversion
 
 The CCIP-005 token contracts for MIA[^4] and NYC[^5] are currently deployed to the Stacks mainnet.
 
+In order to upgrade these tokens to be compliant with CCIP-008, the following steps must be taken:
+
+- activation block height set to previous values versus current
+- wrapper function to burn/mint CCIP-005 to CCIP-008
+- idea: wrapper included on MIA/NYC mining or stacking calls
+  - could be limited for a certain number of blocks
+  - need to know additional costs here
+
 ## Activation
 
-This CCIP will be voted on using SIP-011[^6].
+This CCIP will be voted on using CCIP-011[^6].
 
 ## Reference Implementations
 
@@ -93,3 +103,6 @@ TODO: add references
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token?chain=mainnet
+[^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token?chain=mainnet
+[^6]: TODO: add path after merge
