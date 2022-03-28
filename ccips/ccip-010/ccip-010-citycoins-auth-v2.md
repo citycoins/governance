@@ -31,9 +31,8 @@ The auth contract for a CityCoin contains protected functions that allow the cit
 
 - an update to the city wallet address, in case the custody address is changed
 - an upgrade to the core contract, replacing the current core contract with a new one
+- an adjustment to the emissions schedule
 - an update to the token URI, which specifies the off-chain location of the CityCoin token data
-
-TODO: outline process to update emissions schedule and outline possibilities
 
 The city wallet is a 2-of-3 multisignature wallet, and requires 2-of-3 approval before any of the protected functions can be used.
 
@@ -142,6 +141,10 @@ When the `execute-upgrade-core-contract-job` function is called, the contract th
   - verifies job was not already executed
   - updates the job status to executed
 
+### Updating the Emissions Schedule
+
+TODO: add details
+
 ### Updating the Token URI
 
 When the `set-token-uri` function is called, the contract then:
@@ -167,33 +170,15 @@ When the `execute-replace-approver-job` function is called, the contract then:
 
 ## Backwards Compatibility
 
-None, this is the initial implementation.
+This CCIP replaces the auth contract in CCIP-007 and is not backwards compatible.
 
 ## Activation
 
-None, this is the initial implementation.
+TODO: On-chain vote description
 
 ## Reference Implementations
 
-MiamiCoin Contracts:
-
-- `miamicoin-auth` deployed on the Stacks mainnet[^4], implementing:
-  - the `upgrade-core-contract` function on lines 423-452
-  - the `execute-upgrade-core-contract-job` function on lines 454-485
-  - the `set-city-wallet` function on lines 497-510
-  - the `execute-set-city-wallet-job` function on lines 512-525
-  - the `set-token-uri` function on lines 534-540
-  - the `execute-replace-approver-job` function on lines 544-555
-
-NewYorkCityCoin Contracts:
-
-- `newyorkcitycoin-auth` deployed on the Stacks mainnet[^5], implementing:
-  - the `upgrade-core-contract` function on lines 424-453
-  - the `execute-upgrade-core-contract-job` function on lines 455-486
-  - the `set-city-wallet` function on lines 498-511
-  - the `execute-set-city-wallet-job` function on lines 513-526
-  - the `set-token-uri` function on lines 535-541
-  - the `execute-replace-approver-job` function on lines 545-556
+TODO: add references
 
 ## Footnotes
 
