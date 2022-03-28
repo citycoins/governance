@@ -21,11 +21,29 @@ Taking this concept a level further, a new token (a "CityCoin") is created on th
 
 CityCoins leverage similar properties from the Proof of Transfer (PoX) consensus mechanism[^3] of the Stacks blockchain, programmed through a smart contract in Clarity.
 
-This proposal describes the on-chain vote method used to ratify CCIP-008, CCIP-009, and CCIP-010 using an on-chain vote.
+This proposal describes the on-chain vote method used to ratify CCIP-008, CCIP-009, and CCIP-010.
 
 ## Specification
 
-TODO: add specification details
+The voting contract is designed similarly to the SIP-012 voting process[^4], in which the user's vote is equal to the amount of tokens stacked across a defined set of reward cycles.
+
+Through the `vote` function, a principal can cast their vote for a defined proposal and the contract will:
+
+### Proposal Data
+
+TODO: define proposal data
+
+### Vote Data
+
+TODO: define vote data
+
+### Vote Parameters
+
+TODO: define vote parameters
+
+### Vote Calculations
+
+TODO: define vote calculations
 
 ## Backwards Compatibility
 
@@ -44,3 +62,4 @@ TODO: add references
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: TODO: SIP-012 vote link
