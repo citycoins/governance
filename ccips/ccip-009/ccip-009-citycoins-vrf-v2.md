@@ -4,7 +4,7 @@
 
 | CCIP Number   | 009                                   |
 | ------------- | ------------------------------------- |
-| Title         | CityCoins VRF V2                      |
+| Title         | CityCoins VRF v2                      |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical                             |
 | Type          | Standard                              |
@@ -57,11 +57,140 @@ More information on Stacks block assembly and the VRF proof can be found in [SIP
 
 ### Cost Savings
 
-TODO: add comparison of old to new
+Using the Clarinet Console, we can evaluate the cost savings of the CCIP-009 VRF implementation.
+
+#### Get Random Value
+
+v1 VRF `get-random-uint-at-block`
+
+```
++----------------------+----------+------------+
+|                      | Consumed | Limit      |
++----------------------+----------+------------+
+| Runtime              | 390223   | 5000000000 |
++----------------------+----------+------------+
+| Read count           | 4        | 7750       |
++----------------------+----------+------------+
+| Read length (bytes)  | 3372     | 100000000  |
++----------------------+----------+------------+
+| Write count          | 0        | 7750       |
++----------------------+----------+------------+
+| Write length (bytes) | 0        | 15000000   |
++----------------------+----------+------------+
+```
+
+v2 VRF `get-save-rnd`, on first call before value is saved
+
+```
++----------------------+----------+------------+
+|                      | Consumed | Limit      |
++----------------------+----------+------------+
+| Runtime              | 59665    | 5000000000 |
++----------------------+----------+------------+
+| Read count           | 6        | 7750       |
++----------------------+----------+------------+
+| Read length (bytes)  | 2221     | 100000000  |
++----------------------+----------+------------+
+| Write count          | 1        | 7750       |
++----------------------+----------+------------+
+| Write length (bytes) | 33       | 15000000   |
++----------------------+----------+------------+
+```
+
+v2 VRF `get-save-rnd`, on subsequent calls after value is saved
+
+```
++----------------------+----------+------------+
+|                      | Consumed | Limit      |
++----------------------+----------+------------+
+| Runtime              | 4782     | 5000000000 |
++----------------------+----------+------------+
+| Read count           | 4        | 7750       |
++----------------------+----------+------------+
+| Read length (bytes)  | 2220     | 100000000  |
++----------------------+----------+------------+
+| Write count          | 0        | 7750       |
++----------------------+----------+------------+
+| Write length (bytes) | 0        | 15000000   |
++----------------------+----------+------------+
+```
+
+#### Claim Mining Reward
+
+v1 `claim-mining-reward`
+
+```
++----------------------+----------+------------+------------+
+|                      | Consumed | Limit      | Percent    |
++----------------------+----------+------------+------------+
+| Runtime              | 527214   | 5000000000 | 0.011%     |
++----------------------+----------+------------+------------+
+| Read count           | 32       | 7750       | 0.413%     |
++----------------------+----------+------------+------------+
+| Read length (bytes)  | 58176    | 100000000  | 0.058%     |
++----------------------+----------+------------+------------+
+| Write count          | 5        | 7750       | 0.065%     |
++----------------------+----------+------------+------------+
+| Write length (bytes) | 459      | 15000000   | 0.003%     |
++----------------------+----------+------------+------------+
+```
+
+v2 `claim-mining-reward` on first call before value is saved
+
+```
++----------------------+----------+------------+------------+-----------+
+|                      | Consumed | Limit      | Percent    | Diff (v1) |
++----------------------+----------+------------+------------+-----------+
+| Runtime              | 196647   | 5000000000 | 0.004%     | -0.007%   |
++----------------------+----------+------------+------------+-----------+
+| Read count           | 34       | 7750       | 0.439%     | +0.026%   |
++----------------------+----------+------------+------------+-----------+
+| Read length (bytes)  | 57016    | 100000000  | 0.057%     | -0.001%   |
++----------------------+----------+------------+------------+-----------+
+| Write count          | 6        | 7750       | 0.077%     | +0.012    |
++----------------------+----------+------------+------------+-----------+
+| Write length (bytes) | 492      | 15000000   | 0.003%     | same      |
++----------------------+----------+------------+------------+-----------+
+```
+
+v2 `claim-mining-reward` on subsequent calls after value is saved
+
+```
++----------------------+----------+------------+
+|                      | Consumed | Limit      |
++----------------------+----------+------------+
+| Runtime              | 196647   | 5000000000 |
++----------------------+----------+------------+
+| Read count           | 34       | 7750       |
++----------------------+----------+------------+
+| Read length (bytes)  | 57016    | 100000000  |
++----------------------+----------+------------+
+| Write count          | 6        | 7750       |
++----------------------+----------+------------+
+| Write length (bytes) | 492      | 15000000   |
++----------------------+----------+------------+
+```
 
 ### Verification
 
-TODO: show side-by-side calls to verify accuracy
+Using the Clarinet Console, we can evaluate the responses side-by-side from each contract to esnure accuracy.
+
+```
+>> (contract-call? .citycoin-vrf-v2 get-save-rnd u150)
+(ok u145987011005865973404065296999542273879)
+>> (contract-call? .citycoin-vrf get-random-uint-at-block u150)
+(some u145987011005865973404065296999542273879)
+>> (contract-call? .citycoin-vrf-v2 get-save-rnd u200)
+(ok u208380493011466864727649209133199743254)
+>> (contract-call? .citycoin-vrf get-random-uint-at-block u200)
+(some u208380493011466864727649209133199743254)
+>> (contract-call? .citycoin-vrf-v2 get-save-rnd u250)
+(ok u94492931307886473587440802540444121043)
+>> (contract-call? .citycoin-vrf get-random-uint-at-block u250)
+(some u94492931307886473587440802540444121043)
+```
+
+Based on the data above, the original CCIP-006 implementation and the new CCIP-009 return the same result.
 
 ## Backwards Compatibility
 
@@ -69,14 +198,15 @@ This CCIP replaces the VRF architecture in CCIP-006 and is not backwards compati
 
 ## Activation
 
-TODO: On-chain vote description
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^4].
 
 ## Reference Implementations
 
-TODO: add references
+TODO: add references after deployment
 
 ## Footnotes
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
+[^4]: TODO: add path after merge
