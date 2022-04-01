@@ -4,7 +4,7 @@
 
 | CCIP Number   | 010                                   |
 | ------------- | ------------------------------------- |
-| Title         | CityCoins Auth V2                     |
+| Title         | CityCoins Auth v2                     |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical                             |
 | Type          | Standard                              |
@@ -143,7 +143,25 @@ When the `execute-upgrade-core-contract-job` function is called, the contract th
 
 ### Updating the Emissions Schedule
 
-TODO: add details
+When the `update-emissions-schedule` function is called, the contract then:
+
+- verifies the caller is the city wallet principal
+- verifies the coinbase amounts and thresholds are positive
+- sets the coinbase thresholds in the token and core contract
+
+When the `execute-update-emissions-schedule-job` function is called, the contract then:
+
+- verifies the correct job arguments are found
+- verifies the caller is in the approvers map
+- verifies the coinbase amounts and thresholds are positive
+- sets the coinbase thresholds in the token and core contract
+- marks the job as executed
+  - verifies the job ID is found
+  - verifies the job is active
+  - verifies the job has the required approvals
+  - verifies the auth contract is marking the job as executed
+  - verifies job was not already executed
+  - updates the job status to executed
 
 ### Updating the Token URI
 
@@ -174,7 +192,7 @@ This CCIP replaces the auth contract in CCIP-007 and is not backwards compatible
 
 ## Activation
 
-TODO: On-chain vote description
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^6].
 
 ## Reference Implementations
 
@@ -187,3 +205,4 @@ TODO: add references
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-auth?chain=mainnet
 [^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-auth?chain=mainnet
+[^6]: TODO: add path after merge
