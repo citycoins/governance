@@ -29,7 +29,7 @@ This proposal describes the token functionality for a CityCoin.
 
 CityCoins are fungible tokens on the Stacks blockchain that adhere to the SIP-010 fungible token standard[^2]. This includes specific functions defined in the SIP for transfer, name, symbol, decimals, balances, total supply, and token URI.
 
-CityCoins have 6 decimal places, where one million micro-CityCoins (e.g. uMIA) is equal to 1 CityCoin (e.g. MIA).
+CityCoins have six decimal places, where one million micro-CityCoins (e.g. uMIA) is equal to one CityCoin (e.g. MIA).
 
 The token URI can only be updated from the auth contract.
 
@@ -76,27 +76,30 @@ TODO: add spreadsheet reference (ODS format)
 
 This CCIP replaces the token standard in CCIP-005 and is not backwards compatible, however any existing CityCoin deployed based on CCIP-005 can be converted to the equivalent CityCoin deployed based on procedures set forth in this CCIP.
 
-TODO: Need to frame this in reference to an exit block height
+The implementation needs to occur before Stacks block 59,497 in order for the total supply to be in sync with future CityCoins.
 
 ### Token Conversion
 
 The CCIP-005 token contracts for MIA[^4] and NYC[^5] are currently deployed to the Stacks mainnet.
 
-In order to upgrade these tokens to be compliant with CCIP-008, the following steps must be taken:
+The CCIP-008 token contracts will be deployed to the Stacks mainnet and replace the functionality of the CCIP-005 token contracts.
 
-- activation block height set to previous values versus current
-- wrapper function to burn/mint CCIP-005 to CCIP-008
-- idea: wrapper included on MIA/NYC mining or stacking calls
-  - could be limited for a certain number of blocks
-  - need to know additional costs here
+In order to make the upgrade as seamless as possible, contract functions will be provided that:
+
+- allow direct conversion by burning the CCIP-005 asset and minting the CCIP-008 asset
+- allow conversion through mining and stacking within the newly deployed core contract
+  - this will be available for a set number of blocks due to increased costs
+  - once the end block height passes, the direct conversion will remain available
+
+In addition, the activation block height and coinbase thresholds will be preserved for the original CCIP-005 token contracts, so that all emissions schedule between current and future CityCoins will be synchronized.
 
 ## Activation
 
-This CCIP will be voted on using CCIP-011[^6].
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^6].
 
 ## Reference Implementations
 
-TODO: add references
+TODO: add references after deployment
 
 ## Footnotes
 
