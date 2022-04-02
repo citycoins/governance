@@ -27,6 +27,8 @@ This proposal describes the on-chain vote method used to ratify CCIP-008, CCIP-0
 
 The voting contract is designed similarly to the SIP-012 voting process[^4], in which the user's vote is equal to the amount of tokens stacked across a defined set of reward cycles.
 
+### Voting Actions
+
 Through the `vote-on-proposal` function, a principal can submit their vote for a defined proposal and the contract will query the core contract for their stacked tokens, then update and track the vote totals for the proposal and the individual principal.
 
 Within the vote contract are vailables to track:
@@ -55,6 +57,23 @@ When a principal submits a vote, the contract then:
     - verifies the vote total is greater than zero
     - updates the vote totals and voter record
 - prints the vote totals and voter record
+
+### Voting Information
+
+The vote contract contains several functions that return information about the voting process.
+
+- `is-initialized`: returns if the start/end block heights are set
+- `get-proposals`: returns the list of proposals being voted on
+- `get-vote-blocks`: returns the start/end block heights, if set
+- `get-vote-start-block`: returns the start block height, if set
+- `get-vote-end-block`: returns the end block height, if set
+- `get-vote-amount`: returns the total vote for a given principal
+- `get-proposal-votes`: returns the vote totals for a given proposal
+- `get-voter`: returns the voter principal for a given voter ID
+- `get-voter-id`: returns the voter ID for a given principal
+- `get-voter-info`: returns the vote totals for a given principal
+
+### Voting Calculations
 
 Included with this CCIP is a [supplemental spreadsheet](./ccip-011-0001-sample-vote-calculations.ods) that shows how the scale factor can be calculated across CityCoins and provides some sample voting data from the selected cycles.
 
