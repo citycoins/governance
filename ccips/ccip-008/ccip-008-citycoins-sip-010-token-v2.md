@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical, Economic                   |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Activation-In-Progress                |
 | Created       | 2022-03-25                            |
 | License       | BSD-2-Clause                          |
 | Replaces      | CCIP-005                              |
