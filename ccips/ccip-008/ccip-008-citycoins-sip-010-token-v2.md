@@ -70,7 +70,7 @@ Following the token activation, the emissions schedule continues as follows:
 
 Note: the values above are denoted in CityCoins, and the values in the contract and APIs the value will represent the reward/supply above multiplied by `1,000,000` to account for the 6 decimal places as micro-CityCoins.
 
-TODO: add spreadsheet reference (ODS format)
+Included with this CCIP is a [supplemental spreadsheet](./ccip-008-0001-doubling-epoch-emissions-schedule.ods) that shows the calculations for and graphs the differences between the old and new emissions schedule.
 
 ## Backwards Compatibility
 
@@ -99,7 +99,7 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-011[^6].
 
 ## Reference Implementations
 
-TODO: add references after deployment
+TODO: add reference implementations after activation and deployment
 
 ## Footnotes
 
