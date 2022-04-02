@@ -14,7 +14,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)               | CityCoins Auth v2               |
 | [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md) | CityCoins Stacked Tokens Voting |
 
-To vote on the upgrades proposed above, please visit https://vote.minecitycoins.com.
+To vote on the upgrade proposed by the above CCIPs, please visit https://vote.minecitycoins.com.
 
 ## Ratified CCIPs
 
