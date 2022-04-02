@@ -83,7 +83,7 @@ None, this is the initial implementation.
 
 ## Activation
 
-None, this is the initial implementation.
+This voting process will be used for ratifying CCIP-008, CCIP-009, and CCIP-010. Upon a successful vote this CCIP will be activated.
 
 ## Reference Implementations
 
