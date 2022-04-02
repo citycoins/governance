@@ -27,23 +27,36 @@ This proposal describes the on-chain vote method used to ratify CCIP-008, CCIP-0
 
 The voting contract is designed similarly to the SIP-012 voting process[^4], in which the user's vote is equal to the amount of tokens stacked across a defined set of reward cycles.
 
-Through the `vote` function, a principal can cast their vote for a defined proposal and the contract will:
+Through the `vote-on-proposal` function, a principal can submit their vote for a defined proposal and the contract will query the core contract for their stacked tokens, then update and track the vote totals for the proposal and the individual principal.
 
-### Proposal Data
+Within the vote contract are vailables to track:
 
-TODO: define proposal data
+- the vote proposal ID, if used for a single proposal
+- the vote scale factor, used to perform fixed-point calculations
+- the vote scale factor, used to equalize CityCoin votes
+- the initialization state of the contract
+- the start and end block heights for the vote
+- the name, link, and GitHub commit hash of the related CCIPs
+- the total vote count, totals per CityCoin, and total votes
+- the vote, totals per CityCoin, and total vote for individual principals
 
-### Vote Data
+When a principal submits a vote, the contract then:
 
-TODO: define vote data
+- obtains the voter ID for the principal, or creates one if it does not already exist
+- verifies the vote contract is initialized with start and end block heights
+- verifies the vote occurs between the start and end block heights
+- checks if the principal's voter record already exists
+  - if yes:
+    - verifies that the vote is different from the previous vote
+    - updates the vote totals and voter record
+  - if no:
+    - gets the CityCoin vote total per CityCoin based on stacking data in the core contract
+    - calculates the vote total
+    - verifies the vote total is greater than zero
+    - updates the vote totals and voter record
+- prints the vote totals and voter record
 
-### Vote Parameters
-
-TODO: define vote parameters
-
-### Vote Calculations
-
-TODO: define vote calculations
+Included with this CCIP is a [supplemental spreadsheet](./ccip-011-0001-sample-vote-calculations.ods) that shows how the scale factor can be calculated across CityCoins and provides some sample voting data from the selected cycles.
 
 ## Backwards Compatibility
 
@@ -55,11 +68,11 @@ None, this is the initial implementation.
 
 ## Reference Implementations
 
-TODO: add references
+TODO: add reference implementations after activation and deployment
 
 ## Footnotes
 
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
-[^4]: TODO: SIP-012 vote link
+[^4]: https://sip012.xyz/
