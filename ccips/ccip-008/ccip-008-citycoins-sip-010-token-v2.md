@@ -2,16 +2,18 @@
 
 ## Preamble
 
-| CCIP Number   | 008                                   |
-| ------------- | ------------------------------------- |
-| Title         | CityCoins SIP-010 Token v2            |
-| Author(s)     | Jason Schrader jason@joinfreehold.com |
-| Consideration | Technical, Economic                   |
-| Type          | Standard                              |
-| Status        | Activation-In-Progress                |
-| Created       | 2022-03-25                            |
-| License       | BSD-2-Clause                          |
-| Replaces      | CCIP-005                              |
+| CCIP Number   | 008                                     |
+| ------------- | --------------------------------------- |
+| Title         | CityCoins SIP-010 Token v2              |
+| Author(s)     | Jason Schrader jason@joinfreehold.com   |
+|               | Andre Serrano andre@novablock.io        |
+|               | BowTiedMooneeb bowtiedmooneeb@gmail.com |
+| Consideration | Technical, Economic                     |
+| Type          | Standard                                |
+| Status        | Activation-In-Progress                  |
+| Created       | 2022-03-25                              |
+| License       | BSD-2-Clause                            |
+| Replaces      | CCIP-005                                |
 
 ## Introduction
 
