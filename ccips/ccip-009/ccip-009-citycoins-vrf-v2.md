@@ -211,4 +211,4 @@ TODO: add reference implementations after activation and deployment
 [^1]: https://stacking.club
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
-[^4]: TODO: add path after merge
+[^4]: https://github.com/citycoins/governance/blob/feat/community-upgrade-1/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md

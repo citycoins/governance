@@ -108,4 +108,4 @@ TODO: add reference implementations after activation and deployment
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token?chain=mainnet
 [^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token?chain=mainnet
-[^6]: TODO: add path after merge
+[^6]: https://github.com/citycoins/governance/blob/feat/community-upgrade-1/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md

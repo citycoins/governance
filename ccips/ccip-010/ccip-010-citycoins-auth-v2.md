@@ -196,7 +196,7 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-011[^6].
 
 ## Reference Implementations
 
-TODO: add references
+TODO: add reference implementations after activation and deployment
 
 ## Footnotes
 
@@ -205,4 +205,4 @@ TODO: add references
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-auth?chain=mainnet
 [^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-auth?chain=mainnet
-[^6]: TODO: add path after merge
+[^6]: https://github.com/citycoins/governance/blob/feat/community-upgrade-1/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
