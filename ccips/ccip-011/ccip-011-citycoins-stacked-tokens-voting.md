@@ -31,7 +31,7 @@ The voting contract is designed similarly to the SIP-012 voting process[^4], in 
 
 Through the `vote-on-proposal` function, a principal can submit their vote for a defined proposal and the contract will query the core contract for their stacked tokens, then update and track the vote totals for the proposal and the individual principal.
 
-Within the vote contract are vailables to track:
+Within the vote contract are variables to track:
 
 - the vote proposal ID, if used for a single proposal
 - the vote scale factor, used to perform fixed-point calculations
