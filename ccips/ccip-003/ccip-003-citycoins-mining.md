@@ -60,11 +60,11 @@ When a principal submits a commit to mine in a block, the contract then:
 - updates the totals for that block in mining statistics
 - updates the committed amount and low/high values in the miner statistics
 - updates the high value for the block (total commit)
-- If stacking is active, updates the stacking stats for the cycle
+- if stacking is active, updates the stacking stats for the cycle
 - distributes a percentage of the STX that miners forward directly to a reserved wallet for the city.
 - distributes the remaining percentage in one of two ways:
-  - If stacking is not active in the current reward cycle, it is sent to the city's reserved wallet.
-  - If stacking is active in the current reward cycle, it is distributed to the addresses that temporarily lock ("stack") their CityCoins.
+  - if stacking is not active in the current reward cycle, it is sent to the city's reserved wallet.
+  - if stacking is active in the current reward cycle, it is distributed to the addresses that temporarily lock ("stack") their CityCoins.
 
 More information about Stacking can be found in [CCIP-004](../ccip-004/ccip-004-citycoins-stacking.md).
 
