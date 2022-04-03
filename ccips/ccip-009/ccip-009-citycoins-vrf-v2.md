@@ -51,8 +51,6 @@ Through the `get-save-rnd` function, the contract:
     - saves the random integer to the `BlockRnd` map
     - returns the random integer
 
-The public function requires a private key and a Stacks transaction fee in order to send the transaction, and would ideally be used by any smart contract using this implementation to obtain a random value at a given block height.
-
 More information on Stacks block assembly and the VRF proof can be found in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#blocks).
 
 ### Cost Savings
@@ -135,7 +133,7 @@ v1 `claim-mining-reward`
 +----------------------+----------+------------+------------+
 ```
 
-v2 `claim-mining-reward` on first call before value is saved
+v2 `claim-mining-reward` when random value at block is not yet saved throught `get-save-rnd`
 
 ```
 +----------------------+----------+------------+------------+-----------+
@@ -153,7 +151,7 @@ v2 `claim-mining-reward` on first call before value is saved
 +----------------------+----------+------------+------------+-----------+
 ```
 
-v2 `claim-mining-reward` on subsequent calls after value is saved
+v2 `claim-mining-reward` after random value at block is saved through `get-save-rnd`
 
 ```
 +----------------------+----------+------------+------------+-----------+
