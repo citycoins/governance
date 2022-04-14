@@ -8,6 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com   |
 |               | Andre Serrano andre@novablock.io        |
 |               | BowTiedMooneeb bowtiedmooneeb@gmail.com |
+|               | Logan Storrer logan.storrer@gmail.com   |
 | Consideration | Technical, Economic                     |
 | Type          | Standard                                |
 | Status        | Activation-In-Progress                  |
