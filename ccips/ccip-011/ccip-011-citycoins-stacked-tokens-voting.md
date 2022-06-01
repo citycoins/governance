@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Technical, Governance                 |
 | Type          | Standard                              |
-| Status        | Activation-In-Progress                |
+| Status        | Ratified                              |
 | Created       | 2022-03-25                            |
 | License       | BSD-2-Clause                          |
 | Replaces      | CCIP-006                              |
@@ -87,7 +87,9 @@ This voting process will be used for ratifying CCIP-008, CCIP-009, and CCIP-010.
 
 ## Reference Implementations
 
-TODO: add reference implementations after activation and deployment
+- `citycoins-vote-v1` deployed on the Stacks mainnet, implementing the vote method described in this CCIP[^5]
+
+The vote was enabled through a community-provided user interface.[^6]
 
 ## Footnotes
 
@@ -95,3 +97,5 @@ TODO: add reference implementations after activation and deployment
 [^2]: https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md
 [^3]: https://docs.stacks.co/understand-stacks/proof-of-transfer
 [^4]: https://sip012.xyz/
+[^5]: https://explorer.stacks.co/txid/SP34FHX44NK9KZ8KJC08WR2NHP8NEGFTTT7MTH7XD.citycoins-vote-v1?chain=mainnet
+[^6]: https://vote.minecitycoins.com

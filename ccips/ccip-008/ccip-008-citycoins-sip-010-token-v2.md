@@ -11,7 +11,7 @@
 |               | Logan Storrer logan.storrer@gmail.com   |
 | Consideration | Technical, Economic                     |
 | Type          | Standard                                |
-| Status        | Activation-In-Progress                  |
+| Status        | Ratified                                |
 | Created       | 2022-03-25                              |
 | License       | BSD-2-Clause                            |
 | Replaces      | CCIP-005                                |
@@ -102,7 +102,8 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-011[^6].
 
 ## Reference Implementations
 
-TODO: add reference implementations after activation and deployment
+- `miamicoin-token-v2` deployed on the Stacks mainnet[^7]
+- `newyorkcitycoin-token-v2` deployed on the Stacks mainnet[^8]
 
 ## Footnotes
 
@@ -112,3 +113,5 @@ TODO: add reference implementations after activation and deployment
 [^4]: https://explorer.stacks.co/txid/SP466FNC0P7JWTNM2R9T199QRZN1MYEDTAR0KP27.miamicoin-token?chain=mainnet
 [^5]: https://explorer.stacks.co/txid/SP2H8PY27SEZ03MWRKS5XABZYQN17ETGQS3527SA5.newyorkcitycoin-token?chain=mainnet
 [^6]: https://github.com/citycoins/governance/blob/feat/community-upgrade-1/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^7]: https://explorer.stacks.co/txid/SP1H1733V5MZ3SZ9XRW9FKYGEZT0JDGEB8Y634C7R.miamicoin-token-v2
+[^8]: https://explorer.stacks.co/txid/SPSCWDV3RKV5ZRN1FQD84YE1NQFEDJ9R1F4DYQ11.newyorkcitycoin-token-v2

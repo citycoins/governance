@@ -7,14 +7,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-| CCIP Number                                                              | Title                           |
-| ------------------------------------------------------------------------ | ------------------------------- |
-| [CCIP-008](./ccips/ccip-008/ccip-008-citycoins-sip-010-token-v2.md)      | CityCoins SIP-010 Token v2      |
-| [CCIP-009](./ccips/ccip-009/ccip-009-citycoins-vrf-v2.md)                | CityCoins VRF v2                |
-| [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)               | CityCoins Auth v2               |
-| [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md) | CityCoins Stacked Tokens Voting |
-
-To vote on the upgrade proposed by the above CCIPs, please visit https://vote.minecitycoins.com.
+None at this time.
 
 ## Ratified CCIPs
 
@@ -28,6 +21,10 @@ To vote on the upgrade proposed by the above CCIPs, please visit https://vote.mi
 | [CCIP-005](./ccips/ccip-005/ccip-005-citycoins-sip-010-token.md)                | CityCoins SIP-010 Token                |
 | [CCIP-006](./ccips/ccip-006/ccip-006-citycoins-vrf.md)                          | CityCoins VRF                          |
 | [CCIP-007](./ccips/ccip-007/ccip-007-citycoins-auth.md)                         | CityCoins Auth                         |
+| [CCIP-008](./ccips/ccip-008/ccip-008-citycoins-sip-010-token-v2.md)             | CityCoins SIP-010 Token v2             |
+| [CCIP-009](./ccips/ccip-009/ccip-009-citycoins-vrf-v2.md)                       | CityCoins VRF v2                       |
+| [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)                      | CityCoins Auth v2                      |
+| [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md)        | CityCoins Stacked Tokens Voting        |
 
 ## How to Get Involved
 
