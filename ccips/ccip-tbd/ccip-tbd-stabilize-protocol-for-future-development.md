@@ -29,13 +29,13 @@ Previously, the community successfully voted for and implemented CCIP-008 in Apr
 
 Phase 1 change reduces inflation to 2% annually for existing CityCoins starting at Stacks block height 73,000, and works in concert with proposed changes described in Phase 2 and Phase 3 below.
 
-(TODO: insert annualized inflation rate image)
+![Comparison of CityCoins Inflation Rates](citycoins-annualized-inflation-rate-comparison.png)
 
 To implement this change a proposal will be submitted to the auth contract for MIA/NYC, using the `update-coinbase-amounts` function defined in CCIP-010[^3].
 
 The coinbase amounts will be updated based on the schedule described in the linked spreadsheet[^4], with a visual example of the reduction in total supply below:
 )
-(TODO: put finalized spreadsheet into ODS format)
+(TODO: put finalized spreadsheet in ODS format)
 
 | Blocks Passed | V1 Total Supply | V2 Total Supply | V3 Total Supply |
 | ------------- | --------------- | --------------- | --------------- |
@@ -122,7 +122,7 @@ In addition to the overall protocol changes above, this phase implements a chang
 - the STX within the city’s treasury are stacked for xBTC
 - a portion of xBTC rewards can be claimed by CityCoin Stackers who participate by locking their CityCoins for a reward cycle
 
-(TODO: insert image of current vs proposed ecosystem)
+![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal.png)
 
 This change would make it so that CityCoin stacking cycles become dependent on Stacks stacking cycles.
 
