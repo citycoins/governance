@@ -93,9 +93,9 @@ TODO: add before/after snapshot of data
 
 ## Footnotes
 
-TODO: relative link in footnote?
+TODO: update footnote links before merge
 
-[^1]: ../ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
+[^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^3]: https://vote.minecitycoins.com/
 [^4]: https://docs.google.com/spreadsheets/d/1d3IPNPENA1GOVFCB25tehUw14t_y4yzpU0X3euoCmUc/edit#gid=148425312
 [^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-010/ccip-010-citycoins-auth-v2.md

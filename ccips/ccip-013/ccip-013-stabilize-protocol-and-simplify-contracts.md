@@ -123,9 +123,9 @@ TODO: add before/after snapshot of data
 
 ## Footnotes
 
-TODO: relative link in footnote?
+TODO: update footnote links before merge
 
-[^1]: ../ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
+[^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
 [^2]: https://github.com/citycoins/contracts/compare/v1.0.0..v1.0.1#diff-e37948ac92ea9a8244dbe686a6e9d703310071e2f9a876462a3ebd68e6ea0640
 [^3]: https://github.com/citycoins/contracts/compare/v1.0.0..v1.0.1#diff-6d232ce77a090ee867b911c855fd76a75db3c677b17576895b55550c6cf347b6
 [^4]: https://api.citycoins.co/v1/mia/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
