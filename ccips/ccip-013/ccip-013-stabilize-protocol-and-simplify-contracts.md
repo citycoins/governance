@@ -19,20 +19,16 @@ This proposal implements the second of two changes to help stabilize the CityCoi
 
 Please see CCIP-012[^1] for the first part of the proposal.
 
-This proposal is designed to work in concert with Phase 1 and 2 of CCIP-012[^1], and consists of the final third phase:
+This proposal is designed to work in concert with Phase 1 and 2 of CCIP-012[^1], and is divided into two phases:
 
-- Phase 3: stabilize and simplify the protocol
+- Phase 3: simplify the CityCoins contract design
+- Phase 4: update registration, mining and stacking flows
+
+Both phases help simplify the CityCoins protocol, and bring the ownership and execution of CityCoin contract updates into the DAO setup in Phase 2 of CCIP-012[^1].
 
 ## Specification
 
-### Phase 3: Stabilize and Upgrade Protocol Contracts
-
-This phase implements two main changes to help simplify the CityCoins protocol design, and bring ownership and execution of CityCoin contract updates into the DAO setup in Phase 2.
-
-1. Stabilize the CityCoins Protocol
-2. Update Registration, Mining and Stacking flows
-
-#### Simplify the CityCoins Protocol
+### Phase 3: Simplify the CityCoins Contract Design
 
 The original design allowed each city to grow and change independent of the core protocol specification, with the intent that each city would eventually manage their local deployment.
 
@@ -71,7 +67,7 @@ Using this DAO structure, proposals would be created and executed that:
 
 Any new cities activated following these changes would only require a token contract and the necessary treasury contracts, all of which could be decided upon and instantiated through DAO proposals.
 
-#### Update Mining and Stacking flows
+### Phase 4: Update Registration, Mining and Stacking Flows
 
 In addition to the overall protocol changes above, this phase implements a change to the value flows in mining and stacking, such that:
 
@@ -82,3 +78,29 @@ In addition to the overall protocol changes above, this phase implements a chang
 ![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal.png)
 
 This change would make it so that CityCoin stacking cycles become dependent on Stacks stacking cycles.
+
+## Backwards Compatibility
+
+This CCIP affects and replaces several parts of the protocol, including:
+
+- CCIP-001 Traits
+- CCIP-002 Activation
+- CCIP-003 Mining
+- CCIP-004 Stacking
+- CCIP-010 Auth v2
+
+## Activation
+
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^2] using the last two active cycles from when the contract is deployed.
+
+## Reference Implementations
+
+TODO: add vote contract
+TODO: add before/after snapshot of data
+
+## Footnotes
+
+TODO: relative link in footnote?
+
+[^1]: ../ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
+[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md

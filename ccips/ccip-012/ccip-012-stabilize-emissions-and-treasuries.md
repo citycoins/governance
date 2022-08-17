@@ -42,6 +42,8 @@ The coinbase amounts will be updated based on the schedule described in the link
 
 TODO: put finalized spreadsheet in ODS format
 
+TODO: add table with block reward comparisons
+
 | Blocks Passed | V1 Total Supply | V2 Total Supply | V3 Total Supply |
 | ------------- | --------------- | --------------- | --------------- |
 | 10,000        | 2,500,000,000   | 2,500,000,000   | 2,500,000,000   |
@@ -75,12 +77,8 @@ The structure of the DAO is very flexible and would provide an easy path to impl
 
 ## Backwards Compatibility
 
-This CCIP affects and replaces several parts of the protocol, including:
+TODO: expand on compatibility
 
-- CCIP-001 Traits
-- CCIP-002 Activation
-- CCIP-003 Mining
-- CCIP-004 Stacking
 - CCIP-008 Token v2
 - CCIP-010 Auth v2
 
@@ -94,6 +92,8 @@ TODO: add vote contract
 TODO: add before/after snapshot of data
 
 ## Footnotes
+
+TODO: relative link in footnote?
 
 [^1]: ../ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^3]: https://vote.minecitycoins.com/
