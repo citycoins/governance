@@ -40,11 +40,34 @@ Under the current protocol, each city requires three smart contracts that cover 
 
 This design choice prioritized customization at the city level but also led to some unforeseen challenges, including:
 
-- inconsistencies between contract code being developed vs already deployed (TODO: link to diff between v1 MIA and v1.1 NYC)
-- no universal identification for users, instead one user ID per core contract (TODO: show example of v1 vs v2 MIA and NYC IDs)
-- mining and stacking data does not migrate after a core contract upgrade
-- no universal registry for contracts, all upgrades are tracked on a city by city level
-- an unsustainable unit testing model that grows exponentially with new cities (TODO: example of 900+ tests run on GitHub)
+1. Inconsistencies between contract code being developed vs already deployed
+
+   - v1.0.1 core contracts printed more information for mining/stacking[^2] [(image)](citycoins-version-differences-in-mine-many-function.png)
+   - v1.0.1 token contracts allow the owner to burn tokens instead of the core contract[^3] [(image)](citycoins-version-differences-in-token-burn-function.png)
+   - this caused testing strategies to diverge and become more complex over time
+
+2. No universal identification for users, inconsistent user IDs
+
+   - user IDs are generated and stored per user, per core contract
+   - user IDs are not correlated or associated between contracts
+   - a lookup against each contract is required to determine the user ID
+   - e.g. for Stacks address `SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S`
+     - MIA v1 User ID: 1137[^4]
+     - MIA v2 User ID: 11[^5]
+     - NYC v1 User ID: 682[^6]
+     - NYC v2 User ID: 9[^7]
+
+3. No universal registry for contracts, all upgrades are tracked on a city by city level
+
+   - TODO: expand
+
+4. Mining and stacking data does not migrate after a core contract upgrade
+
+   - TODO: expand
+
+5. Testing model grows exponentially with new city additions
+   - an unsustainable unit testing model that grows exponentially with new cities
+   - TODO: example of 900+ tests run on GitHub Actions
 
 In order to form a more cohesive protocol and consistent experience across all CityCoins, and to reduce the amount of overhead for protocol upgrades and maintenance, this could be simplified into a structure that takes advantage of the initial DAO created in Phase 2.
 
@@ -91,7 +114,7 @@ This CCIP affects and replaces several parts of the protocol, including:
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-011[^2] using the last two active cycles from when the contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^tbd] using the last two active cycles from when the contract is deployed.
 
 ## Reference Implementations
 
@@ -103,4 +126,10 @@ TODO: add before/after snapshot of data
 TODO: relative link in footnote?
 
 [^1]: ../ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
-[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^2]: https://github.com/citycoins/contracts/compare/v1.0.0..v1.0.1#diff-e37948ac92ea9a8244dbe686a6e9d703310071e2f9a876462a3ebd68e6ea0640
+[^3]: https://github.com/citycoins/contracts/compare/v1.0.0..v1.0.1#diff-6d232ce77a090ee867b911c855fd76a75db3c677b17576895b55550c6cf347b6
+[^4]: https://api.citycoins.co/v1/mia/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
+[^5]: https://api.citycoins.co/v2/mia/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
+[^6]: https://api.citycoins.co/v1/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
+[^7]: https://api.citycoins.co/v2/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
+[^tbd]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
