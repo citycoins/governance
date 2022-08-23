@@ -2,16 +2,16 @@
 
 ## Preamble
 
-| CCIP Number   | 013                                       |
-| ------------- | ----------------------------------------- |
-| Title         | Stabilize Protocol and Simplify Contracts |
-| Author(s)     | Jason Schrader jason@joinfreehold.com     |
-| Consideration | Economic, Governance, Technical           |
-| Type          | Standard                                  |
-| Status        | Draft                                     |
-| Created       | 2022-08-15                                |
-| License       | BSD-2-Clause                              |
-| Replaces      | TBD                                       |
+| CCIP Number   | 013                                              |
+| ------------- | ------------------------------------------------ |
+| Title         | Stabilize Protocol and Simplify Contracts        |
+| Author(s)     | Jason Schrader jason@joinfreehold.com            |
+| Consideration | Economic, Governance, Technical                  |
+| Type          | Standard                                         |
+| Status        | Draft                                            |
+| Created       | 2022-08-15                                       |
+| License       | BSD-2-Clause                                     |
+| Replaces      | CCIP-001, CCIP-002, CCIP-003, CCIP-004, CCIP-010 |
 
 ## Introduction
 
@@ -59,10 +59,12 @@ This design choice prioritized customization at the city level but also led to s
 
 3. No universal registry for contracts, all upgrades are tracked on a city by city level
 
+   - it is possible for contract code and standards to diverge
    - TODO: expand
 
 4. Mining and stacking data does not migrate after a core contract upgrade
 
+   - each upgrade requires starting over with registration, activation
    - TODO: expand
 
 5. Testing model grows exponentially with new city additions
@@ -119,7 +121,7 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-011[^tbd] 
 ## Reference Implementations
 
 TODO: add vote contract
-TODO: add before/after snapshot of data
+TODO: add new contract links
 
 ## Footnotes
 

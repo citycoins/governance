@@ -2,20 +2,21 @@
 
 ## Preamble
 
-| CCIP Number   | 012                                   |
-| ------------- | ------------------------------------- |
-| Title         | Stabilize Emissions and Treasuries    |
-| Author(s)     | Jason Schrader jason@joinfreehold.com |
-| Consideration | Economic, Governance, Technical       |
-| Type          | Standard                              |
-| Status        | Draft                                 |
-| Created       | 2022-08-04                            |
-| License       | BSD-2-Clause                          |
-| Replaces      | TBD                                   |
+| CCIP Number   | 012                                     |
+| ------------- | --------------------------------------- |
+| Title         | Stabilize Emissions and Treasuries      |
+| Author(s)     | Jason Schrader jason@joinfreehold.com   |
+|               | BowTiedMooneeb bowtiedmooneeb@gmail.com |
+| Consideration | Economic, Governance, Technical         |
+| Type          | Standard                                |
+| Status        | Draft                                   |
+| Created       | 2022-08-04                              |
+| License       | BSD-2-Clause                            |
+| Replaces      | CCIP-010                                |
 
 ## Introduction
 
-This proposal implements the first of two changes to help stabilize the CityCoins protocol design, and allow for future development, experimentation, and growth.
+This proposal implements the first of two changes to help stabilize the CityCoins protocol design, allowing for future development, experimentation, and growth.
 
 Please see CCIP-013[^1] for the second part of the proposal.
 
@@ -30,19 +31,27 @@ This proposal is divided into two phases:
 
 Previously, the community successfully voted for and implemented CCIP-008 in April 2022[^2]. This change included a single iteration to test stemming the miner arbitrage problem, the results were mixed as the arbitrage volume was reduced, but is still persistent[^3].
 
-Phase 1 change reduces inflation to 2% annually for existing CityCoins starting at Stacks block height ~~73,000~~, and works in concert with proposed changes described in Phase 2 and Phase 3 included in CCIP-013[^1].
-
-TODO: add new block height above
-
-![Comparison of CityCoins Inflation Rates](citycoins-annualized-inflation-rate-comparison.png)
+Phase 1 change reduces inflation to 2% annually for existing CityCoins starting at Stacks block height ~~73,000~~ **74,000**, and works in concert with proposed changes described in Phase 3 and Phase 4 included in CCIP-013[^1].
 
 To implement this change a proposal will be submitted to the auth contract for MIA/NYC, using the `update-coinbase-amounts` function defined in CCIP-010[^4].
 
 The coinbase amounts will be updated based on the schedule described in the linked spreadsheet[^5], with a visual example of the reduction in total supply below:
 
-TODO: put finalized spreadsheet in ODS format
+![Comparison of CityCoins Inflation Rates](citycoins-annualized-inflation-rate-comparison.png)
 
-TODO: add table with block reward comparisons
+The epochs and coinbase thresholds will remain the same, such that:
+
+| Epoch | V2 Block Reward | V3 MIA Reward | V3 NYC Reward |
+| ----- | --------------- | ------------- | ------------- |
+| 0     | 250,000         | 250,000       | 250,000       |
+| 1     | 100,000         | 100,000       | 100,000       |
+| 2     | 50,000          | 50,000        | 50,000        |
+| 3     | 25,000          | 2,230         | 1,978         |
+| 4     | 12,500          | 2,359         | 2,094         |
+| 5     | 6,250           | 2,639         | 2,342         |
+| 6     | 3,125           | 3,288         | 2,918         |
+
+The total supply will be reduced as follows:
 
 | Blocks Passed | V1 Total Supply | V2 Total Supply | V3 Total Supply |
 | ------------- | --------------- | --------------- | --------------- |
@@ -53,6 +62,8 @@ TODO: add table with block reward comparisons
 | 200,000       | 21,500,000,000  | 10,187,500,000  | 6,082,359,162   |
 | 400,000       | 32,000,000,000  | 12,593,750,000  | 6,545,247,987   |
 | 800,000       | 40,375,000,000  | 15,046,875,000  | 7,541,480,558   |
+
+TODO: put finalized spreadsheet in ODS format
 
 ### Phase 2: Move CityCoin Treasuries to Smart Contract Vaults
 
@@ -84,7 +95,18 @@ TODO: expand on compatibility
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-011[^9] using the last two active cycles from when the contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^9] using the last two active cycles from when the voting contract is deployed.
+
+Currently, this would be:
+
+- MIA cycles 21 and 22
+- NYC cycles 15 and 16
+
+The scale factor for MIA was determined using the same formula used in CCIP-011[^9] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
+
+- MIA scale factor: 0.8605 (prev: 0.6987)
+
+TODO: put finalized spreadsheet in ODS format
 
 ## Reference Implementations
 
