@@ -87,25 +87,22 @@ The structure of the DAO is very flexible and would provide an easy path to impl
 
 ## Backwards Compatibility
 
-TODO: expand on compatibility
-
-- CCIP-008 Token v2
-- CCIP-010 Auth v2
+This CCIP modifies the coinbase amounts listed in CCIP-008[^9], but does not implement a new token contract or change the token contract outside of using the function `get-coinbase-amounts` defined in CCIP-010[^4].
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-011[^9] using the last two active cycles from when the voting contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^10] using the last two active cycles from when the voting contract is deployed.
 
 Currently, this would be:
 
 - MIA cycles 21 and 22
 - NYC cycles 15 and 16
 
-The scale factor for MIA was determined using the same formula used in CCIP-011[^9] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
+The scale factor for MIA was determined using the same formula used in CCIP-011[^10] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
 
-- MIA scale factor: 0.8605 (prev: 0.6987)
+- MIA scale factor: 0.8605 _(prev: 0.6987)_
 
-TODO: put finalized spreadsheet in ODS format
+The calculations used for the scale factor are available in the supplemental spreadsheet[^11].
 
 ## Reference Implementations
 
@@ -122,4 +119,6 @@ TODO: add before/after snapshot of data
 [^6]: https://github.com/MarvinJanssen/executor-dao
 [^7]: https://github.com/StackerDAOs/backend
 [^8]: https://github.com/Clarity-Innovation-Lab/ecosystem-dao
-[^9]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^9]: https://github.com/citycoins/governance/blob/main/ccips/ccip-008/ccip-008-citycoins-sip-010-token-v2.md
+[^10]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^11]: See the [ccip-012-vote-calculations-per-ccip-011 spreadsheet](./ccip-012-vote-calculations-per-ccip-011.ods).
