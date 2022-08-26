@@ -6,6 +6,8 @@
 | ------------- | ------------------------------------------------ |
 | Title         | Stabilize Protocol and Simplify Contracts        |
 | Author(s)     | Jason Schrader jason@joinfreehold.com            |
+|               | BowTiedMooneeb bowtiedmooneeb@gmail.com          |
+|               | Ryan Waits ryan.waits@gmail.com                  |
 | Consideration | Economic, Governance, Technical                  |
 | Type          | Standard                                         |
 | Status        | Draft                                            |
