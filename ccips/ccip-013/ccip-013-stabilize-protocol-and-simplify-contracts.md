@@ -107,7 +107,7 @@ In addition to the overall protocol changes above, this phase implements a chang
 - 100% of the xBTC rewards are claimable by anyone who stacks CityCoins, such that:
   - rewards are distributed per cycle
   - rewards are distributed proportionally to the amount of CityCoins stacked
-  - if they are not claimed within 2 cycles, they can be claimed by the DAO
+  - if they are not claimed within 2 cycles, they can be claimed by the DAO? (open for discussion)
 
 ![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal.png)
 
