@@ -26,7 +26,7 @@ This proposal is designed to work in concert with Phase 1 and 2 of CCIP-012[^1],
 - Phase 3: simplify the CityCoins contract design
 - Phase 4: update registration, mining and stacking flows
 
-Both phases help simplify the CityCoins protocol, and bring the ownership and execution of CityCoin contract updates into the DAO setup in Phase 2 of CCIP-012[^1].
+Both phases help simplify the CityCoins protocol, and bring the ownership and execution of CityCoin contract updates into the DAO created in Phase 2 of CCIP-012[^1].
 
 ## Specification
 
@@ -61,17 +61,21 @@ This design choice prioritized customization at the city level but also led to s
 
 3. No universal registry for contracts, all upgrades are tracked on a city by city level
 
-   - it is possible for contract code and standards to diverge
-   - TODO: expand
+   - it is possible for contract code and standards to diverge, as seen with MIA/NYC
+   - it is difficult to know what versions of contracts are deployed in each city
+   - it is difficult to know which contract to query for what set of information
 
 4. Mining and stacking data does not migrate after a core contract upgrade
 
-   - each upgrade requires starting over with registration, activation
-   - TODO: expand
+   - each upgrade requires starting over with registration and activation
+   - stacking cycles remain the same, but cycle data is not migrated
+   - blocks can be missed due to the timing of shutdown, initialization, and registration
 
 5. Testing model grows exponentially with new city additions
-   - an unsustainable unit testing model that grows exponentially with new cities
-   - TODO: example of 900+ tests run on GitHub Actions
+
+   - there are several custom functions and implementations across tests
+   - differences in deployments / contract code require multiple saved versions
+   - tooling has advanced quite a bit since we created this structure
 
 In order to form a more cohesive protocol and consistent experience across all CityCoins, and to reduce the amount of overhead for protocol upgrades and maintenance, this could be simplified into a structure that takes advantage of the initial DAO created in Phase 2.
 
@@ -99,12 +103,17 @@ Any new cities activated following these changes would only require a token cont
 In addition to the overall protocol changes above, this phase implements a change to the value flows in mining and stacking, such that:
 
 - 100% of STX spent mining CityCoins is transferred to the city’s treasury
-- the STX within the city’s treasury are stacked for xBTC
-- a portion of xBTC rewards can be claimed by CityCoin Stackers who participate by locking their CityCoins for a reward cycle
+- 100% of the STX within the city’s treasury are stacked for xBTC rewards
+- 100% of the xBTC rewards are claimable by anyone who stacks CityCoins, such that:
+  - rewards are distributed per cycle
+  - rewards are distributed proportionally to the amount of CityCoins stacked
+  - if they are not claimed within 2 cycles, they can be claimed by the DAO
 
 ![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal.png)
 
-This change would make it so that CityCoin stacking cycles become dependent on Stacks stacking cycles.
+This changes the value flow such that stacking rewards are no longer directly correlated to miner activity per cycle, and instead the stacking rewards are distributed based on the size of the city's treasury.
+
+This would also make it so that CityCoin stacking cycles become closer aligned with Stacks stacking cycles and payouts.
 
 ## Backwards Compatibility
 
