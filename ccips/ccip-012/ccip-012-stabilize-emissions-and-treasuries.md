@@ -113,7 +113,7 @@ TODO: add before/after snapshot of data
 
 [^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^2]: https://vote.minecitycoins.com/
-[^3]: See the [citycoins-v2-mining-analysis reference](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.md) [citycoins-v2-mining-analysis subfolder](./citycoins-v2-mining-analysis/) and the [supplemental spreadsheet](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.ods) of the compiled data.
+[^3]: See the [citycoins-v2-mining-analysis reference](./citycoins-v2-mining-analysis.md), [citycoins-v2-mining-analysis subfolder](./citycoins-v2-mining-analysis/) and the [supplemental spreadsheet](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.ods) of the compiled data.
 [^4]: https://github.com/citycoins/governance/blob/main/ccips/ccip-010/ccip-010-citycoins-auth-v2.md
 [^5]: See the [ccip-012-two-percent-inflation-model spreadsheet](./ccip-012-two-percent-inflation-model.ods).
 [^6]: https://github.com/MarvinJanssen/executor-dao
