@@ -13,7 +13,6 @@
 | Status        | Draft                                   |
 | Created       | 2022-08-04                              |
 | License       | BSD-2-Clause                            |
-| Replaces      | CCIP-010                                |
 
 ## Introduction
 
@@ -147,7 +146,8 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TODO: add vote contract
+TODO: add vote contract after deployed
+
 TODO: add before/after snapshot of data
 
 ## Footnotes
