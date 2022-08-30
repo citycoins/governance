@@ -72,18 +72,58 @@ Bitcoin wallets possess the ability to make STX transfers and stack STX via Bitc
 
 This phase would replace the 2-of-3 multi-signature wallet with a smart contract vault secured by a DAO implementation that can grow with the protocol.
 
+#### DAO Structure
+
 The basic structure of the DAO would start with:
 
 - deploying the initial contract (similar to ExecutorDAO[^6]/StackerDAOs[^7]/EcosystemDAO[^8])
 - setup with 3-of-5 signers from the auth contract
 - enable proposals and temporary veto/execution
 
-Using this DAO structure, two proposals would be created and executed:
+Using this DAO structure, the initial contract and following extensions are deployed on mainnet, where extensions are abbreviated with `ccd` to represent the CityCoins DAO:
 
-- create treasuries for the existing cities
-- stack treasuries for the existing cities
+- executor-dao
+- ccd001-direct-execute.clar
+- ccd002-treasury-mia.clar
+- ccd002-treasury-nyc.clar
+
+This configuration allows the original 3-of-5 signers to execute further proposals, and the DAO to be used to manage the treasuries.
+
+#### Bootstrap Proposal
+
+```clarity
+(impl-trait .proposal-trait.proposal-trait)
+
+(define-public (execute (sender principal))
+	(begin
+		;; Enable genesis extensions.
+		(try! (contract-call? .executor-dao set-extensions
+			(list
+				{extension: .ccd001-direct-execute, enabled: true}
+				{extension: .ccd002-treasury-mia, enabled: true}
+				{extension: .ccd002-treasury-nyc, enabled: true}
+			)
+		))
+
+    ;; set 3-of-5 signers
+    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+		(try! (contract-call? .ede004-emergency-execute set-signals-required u3)) ;; 3-of-5
+
+		(print "CityCoins DAO has risen! Our mission is to empower people to take ownership in their city by transforming citizens into stakeholders with the ability to fund, build, and vote on meaningful upgrades to their communities.")
+		(ok true)
+	)
+)
+```
+
+#### Additional Proposals
 
 The structure of the DAO is very flexible and would provide an easy path to implementing features such as community proposals, community voting (via CCIP-011[^9] or a new method), as well as directly manage the protocol contracts through the DAO.
+
+The first proposal submitted after bootstrapping the DAO would be a proposal to stack the CityCoins treasuries.
 
 ## Backwards Compatibility
 
@@ -113,7 +153,7 @@ TODO: add before/after snapshot of data
 
 [^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^2]: https://vote.minecitycoins.com/
-[^3]: See the [citycoins-v2-mining-analysis reference](./citycoins-v2-mining-analysis.md), [citycoins-v2-mining-analysis subfolder](./citycoins-v2-mining-analysis/) and the [supplemental spreadsheet](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.ods) of the compiled data.
+[^3]: See the [citycoins-v2-mining-analysis reference](./citycoins-v2-mining-analysis.md), [citycoins-v2-mining-analysis data](./citycoins-v2-mining-analysis/) and the [supplemental spreadsheet](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.ods) of the compiled data.
 [^4]: https://github.com/citycoins/governance/blob/main/ccips/ccip-010/ccip-010-citycoins-auth-v2.md
 [^5]: See the [ccip-012-two-percent-inflation-model spreadsheet](./ccip-012-two-percent-inflation-model.ods).
 [^6]: https://github.com/MarvinJanssen/executor-dao
