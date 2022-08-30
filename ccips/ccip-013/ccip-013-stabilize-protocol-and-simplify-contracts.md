@@ -127,16 +127,15 @@ This CCIP affects and replaces several parts of the protocol, including:
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-011[^tbd] using the last two active cycles from when the contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-011[^8] using the last two active cycles from when the contract is deployed.
 
 ## Reference Implementations
 
 TODO: add vote contract
+
 TODO: add new contract links
 
 ## Footnotes
-
-TODO: update footnote links before merge
 
 [^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
 [^2]: https://github.com/citycoins/contracts/compare/v1.0.0..v1.0.1#diff-e37948ac92ea9a8244dbe686a6e9d703310071e2f9a876462a3ebd68e6ea0640
@@ -145,4 +144,4 @@ TODO: update footnote links before merge
 [^5]: https://api.citycoins.co/v2/mia/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
 [^6]: https://api.citycoins.co/v1/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
 [^7]: https://api.citycoins.co/v2/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
-[^tbd]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^8]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
