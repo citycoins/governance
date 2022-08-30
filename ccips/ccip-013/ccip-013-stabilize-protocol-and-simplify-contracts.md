@@ -131,9 +131,9 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-011[^8] us
 
 ## Reference Implementations
 
-TODO: add vote contract
+TODO: add vote contract link after deployed
 
-TODO: add new contract links
+TODO: add new protocol contract links
 
 ## Footnotes
 

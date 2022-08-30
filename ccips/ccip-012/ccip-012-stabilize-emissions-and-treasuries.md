@@ -10,7 +10,7 @@
 |               | Ryan Waits ryan.waits@gmail.com         |
 | Consideration | Economic, Governance, Technical         |
 | Type          | Standard                                |
-| Status        | Draft                                   |
+| Status        | Accepted                                |
 | Created       | 2022-08-04                              |
 | License       | BSD-2-Clause                            |
 
@@ -77,11 +77,11 @@ The basic structure of the DAO would start with:
 
 - deploying the initial contract (similar to ExecutorDAO[^6]/StackerDAOs[^7]/EcosystemDAO[^8])
 - setup with 3-of-5 signers from the auth contract
-- enable proposals and temporary veto/execution
+- enable direct proposals and temporary veto/execution
 
 Using this DAO structure, the initial contract and following extensions are deployed on mainnet, where extensions are abbreviated with `ccd` to represent the CityCoins DAO:
 
-- executor-dao
+- executor-dao.clar
 - ccd001-direct-execute.clar
 - ccd002-treasury-mia.clar
 - ccd002-treasury-nyc.clar
@@ -110,7 +110,7 @@ This configuration allows the original 3-of-5 signers to execute further proposa
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-signals-required u3)) ;; 3-of-5
+    (try! (contract-call? .ccd001-direct-execute set-signals-required u3))
 
     (print "CityCoins DAO has risen! Our mission is to empower people to take ownership in their city by transforming citizens into stakeholders with the ability to fund, build, and vote on meaningful upgrades to their communities.")
 
@@ -146,9 +146,9 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TODO: add vote contract after deployed
+TODO: add vote contract link after deployed
 
-TODO: add before/after snapshot of data
+TODO: add before/after snapshot of data if vote succeeds
 
 ## Footnotes
 
