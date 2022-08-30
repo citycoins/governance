@@ -111,9 +111,10 @@ This configuration allows the original 3-of-5 signers to execute further proposa
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ede004-emergency-execute set-signals-required u3)) ;; 3-of-5
+    (try! (contract-call? .ccd001-direct-execute set-signals-required u3)) ;; 3-of-5
 
     (print "CityCoins DAO has risen! Our mission is to empower people to take ownership in their city by transforming citizens into stakeholders with the ability to fund, build, and vote on meaningful upgrades to their communities.")
+
     (ok true)
   )
 )
