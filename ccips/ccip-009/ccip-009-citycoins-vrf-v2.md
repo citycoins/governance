@@ -34,7 +34,7 @@ This version introduces two functions to replace `get-random-uint-at-block` in C
 
 Through the `get-rnd` function, the contract:
 
-- checks the `BlockRnd` map to see if the random integer has been saved
+- checks the `RandomUintAtBlock` map to see if the random integer has been saved
   - if yes, returns the saved random integer
   - if no, it then:
     - fetches the on-chain VRF proof for the given block height
@@ -48,7 +48,7 @@ Through the `get-save-rnd` function, the contract:
   - if no, it then:
     - fetches the on-chain VRF proof for the given block height
     - converts the lower 16 bytes into a uint
-    - saves the random integer to the `BlockRnd` map
+    - saves the random integer to the `RandomUintAtBlock` map
     - returns the random integer
 
 More information on Stacks block assembly and the VRF proof can be found in [SIP-005](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#blocks).
@@ -133,7 +133,7 @@ v1 `claim-mining-reward`
 +----------------------+----------+------------+------------+
 ```
 
-v2 `claim-mining-reward` when random value at block is not yet saved throught `get-save-rnd`
+v2 `claim-mining-reward` when random value at block is not yet saved through `get-save-rnd`
 
 ```
 +----------------------+----------+------------+------------+-----------+
