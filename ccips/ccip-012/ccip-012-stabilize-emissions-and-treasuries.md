@@ -127,7 +127,7 @@ The first proposal submitted after bootstrapping the DAO would be a proposal to 
 
 ## Backwards Compatibility
 
-This CCIP modifies the coinbase amounts listed in CCIP-008[^9], but does not implement a new token contract or change the token contract outside of using the function `get-coinbase-amounts` defined in CCIP-010[^4].
+This CCIP modifies the coinbase amounts listed in CCIP-008[^9], but does not implement a new token contract or change the token contract outside of using the function `get-coinbase-thresholds` defined in CCIP-010[^4].
 
 ## Activation
 
@@ -146,9 +146,34 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TODO: add vote contract link after deployed
+- [Voting Website](https://stabilize.minecitycoins.com)
+- [Voting Website Code](https://github.com/citycoins/ccip-vote-ui)
+- [Voting Contract Deployment](https://explorer.stacks.co/txid/SP119FQPVQ39AKVMC0CN3Q1ZN3ZMCGMBR52ZS5K6E.citycoins-vote-v2?chain=mainnet)
+- [Voting Contract Code](https://github.com/citycoins/contracts/blob/develop/contracts/vote/mainnet/citycoins-vote-v2.clar)
 
-TODO: add before/after snapshot of data if vote succeeds
+### MiamiCoin Comparison
+
+| Epoch | Legacy/Current Block Reward | Proposed MIA Reward |
+| ----- | --------------------------- | ------------------- |
+| 0     | 250,000                     | 250,000             |
+| 1     | 100,000                     | 100,000             |
+| 2     | 50,000                      | 50,000              |
+| 3     | 25,000                      | 2,230               |
+| 4     | 12,500                      | 2,359               |
+| 5     | 6,250                       | 2,639               |
+| 6     | 3,125                       | 3,288               |
+
+### NewYorkCityCoin Comparison
+
+| Epoch | Legacy/Current Block Reward | Proposed NYC Reward |
+| ----- | --------------------------- | ------------------- |
+| 0     | 250,000                     | 250,000             |
+| 1     | 100,000                     | 100,000             |
+| 2     | 50,000                      | 50,000              |
+| 3     | 25,000                      | 1,978               |
+| 4     | 12,500                      | 2,094               |
+| 5     | 6,250                       | 2,342               |
+| 6     | 3,125                       | 2,918               |
 
 ## Footnotes
 
