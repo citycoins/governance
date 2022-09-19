@@ -10,7 +10,7 @@
 |               | Ryan Waits ryan.waits@gmail.com         |
 | Consideration | Economic, Governance, Technical         |
 | Type          | Standard                                |
-| Status        | Accepted                                |
+| Status        | Activation-in-Progress                  |
 | Created       | 2022-08-04                              |
 | License       | BSD-2-Clause                            |
 
