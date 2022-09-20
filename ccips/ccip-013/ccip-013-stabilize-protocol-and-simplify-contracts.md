@@ -103,13 +103,12 @@ Any new cities activated following these changes would only require a token cont
 In addition to the overall protocol changes above, this phase implements a change to the value flows in mining and stacking, such that:
 
 - 100% of STX spent mining CityCoins is transferred to the city’s treasury
-- 100% of the STX within the city’s treasury are stacked for xBTC rewards
-- 100% of the xBTC rewards are claimable by anyone who stacks CityCoins, such that:
+- 100% of the STX within the city’s treasury are delegated/stacked for STX rewards
+- 100% of the rewards are claimable by anyone who stacks CityCoins, such that:
   - rewards are distributed per cycle
   - rewards are distributed proportionally to the amount of CityCoins stacked
-  - if they are not claimed within 2 cycles, they can be claimed by the DAO? (open for discussion)
 
-![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal.png)
+![CityCoins Ecosystem Structure Proposal](citycoins-ecosystem-structure-proposal-v2.png)
 
 This changes the value flow such that stacking rewards are no longer directly correlated to miner activity per cycle, and instead the stacking rewards are distributed based on the size of the city's treasury.
 

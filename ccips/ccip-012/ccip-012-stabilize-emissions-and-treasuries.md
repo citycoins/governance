@@ -96,7 +96,7 @@ This configuration allows the original 3-of-5 signers to execute further proposa
 (define-public (execute (sender principal))
   (begin
 	  ;; Enable genesis extensions.
-    (try! (contract-call? .executor-dao set-extensions
+    (try! (contract-call? .base-dao set-extensions
       (list
         {extension: .ccd001-direct-execute, enabled: true}
         {extension: .ccd002-treasury-mia, enabled: true}
@@ -105,11 +105,11 @@ This configuration allows the original 3-of-5 signers to execute further proposa
     ))
 
     ;; set 3-of-5 signers
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-signals-required u3))
 
     (print "CityCoins DAO has risen! Our mission is to empower people to take ownership in their city by transforming citizens into stakeholders with the ability to fund, build, and vote on meaningful upgrades to their communities.")
