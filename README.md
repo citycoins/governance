@@ -7,9 +7,9 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-| CCIP Number                                                                        | Status   |
-| ---------------------------------------------------------------------------------- | -------- |
-| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Accepted |
+| CCIP Number                                                                        | Title                                     | Status   |
+| ---------------------------------------------------------------------------------- | ----------------------------------------- | -------- |
+| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Stabilize Protocol and Simplify Contracts | Accepted |
 
 ## Ratified CCIPs
 
