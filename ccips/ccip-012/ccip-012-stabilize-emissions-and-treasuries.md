@@ -10,7 +10,7 @@
 |               | Ryan Waits ryan.waits@gmail.com         |
 | Consideration | Economic, Governance, Technical         |
 | Type          | Standard                                |
-| Status        | Accepted                                |
+| Status        | Ratified                                |
 | Created       | 2022-08-04                              |
 | License       | BSD-2-Clause                            |
 
@@ -33,23 +33,32 @@ Previously, the community successfully voted for and implemented CCIP-008 in Apr
 
 Phase 1 change reduces inflation to 2% annually for existing CityCoins, and works in concert with proposed changes described in Phase 3 and Phase 4 included in CCIP-013[^1].
 
-To implement this change a proposal will be submitted to the auth contract for MIA/NYC, using the `update-coinbase-amounts` function defined in CCIP-010[^4].
+To implement this change a proposal will be submitted to the auth contract for MIA/NYC, using the `update-coinbase-amounts` and `update-coinbase-thresholds` functions defined in CCIP-010[^4].
 
-The coinbase amounts will be updated based on the schedule described in the supplemental spreadsheet[^5], with a visual example of the reduction in total supply below:
+The coinbase thresholds and amounts will be updated based on the schedule described in the supplemental spreadsheet[^5], with a visual example of the reduction in total supply below:
 
 ![Comparison of CityCoins Inflation Rates](citycoins-annualized-inflation-rate-comparison.png)
 
-The epochs and coinbase thresholds will remain the same, such that:
+The epochs will remain the same, but the coinbase thresholds will shift slightly, such that:
+
+| Epoch | Threshold MIA Before | Threshold MIA After | Threshold NYC Before | Threshold NYC After |
+| ----- | -------------------- | ------------------- | -------------------- | ------------------- |
+| 0     | 34,497               | 34,497              | 47,449               | 47,449              |
+| 1     | 59,497               | 59,497              | 72,449               | 72,449              |
+| 2     | 109,497              | 76,990              | 122,449              | 76,990              |
+| 3     | 209,497              | 209,497             | 222,449              | 222,449             |
+| 4     | 409,497              | 409,497             | 422,449              | 422,449             |
+| 5     | 809,497              | 809,497             | 822,449              | 822,449             |
 
 | Epoch | Legacy/Current Block Reward | Proposed MIA Reward | Proposed NYC Reward |
 | ----- | --------------------------- | ------------------- | ------------------- |
 | 0     | 250,000                     | 250,000             | 250,000             |
 | 1     | 100,000                     | 100,000             | 100,000             |
 | 2     | 50,000                      | 50,000              | 50,000              |
-| 3     | 25,000                      | 2,230               | 1,978               |
-| 4     | 12,500                      | 2,359               | 2,094               |
-| 5     | 6,250                       | 2,639               | 2,342               |
-| 6     | 3,125                       | 3,288               | 2,918               |
+| 3     | 25,000                      | 2,292               | 2,044               |
+| 4     | 12,500                      | 2,440               | 2,182               |
+| 5     | 6,250                       | 2,730               | 2,441               |
+| 6     | 3,125                       | 3,402               | 3,041               |
 
 The total supply will be reduced as follows:
 
@@ -57,11 +66,11 @@ The total supply will be reduced as follows:
 | ------------- | ------------------- | -------------------- | --------------------- |
 | 10,000        | 2,500,000,000       | 2,500,000,000        | 2,500,000,000         |
 | 30,000        | 4,500,000,000       | 4,500,000,000        | 4,500,000,000         |
-| 50,000        | 6,500,000,000       | 5,750,000,000        | 5,750,000,000         |
-| 100,000       | 11,500,000,000      | 7,875,000,000        | 5,859,398,782         |
-| 200,000       | 21,500,000,000      | 10,187,500,000       | 6,082,359,162         |
-| 400,000       | 32,000,000,000      | 12,593,750,000       | 6,545,247,987         |
-| 800,000       | 40,375,000,000      | 15,046,875,000       | 7,541,480,558         |
+| 50,000        | 6,500,000,000       | 5,750,000,000        | 5,248,428,498         |
+| 100,000       | 11,500,000,000      | 7,875,000,000        | 5,350,629,940         |
+| 200,000       | 21,500,000,000      | 10,187,500,000       | 5,557,104,039         |
+| 400,000       | 32,000,000,000      | 12,593,750,000       | 5,997,406,396         |
+| 800,000       | 40,375,000,000      | 15,046,875,000       | 6,982,737,860         |
 
 ### Phase 2: Move CityCoin Treasuries to Smart Contract Vaults
 
@@ -96,7 +105,7 @@ This configuration allows the original 3-of-5 signers to execute further proposa
 (define-public (execute (sender principal))
   (begin
 	  ;; Enable genesis extensions.
-    (try! (contract-call? .executor-dao set-extensions
+    (try! (contract-call? .base-dao set-extensions
       (list
         {extension: .ccd001-direct-execute, enabled: true}
         {extension: .ccd002-treasury-mia, enabled: true}
@@ -105,11 +114,11 @@ This configuration allows the original 3-of-5 signers to execute further proposa
     ))
 
     ;; set 3-of-5 signers
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
-    (try! (contract-call? .ccd001-direct-execute set-team-member 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
+    (try! (contract-call? .ccd001-direct-execute set-approver 'ADDRESS true))
     (try! (contract-call? .ccd001-direct-execute set-signals-required u3))
 
     (print "CityCoins DAO has risen! Our mission is to empower people to take ownership in their city by transforming citizens into stakeholders with the ability to fund, build, and vote on meaningful upgrades to their communities.")
@@ -127,7 +136,7 @@ The first proposal submitted after bootstrapping the DAO would be a proposal to 
 
 ## Backwards Compatibility
 
-This CCIP modifies the coinbase amounts listed in CCIP-008[^9], but does not implement a new token contract or change the token contract outside of using the function `get-coinbase-amounts` defined in CCIP-010[^4].
+This CCIP modifies the coinbase amounts listed in CCIP-008[^9], but does not implement a new token contract or change the token contract outside of using the function `get-coinbase-thresholds` defined in CCIP-010[^4].
 
 ## Activation
 
@@ -146,17 +155,20 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TODO: add vote contract link after deployed
-
-TODO: add before/after snapshot of data if vote succeeds
+- [Voting Website](https://stabilize.minecitycoins.com)
+- [Voting Website Code](https://github.com/citycoins/ccip-vote-ui)
+- [Voting Contract Deployment](https://explorer.stacks.co/txid/SP119FQPVQ39AKVMC0CN3Q1ZN3ZMCGMBR52ZS5K6E.citycoins-vote-v2?chain=mainnet)
+- [Voting Contract Code](https://github.com/citycoins/contracts/blob/develop/contracts/vote/mainnet/citycoins-vote-v2.clar)
 
 ## Footnotes
+
+TODO: UPDATE #5
 
 [^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^2]: https://vote.minecitycoins.com/
 [^3]: See the [citycoins-v2-mining-analysis reference](./citycoins-v2-mining-analysis.md), [citycoins-v2-mining-analysis data](./citycoins-v2-mining-analysis/) and the [supplemental spreadsheet](./citycoins-v2-mining-analysis/citycoins-v2-mining-analysis.ods) of the compiled data.
 [^4]: https://github.com/citycoins/governance/blob/main/ccips/ccip-010/ccip-010-citycoins-auth-v2.md
-[^5]: See the [ccip-012-two-percent-inflation-model spreadsheet](./ccip-012-two-percent-inflation-model.ods).
+[^5]: See the [ccip-012-two-percent-inflation-model spreadsheet](./ccip-012-two-percent-inflation-model-v3.ods).
 [^6]: https://github.com/MarvinJanssen/executor-dao
 [^7]: https://github.com/StackerDAOs/backend
 [^8]: https://github.com/Clarity-Innovation-Lab/ecosystem-dao
