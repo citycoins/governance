@@ -10,7 +10,7 @@
 |               | Ryan Waits ryan.waits@gmail.com                  |
 | Consideration | Economic, Governance, Technical                  |
 | Type          | Standard                                         |
-| Status        | Draft                                            |
+| Status        | Accepted                                         |
 | Created       | 2022-08-15                                       |
 | License       | BSD-2-Clause                                     |
 | Replaces      | CCIP-001, CCIP-002, CCIP-003, CCIP-004, CCIP-010 |
@@ -128,6 +128,17 @@ This CCIP affects and replaces several parts of the protocol, including:
 
 This CCIP will be voted on using a vote contract that adheres to CCIP-011[^8] using the last two active cycles from when the contract is deployed.
 
+Currently, this would be:
+
+- MIA cycles 24 and 25
+- NYC cycles 18 and 19
+
+The scale factor for MIA was determined using the same formula used in CCIP-011[^10] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
+
+- MIA scale factor: 0.8715 _(prev: 0.8605)_
+
+The calculations used for the scale factor are available in the supplemental spreadsheet[^9].
+
 ## Reference Implementations
 
 TODO: add vote contract link after deployed
@@ -144,3 +155,4 @@ TODO: add new protocol contract links
 [^6]: https://api.citycoins.co/v1/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
 [^7]: https://api.citycoins.co/v2/nyc/activation/get-user-id/SP1FJ0MY8M18KZF43E85WJN48SDXYS1EC4BCQW02S
 [^8]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^9]: See the [ccip-013-vote-calculations-per-ccip-011 spreadsheet](./ccip-013-vote-calculations-per-ccip-011.ods).
