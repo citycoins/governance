@@ -7,10 +7,9 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-| CCIP Number                                                                        | Status                 |
-| ---------------------------------------------------------------------------------- | ---------------------- |
-| [CCIP-012](./ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md)        | Activation-in-Progress |
-| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Draft                  |
+| CCIP Number                                                                        | Status   |
+| ---------------------------------------------------------------------------------- | -------- |
+| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Accepted |
 
 ## Ratified CCIPs
 
@@ -28,11 +27,12 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-009](./ccips/ccip-009/ccip-009-citycoins-vrf-v2.md)                       | CityCoins VRF v2                       |
 | [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)                      | CityCoins Auth v2                      |
 | [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md)        | CityCoins Stacked Tokens Voting        |
+| [CCIP-012](./ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md)     | Stabilize Emissions and Treasuries     |
 
 ## How to Get Involved
 
 There are several ways you can get involved with the CCIP process:
 
-- **Join the Community** - most ideas and discussions start in the [CityCoins Discord](https://discord.gg/citycoins), with this repository serving as an off-chain record of the official proposals within the protocol.
+- **Join the Community** - most ideas and discussions start in the [CityCoins Discord](https://chat.citycoins.co), with this repository serving as an off-chain record of the official proposals within the protocol.
 - **CCIP Editor** - CCIP editors help CCIP authors make sure their CCIPs are well-formed and follow the right process. They help get CCIPs ready for review by advancing them from Draft to Accepted status. If you want to become a CCIP editor, open an issue with your name and email and ask to be added to the list of CCIP editors.
 - **CCIP Reviewer** - CCIP reviewers are responsible for reviewing an Accepted CCIP using their domain expertise, and giving the author feedback to help make the SIP workable. The current considerations for a CCIP are [available in CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md#ccip-considerations), and if you want to become a CCIP reviewer, open an issue with your name and email and ask to be added to the list of CCIP reviewers.
