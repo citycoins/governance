@@ -10,7 +10,7 @@
 |               | Ryan Waits ryan.waits@gmail.com                  |
 | Consideration | Economic, Governance, Technical                  |
 | Type          | Standard                                         |
-| Status        | Accepted                                         |
+| Status        | Ratified                                         |
 | Created       | 2022-08-15                                       |
 | License       | BSD-2-Clause                                     |
 | Replaces      | CCIP-001, CCIP-002, CCIP-003, CCIP-004, CCIP-010 |
@@ -141,9 +141,10 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TODO: add vote contract link after deployed
-
-TODO: add new protocol contract links
+- [Voting Website](https://vote.minecitycoins.com/)
+- [Voting Website Code](https://github.com/citycoins/ccip-vote-ui)
+- [Voting Contract Deployment](https://explorer.stacks.co/txid/SP5X6BFPYXTZ8C63EYYPA02X2VQTG4V43XNPGAPF.citycoins-vote-v3?chain=mainnet)
+- [Voting Contract Code](https://github.com/citycoins/contracts/blob/develop/contracts/vote/mainnet/citycoins-vote-v3.clar)
 
 ## Footnotes
 

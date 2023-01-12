@@ -155,14 +155,12 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-- [Voting Website](https://stabilize.minecitycoins.com)
+- [Voting Website](https://vote.minecitycoins.com/)
 - [Voting Website Code](https://github.com/citycoins/ccip-vote-ui)
 - [Voting Contract Deployment](https://explorer.stacks.co/txid/SP119FQPVQ39AKVMC0CN3Q1ZN3ZMCGMBR52ZS5K6E.citycoins-vote-v2?chain=mainnet)
 - [Voting Contract Code](https://github.com/citycoins/contracts/blob/develop/contracts/vote/mainnet/citycoins-vote-v2.clar)
 
 ## Footnotes
-
-TODO: UPDATE #5
 
 [^1]: https://github.com/citycoins/governance/blob/feat/stabilize-protocol/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
 [^2]: https://vote.minecitycoins.com/
