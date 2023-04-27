@@ -9,7 +9,7 @@
 | Consideration | Governance, Economic                                 |
 | Type          | Standard                                             |
 | Status        | Draft                                                |
-| Created       | 2023-04-26                                           |
+| Created       | 2023-04-19                                           |
 | License       | BSD-2-Clause                                         |
 
 On behalf of the community, see discussion details in issue https://github.com/citycoins/governance/issues/13 and in Discord channels.
