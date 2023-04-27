@@ -35,3 +35,6 @@ This CCIP will use CCIP-015 with the following criteria:
 ## Footnotes
 
 - todo
+[Upgrade.to.pox.3.txt](https://github.com/Rapha-btc/governance/files/11345624/Upgrade.to.pox.3.txt)
+
+
