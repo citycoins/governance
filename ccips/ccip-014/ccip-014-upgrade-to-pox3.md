@@ -12,6 +12,8 @@
 | Created       | 2023-04-26                                           |
 | License       | BSD-2-Clause                                         |
 
+On behalf of the community, see discussion details in issue https://github.com/citycoins/governance/issues/13 and in Discord channels  
+
 ## Introduction
 
 This CCIP will migrate to pox-3.
@@ -35,6 +37,5 @@ This CCIP will use CCIP-015 with the following criteria:
 ## Footnotes
 
 - todo
-[Upgrade.to.pox.3.txt](https://github.com/Rapha-btc/governance/files/11345624/Upgrade.to.pox.3.txt)
 
 
