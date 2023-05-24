@@ -2,16 +2,16 @@
 
 ## Preamble
 
-| CCIP Number   | 015                                      |
-| ------------- | ---------------------------------------- |
-| Title         | Community Proposal Voting Process        |
-| Author(s)     | Jason Schrader jason@joinfreehold.com    |
-|               | Tim Butterfield (tim@timbutterfield.com) |
-| Consideration | Governance                               |
-| Type          | Standard                                 |
-| Status        | Draft                                    |
-| Created       | 2023-04-26                               |
-| License       | BSD-2-Clause                             |
+| CCIP Number   | 015                                    |
+| ------------- | -------------------------------------- |
+| Title         | Community Proposal Voting Process      |
+| Author(s)     | Jason Schrader jason@joinfreehold.com  |
+|               | Tim Butterfield tim@timbutterfield.com |
+| Consideration | Governance                             |
+| Type          | Standard                               |
+| Status        | Draft                                  |
+| Created       | 2023-04-26                             |
+| License       | BSD-2-Clause                           |
 
 ## Introduction
 
@@ -94,7 +94,7 @@ This CCIP will activate if CCIP-014[^4] successfully executes.
 
 ## Footnotes
 
-[^1]: TODO
-[^2]: TODO
-[^3]: TODO
-[^4]: TODO
+[^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
+[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
+[^3]: https://sip012.xyz/
+[^4]: https://github.com/citycoins/protocol/blob/fix/support-pox-2/contracts/proposals/ccip014-pox-3.clar
