@@ -7,7 +7,7 @@
 | Title         | Upgrade to pox3                                      |
 | Author(s)     | Raphael R. Sierra rapha@fontainebleau-management.com |
 |               | Jason Schrader jason@joinfreehold.com                |
-|               | Tim Butterfield (TODO: email)                        |
+|               | Tim Butterfield tim@timbutterfield.com               |
 | Consideration | Governance, Economic                                 |
 | Type          | Standard                                             |
 | Status        | Draft                                                |
