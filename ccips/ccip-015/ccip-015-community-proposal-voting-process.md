@@ -2,16 +2,16 @@
 
 ## Preamble
 
-| CCIP Number   | 015                                   |
-| ------------- | ------------------------------------- |
-| Title         | Community Proposal Voting Process     |
-| Author(s)     | Jason Schrader jason@joinfreehold.com |
-|               | Tim Butterfield (TODO: email)         |
-| Consideration | Governance                            |
-| Type          | Standard                              |
-| Status        | Draft                                 |
-| Created       | 2023-04-26                            |
-| License       | BSD-2-Clause                          |
+| CCIP Number   | 015                                      |
+| ------------- | ---------------------------------------- |
+| Title         | Community Proposal Voting Process        |
+| Author(s)     | Jason Schrader jason@joinfreehold.com    |
+|               | Tim Butterfield (tim@timbutterfield.com) |
+| Consideration | Governance                               |
+| Type          | Standard                                 |
+| Status        | Draft                                    |
+| Created       | 2023-04-26                               |
+| License       | BSD-2-Clause                             |
 
 ## Introduction
 
