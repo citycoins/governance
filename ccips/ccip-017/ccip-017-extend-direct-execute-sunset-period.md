@@ -63,7 +63,7 @@ Currently, this would be:
 
 The scale factor for MIA was determined using the same formula used in CCIP-015[^3] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
 
-- MIA scale factor: TBD
+- MIA scale factor: 0.8823 _(prev: 0.8760)_
 
 The calculations used for the scale factor are available in the supplemental spreadsheet[^6].
 
@@ -78,4 +78,4 @@ The calculations used for the scale factor are available in the supplemental spr
 [^3]: https://github.com/citycoins/governance/blob/feat/add-ccip-015/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
 [^4]: https://github.com/citycoins/governance/blob/feat/add-ccip-017/ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period
 [^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-014/ccip-014-upgrade-to-pox3.md
-[^6]: See the [TODO]()
+[^6]: See the [ccip-017-vote-calculations-per-ccip-015 spreadsheet](./ccip-017-vote-calculations-per-ccip-015.ods)
