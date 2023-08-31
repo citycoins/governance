@@ -27,6 +27,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md)           | CityCoins Stacked Tokens Voting           |
 | [CCIP-012](./ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md)        | Stabilize Emissions and Treasuries        |
 | [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Stabilize Protocol and Simplify Contracts |
+| [CCIP-014](./ccips/ccip-014/ccip-014-upgrade-to-pox3.md)                           | Upgrade to pox-3                          |
 
 ## How to Get Involved
 
