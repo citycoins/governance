@@ -4,15 +4,16 @@
 
 | CCIP Number   | 014                                                  |
 | ------------- | ---------------------------------------------------- |
-| Title         | Upgrade to pox3                                      |
+| Title         | Upgrade to pox-3                                     |
 | Author(s)     | Raphael R. Sierra rapha@fontainebleau-management.com |
 |               | Jason Schrader jason@joinfreehold.com                |
 |               | Tim Butterfield tim@timbutterfield.com               |
 | Consideration | Governance, Economic                                 |
 | Type          | Standard                                             |
-| Status        | Draft                                                |
+| Status        | Ratified                                             |
 | Created       | 2023-04-19                                           |
 | License       | BSD-2-Clause                                         |
+| Supplements   | CCIP-012, CCIP-013                                   |
 
 ## Introduction
 
@@ -91,7 +92,11 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-- TODO
+- [ccip-014-pox-3](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccip014-pox-3?chain=mainnet)
+- [ccip-014-pox-3-v2](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccip014-pox-3-v2?chain=mainnet)
+- [ccd002-treasury-mining-mia-v2](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-mining-v2?chain=mainnet)
+- [ccd002-treasury-mining-nyc-v2](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-nyc-mining-v2?chain=mainnet)
+- [ccd006-citycoin-mining-v2](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd006-citycoin-mining-v2?chain=mainnet)
 
 ## Footnotes
 
@@ -101,4 +106,4 @@ The calculations used for the scale factor are available in the supplemental spr
 [^4]: https://github.com/citycoins/protocol/blob/fix/support-pox-2/contracts/proposals/ccip014-pox-3.clar
 [^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
 [^6]: https://github.com/citycoins/governance/blob/main/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
-[^7]: TODO: update after upload
+[^7]: See the [ccip-014-vote-calculations-per-ccip-015 spreadsheet](./ccip-014-vote-calculations-per-ccip-015.ods)
