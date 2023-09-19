@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Governance                            |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Ratified                              |
 | Created       | 2023-08-31                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012                              |
@@ -50,7 +50,7 @@ The criteria above are the same as CCIP-014[^5].
 
 ## Backwards Compatibility
 
-This CCIP is supplemental to CCIP-014[^1].
+This CCIP is supplemental to CCIP-012[^6].
 
 ## Activation
 
@@ -65,11 +65,11 @@ The scale factor for MIA was determined using the same formula used in CCIP-015[
 
 - MIA scale factor: 0.8823 _(prev: 0.8760)_
 
-The calculations used for the scale factor are available in the supplemental spreadsheet[^6].
+The calculations used for the scale factor are available in the supplemental spreadsheet[^7].
 
 ## Reference Implementations
 
-- TODO
+- [ccip-017-extend-sunset-period](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccip017-extend-sunset-period?chain=mainnet)
 
 ## Footnotes
 
@@ -78,4 +78,5 @@ The calculations used for the scale factor are available in the supplemental spr
 [^3]: https://github.com/citycoins/governance/blob/feat/add-ccip-015/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
 [^4]: https://github.com/citycoins/governance/blob/feat/add-ccip-017/ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period
 [^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-014/ccip-014-upgrade-to-pox3.md
-[^6]: See the [ccip-017-vote-calculations-per-ccip-015 spreadsheet](./ccip-017-vote-calculations-per-ccip-015.ods)
+[^6]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
+[^7]: See the [ccip-017-vote-calculations-per-ccip-015 spreadsheet](./ccip-017-vote-calculations-per-ccip-015.ods)
