@@ -9,7 +9,7 @@
 |               | Tim Butterfield tim@timbutterfield.com |
 | Consideration | Governance                             |
 | Type          | Standard                               |
-| Status        | Draft                                  |
+| Status        | Ratified                               |
 | Created       | 2023-04-26                             |
 | License       | BSD-2-Clause                           |
 
@@ -29,16 +29,19 @@ Any proposal using this CCIP will adhere to the `ccip-015-trait` defined below:
 
 ```clarity
 (define-trait ccip-015-trait
-	(
+  (
     (vote-on-proposal (bool) (response bool uint))
-		(is-executable () (response bool uint))
-	)
+    (is-executable () (response bool uint))
+  )
 )
 ```
 
 ### Voting Actions
 
-Through the `vote-on-proposal` function, a principal can submit their vote for a defined proposal and the contract will query the core contract for their stacked tokens, then update and track the vote totals for the proposal and the individual principal.
+Through the `vote-on-proposal` function, a principal can submit their vote and the contract will:
+
+- query ccd007-citycoin-stacking[^4] for the stacked tokens in the chosen cycles
+- update and track the vote totals for the proposal and the individual principal
 
 Within the vote contract are variables to track:
 
@@ -86,15 +89,18 @@ This CCIP replaces CCIP-011[^2] and is supplemental to CCIP-012[^1].
 
 ## Activation
 
-This CCIP will activate if CCIP-014[^4] successfully executes.
+This CCIP will activate if CCIP-014[^5] successfully executes.
 
 ## Reference Implementations
 
-- CCIP-014[^4]
+- CCIP-014[^5]
+- CCIP-017[^6]
 
 ## Footnotes
 
 [^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
 [^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md
 [^3]: https://sip012.xyz/
-[^4]: https://github.com/citycoins/protocol/blob/fix/support-pox-2/contracts/proposals/ccip014-pox-3.clar
+[^4]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd007-citycoin-stacking?chain=mainnet
+[^5]: https://github.com/citycoins/protocol/blob/fix/support-pox-2/contracts/proposals/ccip014-pox-3.clar
+[^6]: https://github.com/citycoins/governance/blob/main/ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period.md
