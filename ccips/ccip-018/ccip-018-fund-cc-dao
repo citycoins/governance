@@ -1,0 +1,39 @@
+# CCIP-018
+
+## Preamble
+
+| CCIP Number   | 018                                   |
+| ------------- | ------------------------------------- |
+| Title         | Fund City Coins DAO                   |
+| Author(s)     | Friedger, mail@friedger.de            |
+| Consideration | Governance, Economic                  |
+| Type          | Standard                              |
+| Status        | Draft                                 |
+| Created       | 2023-10-02                            |
+| License       | BSD-2-Clause                          |
+
+## Introduction
+
+This CCIP will define methods how to fund the City Coins DAO and how these funds can be allocated and spent.
+
+## Specification
+
+The City Coins DAO will receive 2% of the stacking rewards in STX for each PoX cycle from each city's treasury. 
+  
+The rewards are transferred to the DAO's treasury contract.
+
+## Backwards Compatibility
+
+This CCIP will increase the competition between stacking CC tokens and stacking STX.
+
+## Activation
+
+This CCIP will use CCIP-015 with the following criteria:
+
+## Reference Implementations
+
+- todo
+
+## Footnotes
+
+- todo
