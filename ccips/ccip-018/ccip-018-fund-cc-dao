@@ -5,16 +5,18 @@
 | CCIP Number   | 018                                   |
 | ------------- | ------------------------------------- |
 | Title         | Fund City Coins DAO                   |
-| Author(s)     | Friedger, mail@friedger.de            |
+| Author(s)     | Friedger, mail@friedger.de
+|                 CrypDoh, dereks*****@icloud.com
 | Consideration | Governance, Economic                  |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Draft 2.0                             |
 | Created       | 2023-10-02                            |
 | License       | BSD-2-Clause                          |
 
 ## Introduction
 
 This CCIP will define methods how to fund the City Coins DAO and how these funds can be allocated and spent.
+Ongoing development to the ecosystem, future requirements, and City Coin community led and funded projects are needed to build platform stability, public awareness, and treasury income.  
 
 ## Specification
 
@@ -22,17 +24,32 @@ The City Coins DAO will receive 2% of the stacking rewards in STX for each PoX c
   
 The rewards are transferred to the DAO's treasury contract.
 
+The rewards will be held in trust with the stacking pool operator for distribution on approved initiatives.
+Inititatives must be specified in CCIP proposal form through GITHUB and voted on by stacked community vote using CCIP-015 voting mechanism. 
+Proposal funding initiatives must meet the following criteria. 
+1. 60 percent average of stacked votes from a defined most recent completed 2 cycles may make quorum to hold a proposed DOA CCIP vote. 
+2. This may not be a future cycle as to minimize risk to manipulation. 
+3. 60 percent of average votes from the defined 2 cycles must be in the affirmative (true) for passage.
+4. DAO Funding Recipients must be publically known and verified by the pool operator custodian before any distributions.
+5. Suspension of these voting rules may be approved for emergency initiatives with 90% of an affirmative CCIP vote at anytime.
+6. todo - add on by community.
+
 ## Backwards Compatibility
 
 This CCIP will increase the competition between stacking CC tokens and stacking STX.
 
 ## Activation
 
-This CCIP will use CCIP-015 with the following criteria:
+This CCIP will use CCIP-015 with the following criteria: 
+1. A user vote of stacked MIA and NYC tokens in proportional balance.
+2. Averaged Stacked MIA and NYC tokens per user ID in cycle 75 and cycle 76.
+3. A voting period of 1000 blocks beginning in cycle 77.
+4. Funding shall commence on distribution from cycle 78. 
 
 ## Reference Implementations
 
-- todo
+1. The DAO treasury contract balance and transactions should be included in minecitycoins.com or v2.minecitycoins.com
+2. Support will be required on future voting via websites to ease voting abilities. 
 
 ## Footnotes
 
