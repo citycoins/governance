@@ -60,7 +60,7 @@ It also restricts the `execute` function in the proposal so that it cannot run u
 
 ## Backwards Compatibility
 
-This CCIP is supplemental to CCIP-012[^5] and CCIP-013[^6].
+This CCIP only changes the treasury contract. All traits etc. are unchanged.
 
 ## Activation
 
