@@ -1,8 +1,8 @@
-# CCIP-019
+# CCIP-021
 
 ## Preamble
 
-| CCIP Number   | 019                                   |
+| CCIP Number   | 021                                   |
 | ------------- | ------------------------------------- |
 | Title         | Extend Direct Execute Sunset Period 2 |
 | Author(s)     | Friedger Müffke mail@friedger.de      |
@@ -15,8 +15,8 @@
 
 ## Introduction
 
-When the ccd001-direct-execute[^1] Clarity contract was deployed, a sunset height of approximately 6 months was set, 
-after which the extension will no longer be able to execute proposals. More information can be found in issue 17 of the governance repository.[^2].
+When the ccd001-direct-execute[^1] Clarity contract was deployed, a sunset height of approximately 6 months was set,
+after which the extension will no longer be able to execute proposals. More information can be found in issue 26 of the governance repository.[^2].
 
 The current sunset height is 147,828. After that block height no proposal can be executed anymore. In preparation of CCIP-020, an extension is required now.
 
@@ -35,7 +35,7 @@ Proposal voting will be performed using the method described in CCIP-015[^3].
 
 Voting will begin when the contract is deployed and continue for a set number of blocks.
 
-> Note: The end of the voting period needs to allow enough time to execute the proposal and extend the sunset period. This will need to occur before Stacks block 121,908.
+> Note: The end of the voting period needs to allow enough time to execute the proposal and extend the sunset period. This will need to occur before Stacks block 147,828.
 
 Votes will be counted two ways in the contract: a general total of yes/no votes, and the total number of votes based on the amount of CityCoins stacked in cycles 80 and 81.
 
@@ -70,12 +70,12 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-- [ccip-017-extend-sunset-period](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccip017-extend-sunset-period?chain=mainnet)
+- ccip-021-extend-sunset-period-2
 
 ## Footnotes
 
 [^1]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd001-direct-execute?chain=mainnet
-[^2]: https://github.com/citycoins/governance/issues/17
+[^2]: https://github.com/citycoins/governance/issues/26
 [^3]: https://github.com/citycoins/governance/blob/feat/add-ccip-015/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
 [^4]: https://github.com/citycoins/governance/blob/feat/add-ccip-017/ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period
 [^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-014/ccip-014-upgrade-to-pox3.md
