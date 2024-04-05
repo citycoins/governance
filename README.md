@@ -7,7 +7,9 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-(none)
+| CCIP Number                                                                    | Title                  |
+| ------------------------------------------------------------------------------ | ---------------------- |
+| [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md) | Extend Sunset Period 2 |
 
 ## Ratified CCIPs
 
