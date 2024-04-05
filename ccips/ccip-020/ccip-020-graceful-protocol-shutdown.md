@@ -69,6 +69,10 @@ For example, at the time of writing this we are in cycle 80. If a user is stacki
 | 83    | No        | No              | shutdown, no STX to claim |
 | 84    | No        | Yes             | retrieve locked CityCoins |
 
+Stacking claims are based on cycle numbers and should be routed to the correct contracts:
+
+TODO: INSERT TABLE HERE FOR STACKING CYCLES
+
 ### Redemption Extensions
 
 This CCIP will implement two new redemption extensions, one each for MIA and NYC.
