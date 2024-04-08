@@ -2,7 +2,7 @@
 
 ## Preamble
 
-| CCIP Number   | 014                                   |
+| CCIP Number   | 020                                   |
 | ------------- | ------------------------------------- |
 | Title         | Graceful Protocol Shutdown            |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
