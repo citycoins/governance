@@ -71,7 +71,16 @@ For example, at the time of writing this we are in cycle 80. If a user is stacki
 
 Stacking claims are based on cycle numbers and should be routed to the correct contracts:
 
-TODO: INSERT TABLE HERE FOR STACKING CYCLES
+| Contract                 | Start Cycle | End Cycle |
+| ------------------------ | ----------- | --------- |
+| miamicoin-core-v1        | 1           | 16        |
+| newyorkcitycoin-core-v1  | 1           | 10        |
+| miamicoin-core-v2        | 17          | 34        |
+| newyorkcitycoin-core-v2  | 11          | 28        |
+| ccd007-citycoin-stacking | 54          | TBD       |
+
+> [!NOTE]
+> Stacking cycles are independent per city until ccd007-citycoin-stacking was implemented, which combined the cycles for both cities and matches the current Stacks stacking cycle numbers.
 
 ### Redemption Extensions
 
