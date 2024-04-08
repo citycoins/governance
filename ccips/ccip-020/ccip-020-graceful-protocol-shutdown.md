@@ -103,12 +103,12 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-015 using 
 
 Currently, this would be:
 
-- MIA cycles 79 and 80
-- NYC cycles 79 and 80
+- MIA cycles 80 and 81
+- NYC cycles 80 and 81
 
 The scale factor for MIA was determined using the same formula used in CCIP-015 and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
 
-- MIA scale factor: TBD
+- MIA scale factor: 0.8916 (prev: 0.8823)
 
 The calculations used for the scale factor are available in the supplemental spreadsheet.
 
