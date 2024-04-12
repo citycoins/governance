@@ -15,7 +15,7 @@
 
 ## Introduction
 
-As the CityCoins Protocol prepares for the upcoming Nakamoto release on the Stacks blockchain, the accumulation of technical debt with each change has made it increasingly challenging for core contributors and volunteers to keep up with the necessary updates. In light of these challenges and after careful consideration of community feedback, this CCIP proposes a graceful shutdown of the CityCoins Protocol.
+As the CityCoins Protocol prepares for the upcoming Nakamoto release on the Stacks blockchain[^1], the accumulation of technical debt with each change has made it increasingly challenging for core contributors and volunteers to keep up with the necessary updates. In light of these challenges and after careful consideration of community feedback, this CCIP proposes a graceful shutdown of the CityCoins Protocol.
 
 The shutdown process will involve disabling the mining and stacking functionality, and the primary objectives of this CCIP are to:
 
@@ -99,8 +99,8 @@ The calculations used for the scale factor are available in the supplemental spr
 
 ## Reference Implementations
 
-TBD
+- ccip-020-graceful-protocol-shutdown
 
 ## Footnotes
 
-TBD
+[^1]: https://docs.stacks.co/nakamoto-upgrade/nakamoto-rollout-plan
