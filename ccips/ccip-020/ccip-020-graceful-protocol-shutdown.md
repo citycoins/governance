@@ -15,15 +15,12 @@
 
 ## Introduction
 
-As the CityCoins Protocol prepares for the upcoming Nakamoto release on the Stacks blockchain, the accumulation of technical debt with each change has made it increasingly challenging for core contributors and volunteers to keep up with the necessary updates.
+As the CityCoins Protocol prepares for the upcoming Nakamoto release on the Stacks blockchain, the accumulation of technical debt with each change has made it increasingly challenging for core contributors and volunteers to keep up with the necessary updates. In light of these challenges and after careful consideration of community feedback, this CCIP proposes a graceful shutdown of the CityCoins Protocol.
 
-In light of these challenges and after careful consideration of community feedback, this CCIP proposes a graceful shutdown of the CityCoins Protocol. The shutdown process will involve disabling the mining and stacking functionality while ensuring that MIA and NYC token holders are fairly compensated through a redemption mechanism utilizing the STX held in the city treasuries.
-
-The primary objectives of this CCIP are to:
+The shutdown process will involve disabling the mining and stacking functionality, and the primary objectives of this CCIP are to:
 
 - Protect the interests of MIA and NYC token holders
 - Honor the milestones achieved by the CityCoins Protocol
-- Honor the gift agreement with the City of Miami
 - Facilitate a smooth transition and minimize disruption to the ecosystem
 
 ## Specification
@@ -56,18 +53,17 @@ This CCIP will disable stacking in the current stacking contract, such that:
 - Any stacking claims made in this and prior contracts will still function
 - Any locked CityCoins can be claimed from the future cycle(s)
 
-For example, at the time of writing this we are in cycle 80. If a user is stacking from cycles 77-84 then the following would be true:
+For example, at the time of writing this we are in cycle 82. If a user is stacking from cycles 80-86 then the following would be true:
 
 | Cycle | Claim STX | Claim CityCoins | Description               |
 | ----- | --------- | --------------- | ------------------------- |
-| 77    | Yes       | No              | same as before            |
-| 78    | Yes       | No              | same as before            |
-| 79    | Yes       | No              | same as before            |
 | 80    | Yes       | No              | same as before            |
-| 81    | No        | No              | shutdown, no STX to claim |
-| 82    | No        | No              | shutdown, no STX to claim |
+| 81    | Yes       | No              | same as before            |
+| 82    | Yes       | No              | same as before            |
 | 83    | No        | No              | shutdown, no STX to claim |
-| 84    | No        | Yes             | retrieve locked CityCoins |
+| 84    | No        | No              | shutdown, no STX to claim |
+| 85    | No        | No              | shutdown, no STX to claim |
+| 86    | No        | Yes             | retrieve locked CityCoins |
 
 Stacking claims are based on cycle numbers and should be routed to the correct contracts:
 
@@ -81,17 +77,6 @@ Stacking claims are based on cycle numbers and should be routed to the correct c
 
 > [!NOTE]
 > Stacking cycles are independent per city until ccd007-citycoin-stacking was implemented, which combined the cycles for both cities and matches the current Stacks stacking cycle numbers.
-
-### Redemption Extensions
-
-This CCIP will implement two new redemption extensions, one each for MIA and NYC.
-
-The redemption extensions will:
-
-- receive and hold funds from the respective city treasury contract
-- capture the total supply of MIA/NYC at the shutdown block height
-- calculate the value of the STX pair based on the total supply and balance
-- allow users to convert their CityCoins balance to STX (similar to V1->V2)
 
 ## Backwards Compatibility
 
