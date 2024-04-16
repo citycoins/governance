@@ -53,14 +53,16 @@ This CCIP will disable stacking in the current stacking contract, such that:
 - Any stacking claims made in this and prior contracts will still function
 - Any locked CityCoins can be claimed from the future cycle(s)
 
-For example, at the time of writing this we are in cycle 82. If a user is stacking from cycles 80-86 then the following would be true:
+For example, Stacks stacking will end at cycle 83 when the Nakamoto release is implemented.
+
+If a user is stacking from cycles 80-86 then the following would be true:
 
 | Cycle | Claim STX | Claim CityCoins | Description               |
 | ----- | --------- | --------------- | ------------------------- |
 | 80    | Yes       | No              | same as before            |
 | 81    | Yes       | No              | same as before            |
 | 82    | Yes       | No              | same as before            |
-| 83    | No        | No              | shutdown, no STX to claim |
+| 83    | Yes       | No              | same as before            |
 | 84    | No        | No              | shutdown, no STX to claim |
 | 85    | No        | No              | shutdown, no STX to claim |
 | 86    | No        | Yes             | retrieve locked CityCoins |
@@ -73,7 +75,7 @@ Stacking claims are based on cycle numbers and should be routed to the correct c
 | newyorkcitycoin-core-v1  | 1           | 10        |
 | miamicoin-core-v2        | 17          | 34        |
 | newyorkcitycoin-core-v2  | 11          | 28        |
-| ccd007-citycoin-stacking | 54          | TBD       |
+| ccd007-citycoin-stacking | 54          | 83        |
 
 > [!NOTE]
 > Stacking cycles are independent per city until ccd007-citycoin-stacking was implemented, which combined the cycles for both cities and matches the current Stacks stacking cycle numbers.
@@ -96,6 +98,11 @@ The scale factor for MIA was determined using the same formula used in CCIP-015 
 - MIA scale factor: 0.8916 (prev: 0.8823)
 
 The calculations used for the scale factor are available in the supplemental spreadsheet.
+
+This CCIP also modifies the voting done in prior contracts such that:
+
+- the votes are tallied per city and available in read-only functions
+- the proposal will not pass unless 25% of MIA or NYC have participated
 
 ## Reference Implementations
 
