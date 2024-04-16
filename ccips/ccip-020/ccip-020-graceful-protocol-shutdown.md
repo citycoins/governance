@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Governance, Economic                  |
 | Type          | Standard                              |
-| Status        | Draft                                 |
+| Status        | Activation-in-Progress                |
 | Created       | 2024-03-22                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012, CCIP-013, CCIP-017          |
@@ -106,7 +106,7 @@ This CCIP also modifies the voting done in prior contracts such that:
 
 ## Reference Implementations
 
-- ccip-020-graceful-protocol-shutdown
+- [ccip-020-graceful-protocol-shutdown](https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccip020-graceful-protocol-shutdown?chain=mainnet)
 
 ## Footnotes
 
