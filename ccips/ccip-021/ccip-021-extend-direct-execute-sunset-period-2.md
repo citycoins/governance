@@ -8,7 +8,7 @@
 | Author(s)     | Friedger Müffke mail@friedger.de      |
 | Consideration | Governance                            |
 | Type          | Standard                              |
-| Status        | Activation-In-Progress                |
+| Status        | Ratified                              |
 | Created       | 2024-04-04                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012                              |
