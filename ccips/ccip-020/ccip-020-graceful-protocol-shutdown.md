@@ -8,7 +8,7 @@
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
 | Consideration | Governance, Economic                  |
 | Type          | Standard                              |
-| Status        | Activation-in-Progress                |
+| Status        | Ratified                              |
 | Created       | 2024-03-22                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012, CCIP-013, CCIP-017          |
