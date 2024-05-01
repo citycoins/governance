@@ -29,12 +29,9 @@ This CCIP will implement two new redemption extensions, one each for MIA and NYC
 The redemption extensions will:
 
 - receive and hold funds from the respective city treasury contract
-- capture the total supply of MIA/NYC at the shutdown block height
+- record the total supply of MIA/NYC at the shutdown block height
 - calculate the value of the STX pair based on the total supply and contract balance
 - allow users to convert their CityCoins balance to STX and track the related totals
-
-var: total redeemed
-map: total redeemed per user
 
 ## Backwards Compatibility
 
