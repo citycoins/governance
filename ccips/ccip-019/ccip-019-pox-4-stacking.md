@@ -35,6 +35,8 @@ The current treasury contracts used with mining directly call the `.pox-3` contr
 
 CCIP-019 will implement a new version of the treasury contract `ccd002-treasury-v3` that replaces `.pox-3` with `.pox-4`, as well as move the balances and perform the delegated stacking.
 
+The pool operator send stacking rewards to a new reward-treasury contract. The community will vote on how to spend the stacking rewards in the future.
+
 > Note: this only affects the mining treasuries for each city, the addresses for the stacking treasuries will remain the same
 
 | City | Current                   | New                       |
