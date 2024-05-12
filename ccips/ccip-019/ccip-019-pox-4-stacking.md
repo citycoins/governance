@@ -37,7 +37,8 @@ CCIP-019 will implement a new version of the treasury contract `ccd002-treasury-
 
 The pool operator send stacking rewards to a new reward-treasury contract. The community will vote on how to spend the stacking rewards in the future.
 
-> Note: this only affects the mining treasuries for each city, the addresses for the stacking treasuries will remain the same
+> [!NOTE]
+> This only affects the mining treasuries for each city, the addresses for the stacking treasuries will remain the same
 
 | City | Current                   | New                       |
 | ---- | ------------------------- | ------------------------- |
