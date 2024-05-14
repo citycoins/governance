@@ -33,6 +33,29 @@ The redemption extensions will:
 - calculate the ratio of NYC to STX based on the total supply and contract balance
 - allow users to burn NYC in exchange for their portion of STX and track the related totals
 
+### Redemption Mechanism
+
+The NYC mining treasury[^TBD] currently holds 15.5M STX, and upon successful execution the entire balance will be transferred to the redemption extension.
+
+Following the transfer and upon initialization, the redemption extension will:
+
+- get the total supply for NYC V1[^TBD] and NYC V2[^TBD]
+- add the total supplies accounting for decimal differences
+- get the balance of the redemption contract itself
+- set variables representing all data gathered above and that redemption is enabled
+- create a redemption ratio from `balance / total supply`
+
+The redemption extension then exposes a public function that:
+
+- calculates amount to transfer based on `balance * redemption ratio`
+- verify that redemption is enabled
+- verify user hasn't claimed already
+- verify there is something to burn
+- verify there is something to redeem
+- burn the NYC balance for the user
+- transfer the STX to the user
+- update redemption claims for the user
+
 ## Backwards Compatibility
 
 This CCIP is supplemental to CCIP-020[^1] and not backwards compatible.
@@ -60,6 +83,7 @@ This CCIP follows the same voting criteria as CCIP-020[^1] except only NYC votes
 
 ## Footnotes
 
+[^TBD]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-nyc-mining-v2?chain=mainnet
 [^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
 [^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
 [^3]: TBD
