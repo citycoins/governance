@@ -54,7 +54,8 @@ The redemption extension then exposes a public function that:
 - verify there is something to redeem
 - burn the NYC balance for the user
 - transfer the STX to the user
-- update redemption claims for the user
+- store redemption info for the user
+- print the redemption info as 2 events
 
 ## Backwards Compatibility
 
