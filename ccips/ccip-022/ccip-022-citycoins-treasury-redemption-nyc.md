@@ -18,44 +18,47 @@
 
 With the execution of CCIP-020 Graceful Protocol Shutdown[^1] the functions for mining and stacking CityCoins are disabled.
 
-Following that change this CCIP proposes a redemption mechanism for NYC token holders to be fairly compensated by redeeming their CityCoins for a portion of the STX held in the city treasury.
+Following that, this CCIP proposes a redemption mechanism for NYC token holders to be fairly compensated by redeeming their NYC for a portion of the STX held in the NYC mining treasury[^2].
 
 ## Specification
 
-### Redemption Extensions
+### Redemption Extension
 
 This CCIP will implement a new redemption extension for NYC.
 
-The redemption extensions will:
+The redemption extension will:
 
-- receive and hold funds from the respective city treasury contract
-- record the total supply of NYC at the time of initialization
+- receive and hold funds from the NYC mining treasury contract[^2]
+- record the combined total supply of NYC at the time of initialization
 - calculate the ratio of NYC to STX based on the total supply and contract balance
-- allow users to burn NYC in exchange for their portion of STX and track the related totals
+- allow users to burn NYC in exchange for their portion of STX
+- track and return the redemption information for the contract and its users
 
 ### Redemption Mechanism
 
-The NYC mining treasury[^2] currently holds 15.5M STX, and upon successful execution the entire balance will be transferred to the redemption extension.
+The NYC mining treasury[^2] currently holds 15.5M STX and upon successful execution of this proposal the entire balance will be transferred to the redemption extension.
 
-Following the transfer and upon initialization, the redemption extension will:
+Following the transfer and upon initialization from the proposal, the redemption extension will:
 
 - get the total supply for NYC V1[^3] and NYC V2[^4]
 - add the total supplies accounting for decimal differences
+  - NYC V1 has 0 decimals
+  - NYC V2 has 6 decimals
 - get the balance of the redemption contract itself
-- set variables representing all data gathered above and that redemption is enabled
+- set variables representing all data gathered above
 - create a redemption ratio from `balance / total supply`
+- set a variable that redemption is enabled, allowing access
 
 The redemption extension then exposes a public function that:
 
 - calculates amount to transfer based on `balance * redemption ratio`
 - verify that redemption is enabled
-- verify user hasn't claimed already
-- verify there is something to burn
+- verify there is something to burn (NYC V1 or V2)
 - verify there is something to redeem
 - burn the NYC balance for the user
-- transfer the STX to the user
-- store redemption info for the user
-- print the redemption info as 2 events
+- transfer the redemption STX to the user from the contract
+- store redemption info for the user and the contract
+- print the redemption info from the read only functions
 
 ## Backwards Compatibility
 
