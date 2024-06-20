@@ -7,7 +7,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-(none)
+| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md) | CityCoins Treasury Redemption NYC |
 
 ## Ratified CCIPs
 
