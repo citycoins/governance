@@ -59,7 +59,7 @@ In case of a hard fork and if a new version of the PoX contract is activated, th
 This CCIP only changes the treasury mining contract and creates a new stacking reward treasury contract. It is not backwards compatible.
 
 ## Activation
-This CCIP will be voted on using a vote contract that adheres to CCIP-015[^5] using the last two active stacking cycles for the protocol.
+This CCIP will be voted on using a vote contract that adheres to CCIP-015[^4] using the last two active stacking cycles for the protocol.
 
 - MIA cycles 82 and 83
 - NYC cycles 82 and 83
@@ -68,18 +68,20 @@ No scale factor is required.
 
 Voting will begin when the contract is deployed and continue until the proposal is executed.
 
-This CCIP follows the same voting format as CCIP-022[^1] except only MIA votes are counted.
+This CCIP follows the same voting format as CCIP-022[^5] except only MIA votes are counted.
 
 - the votes are tallied and available in read-only functions
 - the proposal will not pass unless 25% of MIA have participated
 
 ## Reference Implementations
 
-The reference implementation is published in the protocol repo[^4].
+The reference implementation is published in the protocol repo[^6].
 
 ## Footnotes
 
 [^1]: https://stacks.org/halving-on-horizon-nakamoto
 [^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
 [^3]: https://github.com/citycoins/governance/pull/34
-[^4]: https://github.com/citycoins/protocol/pull/67
+[^4]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
+[^5]: https://github.com/citycoins/governance/blob/main/ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md
+[^6]: https://github.com/citycoins/protocol/pull/67
