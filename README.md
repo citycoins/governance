@@ -7,7 +7,9 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-(none)
+| CCIP Number                                                                | Title                             |
+| -------------------------------------------------------------------------- | --------------------------------- |
+| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md) | CityCoins Treasury Redemption NYC |
 
 ## Ratified CCIPs
 
@@ -30,6 +32,8 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-014](./ccips/ccip-014/ccip-014-upgrade-to-pox3.md)                           | Upgrade to pox-3                          |
 | [CCIP-015](./ccips/ccip-015/ccip-015-community-proposal-voting-process.md)         | Community Proposal Voting Process         |
 | [CCIP-017](./ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period.md)       | Extend Sunset Period                      |
+| [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md)     | Extend Sunset Period 2                    |
+| [CCIP-020](./ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md)                | Graceful Protocol Shutdown                |
 
 ## How to Get Involved
 
