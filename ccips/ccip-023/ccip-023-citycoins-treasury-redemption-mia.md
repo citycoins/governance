@@ -4,7 +4,7 @@
 
 | CCIP Number   | 023                                                  |
 | ------------- | ---------------------------------------------------- |
-| Title         | CityCoins Treasury Redemption NYC                    |
+| Title         | CityCoins Treasury Redemption MIA                    |
 | Author(s)     | Raphael R. Sierra rapha@fontainebleau-management.com |
 |               | Jason Schrader jason@joinfreehold.com                |
 |               | Friedger Müffke mail@friedger.de                     |
