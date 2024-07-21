@@ -72,7 +72,7 @@ Voting will begin when the contract is deployed and continue until the proposal 
 This CCIP follows the same voting format as CCIP-022[^5] except only MIA votes are counted.
 
 - the votes are tallied and available in read-only functions
-- the proposal will not pass unless 25% of MIA have participated
+- the proposal will not pass unless the majority of voters have votes yes and 25% of voting MIA tokens have votes yes.
 
 ## Reference Implementations
 
