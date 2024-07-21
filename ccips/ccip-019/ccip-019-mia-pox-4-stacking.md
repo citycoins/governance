@@ -34,7 +34,7 @@ The current treasury contracts used with mining directly call the `.pox-3` contr
 
 CCIP-019 will implement a new version of the treasury contract `ccd002-treasury-v3` that replaces `.pox-3` with `.pox-4`, as well as move the balances and perform the delegated stacking.
 
-The pool operator send stacking rewards to a new reward-treasury contract.
+The pool operator send stacking rewards to a new reward-treasury contract (ccd002-treasury-mia-stx-stacking-v3).
 
 Delegated stacking is also applied to the new reward-treasury contract.
 
@@ -43,10 +43,11 @@ The stacking rewards in STX shall be used for future liquidation. Other use of t
 > [!NOTE]
 > This only affects the mining treasuries for MIA city, the addresses for the MIA stacking treasuries will remain the same. MIA stacking rewards and MIA mining rewards can still be claimed. 
 
-| City | Current                   | New                       |
-| ---- | ------------------------- | ------------------------- |
-| MIA  | ccd002-treasury-mining-v2 | ccd002-treasury-mining-v3 |
-| MIA  | ccd002-treasury-stacking  | _(no change)_             |
+| City | Current                   | New                             |
+| ---- | ------------------------- | ------------------------------- |
+| MIA  | ccd002-treasury-mining-v2 | ccd002-treasury-mining-v3       |
+| MIA  | ccd002-treasury-stacking  | _(no change)_                   |
+| MIA  |                           | ccd002-treasury-stx-stacking-v3 |
 
 ### End of Delegated Stacking
 
