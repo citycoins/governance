@@ -17,14 +17,17 @@
 
 ## Introduction
 
-With the Stacks Nakomoto release[^1], a new version of the PoX contract `.pox-4` was released. The previous versions of the PoX contracts were used by the treasury contracts to perform delegated stacking (STX). Both CityCoin treasuries have stopped to use delegated stacking due to the global unlocking of STX tokens with the Stacks Nakamoto release.
+When the Stacks Nakamoto release[^1] was implemented, a new version of the PoX contract `.pox-4` was deployed and activated. The previous versions of the PoX contract were used by the treasury contracts to perform delegated stacking of STX. At the time of the release all STX tokens were unlocked from the old PoX contract, and both CityCoin treasuries stopped their use of delegated stacking.
 
-The CCIP-020[^2] has disabled stacking and mining City coin tokens. The CCIP-022[^3] has started liquidation of NYC token. However, the future of the MIA treasury has not been finalized. Until then, the treasury shall be stacked using pox-4 to earn stacking rewards. The stacking rewards should be collected and used for future redemption or other purposes.
+CCIP-020[^2] disabled mining and stacking of CityCoin tokens, and CCIP-022[^3] started the liquidation of the NYC mining treasury. However, the future of the MIA treasury has not been finalized. Until then, this CCIP will stack the MIA mining treasury using pox-4 to earn stacking rewards.
+
+The stacking rewards will be collected in a separate treasury and used for future redemption or other purposes.
 
 This CCIP intends to:
 
-- update .pox-3 to .pox-4 for delegated stacking in MIA coin treasury contract in continuation of the previous delegated stacking process.
-- define the end of stacking the treasury as the start of liquidation.
+- implement the CCIP-015[^4] voting mechanism as part of a DAO proposal
+- update .pox-3 to .pox-4 for delegated stacking in MIA mining treasury contract
+- allow for ending the stacking of the treasury in order to start liquidation
 
 ## Specification
 
