@@ -4,7 +4,7 @@
 
 | CCIP Number   | 019                                              |
 | ------------- | ------------------------------------------------ |
-| Title         | MIA PoX 4 Stacking                               |
+| Title         | Stack MIA Mining Treasury with PoX 4             |
 | Author(s)     | Jason Schrader jason@joinfreehold.com            |
 |               | Tim Butterfield tim@timbutterfield.com           |
 |               | Friedger Müffke mail@friedger.de                 |
@@ -41,7 +41,7 @@ Delegated stacking is also applied to the new reward-treasury contract.
 The stacking rewards in STX shall be used for future liquidation. Other use of the rewards require a new proposal in the future.
 
 > [!NOTE]
-> This only affects the mining treasuries for MIA city, the addresses for the MIA stacking treasuries will remain the same. MIA stacking rewards and MIA mining rewards can still be claimed. 
+> This only affects the mining treasuries for MIA city, the addresses for the MIA stacking treasuries will remain the same. MIA stacking rewards and MIA mining rewards can still be claimed.
 
 | City | Current                   | New                             |
 | ---- | ------------------------- | ------------------------------- |
@@ -51,7 +51,7 @@ The stacking rewards in STX shall be used for future liquidation. Other use of t
 
 ### End of Delegated Stacking
 
-Delgated stacking shall be revoked as soon as liquidation similar to CIP-022 but for MIA tokens starts. 
+Delgated stacking shall be revoked as soon as liquidation similar to CIP-022 but for MIA tokens starts.
 
 In case of a hard fork and if a new version of the PoX contract is activated, the delegated stacking should continue with the new PoX contract.
 
@@ -60,6 +60,7 @@ In case of a hard fork and if a new version of the PoX contract is activated, th
 This CCIP only changes the treasury mining contract and creates a new stacking reward treasury contract. It is not backwards compatible.
 
 ## Activation
+
 This CCIP will be voted on using a vote contract that adheres to CCIP-015[^4] using the last two active stacking cycles for the protocol.
 
 - MIA cycles 82 and 83
