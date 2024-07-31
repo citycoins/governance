@@ -52,13 +52,13 @@ The accrued stacking rewards in STX are intended to be used for future liquidati
 
 ### End of Delegated Stacking
 
-Delgated stacking shall be revoked as soon as liquidation similar to CIP-022 but for MIA tokens starts.
+When MIA starts liquidation, the delegated stacking can be revoked through a proposal and the STX will be unlocked.
 
-In case of a hard fork and if a new version of the PoX contract is activated, the delegated stacking should continue with the new PoX contract.
+In case of a hard fork and if a new version of the PoX contract is activated, the delegated stacking should continue with a new treasury and the new PoX contract.
 
 ## Backwards Compatibility
 
-This CCIP only changes the treasury mining contract and creates a new stacking reward treasury contract. It is not backwards compatible.
+This CCIP adds two new treasury contracts for the MIA treasuries, and is not backwards compatible.
 
 ## Activation
 
