@@ -65,7 +65,6 @@ This CCIP adds two new treasury contracts for the MIA treasuries, and is not bac
 This CCIP will be voted on using a vote contract that adheres to CCIP-015[^4] using the last two active stacking cycles for the protocol.
 
 - MIA cycles 82 and 83
-- NYC cycles 82 and 83
 
 No scale factor is required.
 
@@ -74,11 +73,11 @@ Voting will begin when the contract is deployed and continue until the proposal 
 This CCIP follows the same voting format as CCIP-022[^5] except only MIA votes are counted.
 
 - the votes are tallied and available in read-only functions
-- the proposal will not pass unless the majority of voters have votes yes and 25% of voting MIA tokens have votes yes.
+- the proposal will not pass unless the majority of voters vote yes and 25% of voting MIA tokens vote yes
 
 ## Reference Implementations
 
-The reference implementation is published in the protocol repo[^6].
+The reference implementation is published in the CityCoins protocol repository[^6].
 
 ## Footnotes
 
