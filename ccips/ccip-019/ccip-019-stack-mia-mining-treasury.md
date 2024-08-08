@@ -50,7 +50,11 @@ The accrued stacking rewards in STX are intended to be used for future liquidati
 | MIA  | ccd002-treasury-mia-stacking  | _(no change)_                  |
 | MIA  |                               | ccd002-treasury-mia-rewards-v3 |
 
-### End of Delegated Stacking
+The new `ccd002-treasury-mia-rewards-v3` contract will collect and manage the stacking rewards.
+
+### Stacking Delegation
+
+Both the mining (ccd002-treasury-mia-mining-v3) and rewards (ccd002-treasury-mia-rewards-v3) treasuries will delegate up to 50 million STX each to the `SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.pox4-fast-pool-v3` pool.
 
 When MIA starts liquidation, the delegated stacking can be revoked through a proposal and the STX will be unlocked.
 
