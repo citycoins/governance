@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Following the execution of CCIP-020 Graceful Protocol Shutdown[^1] and CCIP-022 CityCoins Treasury Redemption NYC[^2], the MiamiCoin (MIA) community seeks to send a signal to the City of Miami regarding the STX treasury held by the protocol. This CCIP proposes an on-chain vote for MIA holders to express their desire for the City of Miami to consider nullifying their gift agreement and allow token holders to liquidate the treasury in a manner similar to the NYC redemption process outlined in CCIP-022.
+Following the execution of CCIP-020 Graceful Protocol Shutdown[^1] and CCIP-022 CityCoins Treasury Redemption NYC[^2], the MiamiCoin (MIA) community seeks to send a verifiable poll to the City of Miami regarding the STX treasury held by the protocol. This CCIP proposes an on-chain vote for MIA holders to express their desire for the City of Miami to consider nullifying their gift agreement and allow token holders to liquidate the treasury in a manner similar to the NYC redemption process outlined in CCIP-022.
 
 ## Specification
 
@@ -41,7 +41,7 @@ The voting contract will:
 
 ### Voting Outcome
 
-The result of this vote will serve as a signal to the City of Miami, expressing the community's desire regarding the STX treasury. It's important to note that this vote does not have any direct executable actions on the protocol itself.
+The result of this vote will serve as an officially verifiable message to the City of Miami, for consideration, expressing the community's desire regarding the STX treasury. It's important to note that this vote does not have any direct executable actions on the protocol itself.
 
 ## Backwards Compatibility
 
@@ -71,4 +71,4 @@ The proposal will follow the same voting format as CCIP-022[^2]:
 [^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
 [^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md
 [^3]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
-[^4]: TBD
+[^4]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-024/contracts/proposals/ccip024-miamicoin-signal-vote.clar
