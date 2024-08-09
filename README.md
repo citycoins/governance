@@ -7,9 +7,11 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 ## CCIPs in the Process of Being Activated
 
-| CCIP Number                                                                | Title                             |
-| -------------------------------------------------------------------------- | --------------------------------- |
-| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md) | CityCoins Treasury Redemption NYC |
+| CCIP Number                                                              | Title                           |
+| ------------------------------------------------------------------------ | ------------------------------- |
+|                                                                          |
+| [CCIP-019](./ccips/ccip-019/ccip-019-stack-mia-mining-treasury.md)       | Stack MIA Mining Treasury       |
+| [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md) | Miamicoin Community Signal Vote |
 
 ## Ratified CCIPs
 
@@ -34,6 +36,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-017](./ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period.md)       | Extend Sunset Period                      |
 | [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md)     | Extend Sunset Period 2                    |
 | [CCIP-020](./ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md)                | Graceful Protocol Shutdown                |
+| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md)         | CityCoins Treasury Redemption NYC         |
 
 ## How to Get Involved
 
