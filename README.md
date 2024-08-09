@@ -9,7 +9,6 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 | CCIP Number                                                              | Title                           |
 | ------------------------------------------------------------------------ | ------------------------------- |
-|                                                                          |
 | [CCIP-019](./ccips/ccip-019/ccip-019-stack-mia-mining-treasury.md)       | Stack MIA Mining Treasury       |
 | [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md) | Miamicoin Community Signal Vote |
 
