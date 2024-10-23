@@ -57,14 +57,15 @@ This CCIP is supplemental to CCIP-012[^8], CCIP-017[^2], and CCIP-021[^3]
 
 This CCIP will be voted on and activated using a vote contract that adheres to CCIP-015[^6] using the last two active cycles for the protocol.
 
-- MIA cycles 82 and 83
-- NYC cycles 82 and 83
+- Only MIA votes will be counted.
+- Stacking amounts from cycles 82 and 83 will be considered.
+- The voting period will start at the block which the contract is deployed
+- No scale factor is required.
 
-The scale factor for MIA was determined using the same formula used in CCIP-015[^6] and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
+The proposal will follow the same voting format as CCIP-022[^2] and CCIP-024[^9]:
 
-- MIA scale factor: TBD _(prev: 0.8916)_
-
-The calculations used for the scale factor are available in the supplemental spreadsheet[^9].
+- Votes will be tallied and available in read-only functions.
+- The vote will be considered valid if at least 25% of the total MIA stacked in cycles 82 and 83 participates.
 
 ## Reference Implementations
 
@@ -80,4 +81,4 @@ The calculations used for the scale factor are available in the supplemental spr
 [^6]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
 [^7]: TBD: Link to PR implementation
 [^8]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
-[^9]: See the [ccip-021-vote-calculations-per-ccip-015 spreadsheet](./ccip-021-vote-calculations-per-ccip-015.ods)
+[^9]: https://github.com/citycoins/governance/blob/main/ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md
