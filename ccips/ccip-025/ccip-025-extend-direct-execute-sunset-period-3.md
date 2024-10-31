@@ -9,7 +9,7 @@
 |               | Jason Schrader jason@joinfreehold.com |
 | Consideration | Governance                            |
 | Type          | Standard                              |
-| Status        | Ratified                              |
+| Status        | Activation-in-Progress                |
 | Created       | 2024-10-23                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012, CCIP-017, CCIP-021          |
@@ -24,11 +24,14 @@ The current sunset height is 173,748. After that block height no proposal can be
 This CCIP intends to:
 
 - implement the CCIP-015[^6] voting mechanism as part of a DAO proposal
-- extend the sunset period by an additional 25,920 Stacks blocks, ending at Stacks block 199,668
+- extend the sunset period by an additional 103,680 Stacks blocks (approx 2 years)
+- the new sunset period would end Stacks tenure block 277,428
+
+> [!NOTE] Please note that after the Nakamoto release the changes to block speed do not affect this contract since it is already deployed. The `block-height` parameter in the contract will follow the Stacks `tenure-height` value, which maintains the same block speed 1:1 with Bitcoin blocks.
 
 ## Specification
 
-The proposal will call `set-sunset-block` in ccd001-direct-execute[^1] with the value of `199668`.
+The proposal will call `set-sunset-block` in ccd001-direct-execute[^1] with the value of `277428`.
 
 ### Proposal Voting
 
@@ -69,7 +72,7 @@ The proposal will follow the same voting format as CCIP-022[^2] and CCIP-024[^9]
 
 ## Reference Implementations
 
-- TBD
+- ccip025-extend-sunset-period-3[^7]
 
 ## Footnotes
 
@@ -79,6 +82,6 @@ The proposal will follow the same voting format as CCIP-022[^2] and CCIP-024[^9]
 [^4]: https://github.com/citycoins/governance/pull/16
 [^5]: https://github.com/citycoins/governance/pull/40
 [^6]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
-[^7]: TBD: Link to PR implementation
+[^7]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-025/contracts/proposals/ccip025-extend-sunset-period-3.clar
 [^8]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
 [^9]: https://github.com/citycoins/governance/blob/main/ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md
