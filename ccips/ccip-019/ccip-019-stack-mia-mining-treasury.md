@@ -10,7 +10,7 @@
 |               | Friedger Müffke mail@friedger.de                 |
 | Consideration | Governance, Economic, Technical                  |
 | Type          | Standard                                         |
-| Status        | Activation-in-Progress                           |
+| Status        | Ratified                                         |
 | Created       | 2024-01-04                                       |
 | License       | BSD-2-Clause                                     |
 | Supplements   | CCIP-006, CCIP-012, CCIP-013, CCIP-014, CCIP-020 |
