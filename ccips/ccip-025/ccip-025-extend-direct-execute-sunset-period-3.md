@@ -9,7 +9,7 @@
 |               | Jason Schrader jason@joinfreehold.com |
 | Consideration | Governance                            |
 | Type          | Standard                              |
-| Status        | Activation-in-Progress                |
+| Status        | Ratified                             |
 | Created       | 2024-10-23                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-012, CCIP-017, CCIP-021          |
