@@ -9,7 +9,6 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 
 | CCIP Number                                                                    | Title                  |
 | ------------------------------------------------------------------------------ | ---------------------- |
-| [CCIP-025](./ccips/ccip-025/ccip-025-extend-direct-execute-sunset-period-3.md) | Extend Sunset Period 3 |
 
 ## Ratified CCIPs
 
@@ -37,6 +36,7 @@ The CCIPs describe the design, implementation, and governance of the CityCoins P
 | [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md)     | Extend Sunset Period 2                    |
 | [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md)         | CityCoins Treasury Redemption NYC         |
 | [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md)           | Miamicoin Community Signal Vote           |
+| [CCIP-025](./ccips/ccip-025/ccip-025-extend-direct-execute-sunset-period-3.md)     | Extend Sunset Period 3                    |
 
 ## How to Get Involved
 
