@@ -11,31 +11,31 @@ None
 
 ## Ratified CCIPs
 
-| CCIP Number                                                                        | Title                                     |
-| ---------------------------------------------------------------------------------- | ----------------------------------------- |
-| [CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md)    | CityCoins Improvement Proposal Process    |
-| [CCIP-001](./ccips/ccip-001/ccip-001-citycoins-traits.md)                          | CityCoins Traits                          |
-| [CCIP-002](./ccips/ccip-002/ccip-002-citycoins-activation.md)                      | CityCoins Activation                      |
-| [CCIP-003](./ccips/ccip-003/ccip-003-citycoins-mining.md)                          | CityCoins Mining                          |
-| [CCIP-004](./ccips/ccip-004/ccip-004-citycoins-stacking.md)                        | CityCoins Stacking                        |
-| [CCIP-005](./ccips/ccip-005/ccip-005-citycoins-sip-010-token.md)                   | CityCoins SIP-010 Token                   |
-| [CCIP-006](./ccips/ccip-006/ccip-006-citycoins-vrf.md)                             | CityCoins VRF                             |
-| [CCIP-007](./ccips/ccip-007/ccip-007-citycoins-auth.md)                            | CityCoins Auth                            |
-| [CCIP-008](./ccips/ccip-008/ccip-008-citycoins-sip-010-token-v2.md)                | CityCoins SIP-010 Token v2                |
-| [CCIP-009](./ccips/ccip-009/ccip-009-citycoins-vrf-v2.md)                          | CityCoins VRF v2                          |
-| [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)                         | CityCoins Auth v2                         |
-| [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md)           | CityCoins Stacked Tokens Voting           |
-| [CCIP-012](./ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md)        | Stabilize Emissions and Treasuries        |
-| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | Stabilize Protocol and Simplify Contracts |
-| [CCIP-014](./ccips/ccip-014/ccip-014-upgrade-to-pox3.md)                           | Upgrade to pox-3                          |
-| [CCIP-015](./ccips/ccip-015/ccip-015-community-proposal-voting-process.md)         | Community Proposal Voting Process         |
-| [CCIP-017](./ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period.md)       | Extend Sunset Period                      |
-| [CCIP-019](./ccips/ccip-019/ccip-019-stack-mia-mining-treasury.md)                 | Stack MIA Mining Treasury                 |
-| [CCIP-020](./ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md)                | Graceful Protocol Shutdown                |
-| [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md)     | Extend Sunset Period 2                    |
-| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md)         | CityCoins Treasury Redemption NYC         |
-| [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md)           | Miamicoin Community Signal Vote           |
-| [CCIP-025](./ccips/ccip-025/ccip-025-extend-direct-execute-sunset-period-3.md)     | Extend Sunset Period 3                    |
+| CCIP Number                                                                        | Created | Title                                     |
+| ---------------------------------------------------------------------------------- | ------- | ----------------------------------------- |
+| [CCIP-000](./ccips/ccip-000/ccip-000-citycoins-improvement-proposal-process.md)    | TBD     | CityCoins Improvement Proposal Process    |
+| [CCIP-001](./ccips/ccip-001/ccip-001-citycoins-traits.md)                          | TBD     | CityCoins Traits                          |
+| [CCIP-002](./ccips/ccip-002/ccip-002-citycoins-activation.md)                      | TBD     | CityCoins Activation                      |
+| [CCIP-003](./ccips/ccip-003/ccip-003-citycoins-mining.md)                          | TBD     | CityCoins Mining                          |
+| [CCIP-004](./ccips/ccip-004/ccip-004-citycoins-stacking.md)                        | TBD     | CityCoins Stacking                        |
+| [CCIP-005](./ccips/ccip-005/ccip-005-citycoins-sip-010-token.md)                   | TBD     | CityCoins SIP-010 Token                   |
+| [CCIP-006](./ccips/ccip-006/ccip-006-citycoins-vrf.md)                             | TBD     | CityCoins VRF                             |
+| [CCIP-007](./ccips/ccip-007/ccip-007-citycoins-auth.md)                            | TBD     | CityCoins Auth                            |
+| [CCIP-008](./ccips/ccip-008/ccip-008-citycoins-sip-010-token-v2.md)                | TBD     | CityCoins SIP-010 Token v2                |
+| [CCIP-009](./ccips/ccip-009/ccip-009-citycoins-vrf-v2.md)                          | TBD     | CityCoins VRF v2                          |
+| [CCIP-010](./ccips/ccip-010/ccip-010-citycoins-auth-v2.md)                         | TBD     | CityCoins Auth v2                         |
+| [CCIP-011](./ccips/ccip-011/ccip-011-citycoins-stacked-tokens-voting.md)           | TBD     | CityCoins Stacked Tokens Voting           |
+| [CCIP-012](./ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md)        | TBD     | Stabilize Emissions and Treasuries        |
+| [CCIP-013](./ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md) | TBD     | Stabilize Protocol and Simplify Contracts |
+| [CCIP-014](./ccips/ccip-014/ccip-014-upgrade-to-pox3.md)                           | TBD     | Upgrade to pox-3                          |
+| [CCIP-015](./ccips/ccip-015/ccip-015-community-proposal-voting-process.md)         | TBD     | Community Proposal Voting Process         |
+| [CCIP-017](./ccips/ccip-017/ccip-017-extend-direct-execute-sunset-period.md)       | TBD     | Extend Sunset Period                      |
+| [CCIP-019](./ccips/ccip-019/ccip-019-stack-mia-mining-treasury.md)                 | TBD     | Stack MIA Mining Treasury                 |
+| [CCIP-020](./ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md)                | TBD     | Graceful Protocol Shutdown                |
+| [CCIP-021](./ccips/ccip-021/ccip-021-extend-direct-execute-sunset-period-2.md)     | TBD     | Extend Sunset Period 2                    |
+| [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md)         | TBD     | CityCoins Treasury Redemption NYC         |
+| [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md)           | TBD     | Miamicoin Community Signal Vote           |
+| [CCIP-025](./ccips/ccip-025/ccip-025-extend-direct-execute-sunset-period-3.md)     | TBD     | Extend Sunset Period 3                    |
 
 ## How to Get Involved
 
