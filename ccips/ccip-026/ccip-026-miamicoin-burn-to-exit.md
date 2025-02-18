@@ -32,9 +32,9 @@ The implementation will create a new extension that:
 
    - 1,700 STX for every 1,000,000 MiamiCoin (MIA)
    - Ratio calculation:
-     - Secondary Treasury Balance: ~400,000 STX
-     - Current MIA Supply: ~235,000,000 MIA
-     - Ratio = (400,000 * 1,000,000) / 235,000,000 = ~1,700 STX per 1M MIA
+     - Original City Treasury Balance: ~10,241,497 STX
+     - Total MIA Supply: ~5,988,905,152 MIA
+     - Ratio = (10,241,497 * 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
 
 3. Functionality:
 
