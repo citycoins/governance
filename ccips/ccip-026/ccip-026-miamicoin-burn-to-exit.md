@@ -31,7 +31,10 @@ The implementation will create a new extension that:
 2. implement a fixed redemption ratio
 
    - 1,700 STX for every 1,000,000 MiamiCoin (MIA)
-   - This ratio is derived from the current relationship between total MIA supply and the original treasury of 10.2M STX
+   - Ratio calculation:
+     - Secondary Treasury Balance: ~400,000 STX
+     - Current MIA Supply: ~235,000,000 MIA
+     - Ratio = (400,000 * 1,000,000) / 235,000,000 = ~1,700 STX per 1M MIA
 
 3. Functionality:
 
@@ -52,6 +55,10 @@ The extension will:
 - Track total MIA burned and STX distributed
 - Include read-only functions to check available STX balance
 - Include read-only functions to check addresses, redemptions
+- Return ERR_NOT_ENOUGH_FUNDS_IN_CONTRACT if redemption would exceed available STX
+
+> [!NOTE]
+> The burn-to-exit mechanism is one-way and irreversible. Once MIA tokens are burned, they cannot be recovered. Users should verify the contract's available STX balance through the read-only functions before burning tokens.
 
 ### Treasury Management
 
