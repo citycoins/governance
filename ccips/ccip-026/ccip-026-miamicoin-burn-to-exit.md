@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Following the MiamiCoin community signal vote[^1] and the graceful protocol shutdown[^2], and in absence of any official response to the community's expressed desires, this CCIP proposes implementing a burn-to-exit mechanism for MIA holders using the secondary treasury[^3]. This mechanism will provide MIA holders with an option to burn their tokens in exchange for STX at a fixed ratio, while leaving the original city treasury[^4] untouched.
+Following the MiamiCoin community signal vote[^1] and the graceful protocol shutdown[^2], and in absence of any official response to the community's expressed desires, this CCIP proposes implementing a burn-to-exit mechanism for MIA holders using the secondary treasury[^3]. This mechanism will provide MIA holders with an optional path to burn their tokens in exchange for STX at a fixed ratio, while leaving the original city treasury[^4] untouched. Token holders may choose to participate in the burn-to-exit or maintain their position in case of future developments regarding the main treasury.
 
 ## Specification
 
@@ -72,7 +72,8 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 - The extension will maintain a public record of all redemptions
 - The burn-to-exit mechanism will remain enabled indefinitely
 - The extension can be disabled through a separate governance proposal if needed
-- Any remaining STX in the rewards treasury will stay locked if all MIA is burned
+- The secondary treasury contains ~400,000 STX, sufficient to redeem ~235M MIA
+- Participation is optional, allowing holders to maintain positions if desired
 
 ## Backwards Compatibility
 
