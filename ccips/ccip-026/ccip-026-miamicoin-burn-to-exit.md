@@ -99,7 +99,7 @@ Upon successful vote:
 
 [^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md
 [^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
-[^3]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-mining-v2?chain=mainnet
-[^4]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-city?chain=mainnet
+[^3]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-tresaury-mia-rewards-v3?chain=mainnet
+[^4]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-mining-v3?chain=mainnet
 [^5]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/proposals/ccip026-miamicoin-burn-to-exit.clar
 [^6]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/extensions/ccd013-burn-to-exit-mia.clar
