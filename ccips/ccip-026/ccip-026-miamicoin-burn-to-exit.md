@@ -23,7 +23,7 @@ Following the MiamiCoin community signal vote[^1] and the graceful protocol shut
 
 The implementation will create a new extension that:
 
-1. can access the approximately 400,000 STX secondary treasury while enabled
+1. can access the approximately 440,000 STX secondary treasury while enabled
 
    - value hard-coded preventing access to the original 10.2M treasury
    - burn to exit can be disabled through a separate proposal
@@ -34,7 +34,7 @@ The implementation will create a new extension that:
    - Ratio calculation:
      - Original City Treasury Balance: ~10,241,497 STX
      - Total MIA Supply: ~5,988,905,152 MIA
-     - Ratio = (10,241,497 * 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
+     - Ratio = (10,241,497 \* 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
 
 3. Functionality:
 
@@ -46,10 +46,10 @@ The implementation will create a new extension that:
 
 ### Technical Implementation
 
-| Contract | Purpose | Access |
-|----------|----------|---------|
+| Contract                       | Purpose            | Access                 |
+| ------------------------------ | ------------------ | ---------------------- |
 | ccd002-treasury-mia-rewards-v3 | Secondary Treasury | Burn-to-Exit Extension |
-| ccd002-treasury-mia-mining-v3 | Main City Treasury | No Access |
+| ccd002-treasury-mia-mining-v3  | Main City Treasury | No Access              |
 
 The extension will only have access to the MIA rewards treasury (ccd002-treasury-mia-rewards-v3) and will:
 
@@ -63,7 +63,7 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 - Return ERR_NOT_ENOUGH_FUNDS_IN_CONTRACT if redemption would exceed available STX
 
 > [!NOTE]
-> The burn-to-exit mechanism is one-way and irreversible. Once MIA tokens are burned, they cannot be recovered. Users should verify the contract's available STX balance through the read-only functions before burning tokens.
+> The burn-to-exit mechanism is one-way and irreversible. Once MIA tokens are burned, they cannot be recovered.
 
 ### Treasury Management
 
@@ -72,7 +72,7 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 - The extension will maintain a public record of all redemptions
 - The burn-to-exit mechanism will remain enabled indefinitely
 - The extension can be disabled through a separate governance proposal if needed
-- The secondary treasury contains ~400,000 STX, sufficient to redeem ~235M MIA
+- The secondary treasury contains ~440,000 STX, sufficient to redeem ~260M MIA
 - Participation is optional, allowing holders to maintain positions if desired
 
 ## Backwards Compatibility
@@ -89,12 +89,14 @@ This CCIP will be voted on using a vote contract that adheres to CCIP-015 using 
 No scale factor is required.
 
 The vote will:
+
 - Only count MIA votes
 - Be tallied and available in read-only functions
 - Require 25% of MIA participation to be considered valid
 - Begin when the contract is deployed and continue for 2016 Bitcoin blocks
 
 Upon successful vote:
+
 1. The extension contract will be deployed
 2. The extension will be granted access to the secondary treasury
 3. The burn-to-exit mechanism will be enabled
