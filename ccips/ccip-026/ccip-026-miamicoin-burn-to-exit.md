@@ -15,7 +15,7 @@
 
 ## Introduction
 
-Following the MiamiCoin community signal vote (CCIP-024) and the graceful protocol shutdown (CCIP-020), this CCIP proposes implementing a burn-to-exit mechanism for MIA holders using the secondary treasury containing approximately 400,000 STX. This mechanism will provide MIA holders with an option to burn their tokens in exchange for STX at a fixed ratio, while leaving the primary city treasury untouched.
+Following the MiamiCoin community signal vote[^1] and the graceful protocol shutdown[^2], this CCIP proposes implementing a burn-to-exit mechanism for MIA holders using the secondary treasury[^3]. This mechanism will provide MIA holders with an option to burn their tokens in exchange for STX at a fixed ratio, while leaving the original city treasury[^4] untouched.
 
 ## Specification
 
@@ -75,5 +75,7 @@ This CCIP will be implemented as a new extension contract that:
 
 ## Footnotes
 
-[^1]: CCIP-020 Graceful Protocol Shutdown
-[^2]: CCIP-024 MiamiCoin Community Signal Vote
+[^1]: CCIP-024 MiamiCoin Community Signal Vote
+[^2]: CCIP-020 Graceful Protocol Shutdown
+[^3]: Secondary Treasury (~400,000 STX)
+[^4]: Original City Treasury (~10,200,000 STX)
