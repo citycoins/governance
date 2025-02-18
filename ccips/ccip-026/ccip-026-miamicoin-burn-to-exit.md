@@ -80,7 +80,7 @@ The vote will:
 
 Upon successful vote:
 1. The extension contract will be deployed
-2. The secondary treasury will transfer STX to the extension
+2. The extension will be granted access to the secondary treasury
 3. The burn-to-exit mechanism will be enabled
 
 ## Reference Implementations
