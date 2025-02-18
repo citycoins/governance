@@ -46,7 +46,7 @@ The implementation will create a new extension that:
 
 ### Technical Implementation
 
-The extension will:
+The extension will only have access to the MIA rewards treasury (ccd002-treasury-mia-rewards-v3) and will:
 
 - Accept MIA tokens from users
 - Calculate the STX return based on the fixed ratio
