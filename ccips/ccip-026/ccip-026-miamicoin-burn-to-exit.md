@@ -65,16 +65,34 @@ This CCIP supplements CCIP-020 and CCIP-024 but is not backwards compatible.
 
 ## Activation
 
-This CCIP will be implemented as a new extension contract if
+This CCIP will be voted on using a vote contract that adheres to CCIP-015 using the last two active stacking cycles for the protocol:
+
+- MIA cycles 82 and 83
+- NYC cycles 82 and 83
+
+No scale factor is required.
+
+The vote will:
+- Only count MIA votes
+- Be tallied and available in read-only functions
+- Require 25% of MIA participation to be considered valid
+- Begin when the contract is deployed and continue for 2016 Bitcoin blocks
+
+Upon successful vote:
+1. The extension contract will be deployed
+2. The secondary treasury will transfer STX to the extension
+3. The burn-to-exit mechanism will be enabled
 
 ## Reference Implementations
 
-- ccip026-miamicoin-burn-to-exit contract (to be implemented)
-- Extension deployment and STX transfer contracts (to be implemented)
+- CCIP-026 Proposal: ccip026-miamicoin-burn-to-exit.clar[^5]
+- CCD013 Burn Extension: ccd013-burn-to-exit-mia.clar[^6]
 
 ## Footnotes
 
-[^1]: CCIP-024 MiamiCoin Community Signal Vote
-[^2]: CCIP-020 Graceful Protocol Shutdown
-[^3]: Secondary Treasury (~400,000 STX)
-[^4]: Original City Treasury (~10,200,000 STX)
+[^1]: https://github.com/citycoins/governance/blob/main/ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md
+[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
+[^3]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-mining-v2?chain=mainnet
+[^4]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-city?chain=mainnet
+[^5]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/proposals/ccip026-miamicoin-burn-to-exit.clar
+[^6]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/extensions/ccd013-burn-to-exit-mia.clar
