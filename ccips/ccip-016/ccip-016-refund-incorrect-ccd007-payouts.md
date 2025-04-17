@@ -7,6 +7,7 @@
 | Title         | Refund Incorrect CCD007 Payouts                      |
 | Author(s)     | Jason Schrader jason@joinfreehold.com                |
 |               | Raphael R. Sierra rapha@fontainebleau-management.com |
+|               | Friedger friedger@gmail.com                          |
 | Consideration | Governance, Economic                                 |
 | Type          | Standard                                             |
 | Status        | Draft                                                |
@@ -109,9 +110,9 @@ For the claims, we need to look at transactions emitting the print event `stacki
 
 Most claims are done by calling the function `claim-stacking-reward` of `ccd007-citycoin-stacking`.
 
-There are two contracts that call this function during deployment: `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many` and `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many-nyc`. However, non of the calls to `claim-stacking-reward` meet the criteria. Therefore, these contracts can be ignored.
+There are two contracts that call this function during deployment: `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many` and `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many-nyc`. However, none of the calls to `claim-stacking-reward` meet the criteria. Therefore, these contracts can be ignored.
 
-All direct function calls to `claim-stacking-reward` are filtered per cycle to meet the criteria mentioned above. The filter is encoded in typescript as follows:
+All direct function calls to `claim-stacking-reward` are filtered per cycle if they meet the criteria mentioned above. The filter is encoded in typescript as follows:
 
 ```
 tx.tx_status === "success" && // only successful transactions
@@ -126,13 +127,13 @@ tx.block_height &&
 tx.contract_call.function_args && tx.contract_call.function_args[1].repr === `u${cycleNumber}` // only claims for the cycle in question
 ```
 
-For each relevant claim, the user's amount of stacked CC is retrieved at the block height of the claim - 1. This is done by calling the `get-stacker` function on the stacking contract with the user id of the user. Note, that the stacked CC amount is set to 0 after the claim function.
+For each relevant claim, the user's amount of stacked CC is retrieved at the block height of the claim - 1. This is done by calling the `get-stacker` function on the stacking contract with the user id of the user. Note, that the stacked CC amount is set to 0 after the claim function, therefore the amount before the claim is relevant.
 
 The missed payout amount for each claim is calculated by multiplying the total payout amount of the cycle with the user's amount of stacked CC and then dividing by the total amount of stacked CC for the cycle.
 
 The analysis is done with the scripts defined here: https://github.com/citycoins/scripts/pull/19
 
-The scripts create clarity contract code that is used in the proposal for thie CCIP.
+The scripts create clarity contract code that is used in the proposal for thie CCIP. The output has been manually verified by the community.
 
 ## Backwards Compatibility
 
@@ -140,7 +141,7 @@ None, this is a one-time correction.
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-015[^3] using the last two active cycles from when the contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-015[^2] using the last two active cycles from when the contract is deployed.
 
 Currently, this would be:
 
@@ -149,7 +150,7 @@ Currently, this would be:
 
 Due to the liquidation of NYC, no scale factor for MIA is applied, all votes are equally counted.
 
-This CCIP also uses the updating voting methods used with CCIP-020 without the 25% participation threshold per city.
+This CCIP also uses the updating voting methods used with CCIP-020[^3] without the 25% participation threshold per city.
 The votes are tallied per city and available in read-only functions for information purpose only.
 
 The proposal is activated after a voting period of 2 weeks
@@ -159,3 +160,9 @@ The proposal is activated after a voting period of 2 weeks
 ## Reference Implementations
 
 - The proposal contract is available here: https://github.com/citycoins/protocol/pull/83
+
+## Footnotes
+
+[^1]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd007-citycoin-stacking?chain=mainnet
+[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
+[^3]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
