@@ -17,13 +17,13 @@
 
 The current stacking contract `ccd007-citycoin-stacking`[^1] has a bug that incorrectly returns 0 STX rewards for a cycle if the following conditions are true:
 
-- the cycle has just ended
+- the cycle has just ended or the cycle has id #83
 - the cycle is not paid by the pool operator
 - the user has CityCoins to be returned
 
 When the above conditions are met, the contract does not emit an error and instead calculates the STX reward as 0.
 
-This CCIP will analyze any incorrectly assigned rewards since stacking started in this contract at cycle 54, then transfer the correct STX reward to each affected user.
+This CCIP will analyze any incorrectly assigned rewards since stacking started in this contract at cycle 54 until cycle 83 when stacking was disabled, then transfer the correct STX reward to each affected user.
 
 ## Specification
 
@@ -33,7 +33,7 @@ In order to analyze what users were affected, we need to determine the window in
 
 For the cycle payouts, we need to look at transactions sent to `ccd011-stacking-payouts` calling the functions `send-stacking-reward-mia` and `send-stacking-reward-nyc`.
 
-For the claims, we need to look at transactions sent to `ccd007-citycoin-stacking` calling the function `claim-stacking-reward` within that window.
+For the claims, we need to look at transactions emitting the print event `stacking-claim` from contract `ccd007-citycoin-stacking` that meet the above mentioned criteria.
 
 #### Cycle Block Heights
 
@@ -107,7 +107,32 @@ For the claims, we need to look at transactions sent to `ccd007-citycoin-stackin
 
 ### Analysis
 
-TBD
+Most claims are done by calling the function `claim-stacking-reward` of `ccd007-citycoin-stacking`.
+
+There are two contracts that call this function during deployment: `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many` and `SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.claim-many-nyc`. However, non of the calls to `claim-stacking-reward` meet the criteria. Therefore, these contracts can be ignored.
+
+All direct function calls to `claim-stacking-reward` are filtered per cycle to meet the criteria mentioned above. The filter is encoded in typescript as follows:
+
+```
+tx.tx_status === "success" && // only successful transactions
+tx.tx_type === "contract_call" && //
+tx.contract_call.function_name === "claim-stacking-reward" && // only claims
+tx.block_height &&
+(cycleNumber === 83 || tx.block_height > cycleEndStxHeight) && // only claims that happened after the end of the cycle or cycle 83
+((tx.contract_call.function_args![0].repr === '"mia"' &&
+  tx.block_height < miaPayoutHeight) ||
+(tx.contract_call.function_args![0].repr === '"nyc"' &&
+  tx.block_height < nycPayoutHeight)) && // only claims that happened before the payout height
+tx.contract_call.function_args && tx.contract_call.function_args[1].repr === `u${cycleNumber}` // only claims for the cycle in question
+```
+
+For each relevant claim, the user's amount of stacked CC is retrieved at the block height of the claim - 1. This is done by calling the `get-stacker` function on the stacking contract with the user id of the user. Note, that the stacked CC amount is set to 0 after the claim function.
+
+The missed payout amount for each claim is calculated by multiplying the total payout amount of the cycle with the user's amount of stacked CC and then dividing by the total amount of stacked CC for the cycle.
+
+The analysis is done with the scripts defined here: https://github.com/citycoins/scripts/pull/19
+
+The scripts create clarity contract code that is used in the proposal for thie CCIP.
 
 ## Backwards Compatibility
 
@@ -122,21 +147,15 @@ Currently, this would be:
 - MIA cycles 82 and 83
 - NYC cycles 82 and 83
 
-The scale factor for MIA was determined using the same formula used in CCIP-015 and calculated based on the total supply at the start block of the first cycle and the end block of the last cycle.
+Due to the liquidation of NYC, no scale factor for MIA is applied, all votes are equally counted.
 
-- MIA scale factor: TBD (prev: 0.8916)
+This CCIP also uses the updating voting methods used with CCIP-020 without the 25% participation threshold per city.
+The votes are tallied per city and available in read-only functions for information purpose only.
 
-The calculations used for the scale factor are available in the supplemental spreadsheet.
+The proposal is activated after a voting period of 2 weeks
 
-This CCIP also uses the updating voting methods used with CCIP-020, such that:
-
-- the votes are tallied per city and available in read-only functions
-- the proposal will not pass unless 25% of MIA or NYC have participated
+- if the votes for the proposal are greater than the votes against the proposal.
 
 ## Reference Implementations
 
-- TBD
-
-## Footnotes
-
-- TBD
+- The proposal contract is available here: https://github.com/citycoins/protocol/pull/83
