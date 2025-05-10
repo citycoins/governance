@@ -134,6 +134,7 @@ The missed payout amount for each claim is calculated by multiplying the total p
 The analysis is done with the scripts defined here: https://github.com/citycoins/scripts/pull/19
 
 The scripts create clarity contract code that is used in the proposal for thie CCIP. The output has been manually verified by the community.
+The generated code is available as a separate fileccip-016-contract-code.txt[^2].
 
 ## Backwards Compatibility
 
@@ -141,7 +142,7 @@ None, this is a one-time correction.
 
 ## Activation
 
-This CCIP will be voted on using a vote contract that adheres to CCIP-015[^2] using the last two active cycles from when the contract is deployed.
+This CCIP will be voted on using a vote contract that adheres to CCIP-015[^3] using the last two active cycles from when the contract is deployed.
 
 Currently, this would be:
 
@@ -150,7 +151,7 @@ Currently, this would be:
 
 Due to the liquidation of NYC, no scale factor for MIA is applied, all votes are equally counted.
 
-This CCIP also uses the updating voting methods used with CCIP-020[^3] without the 25% participation threshold per city.
+This CCIP also uses the updating voting methods used with CCIP-020[^4] without the 25% participation threshold per city.
 The votes are tallied per city and available in read-only functions for information purpose only.
 
 The proposal is activated after a voting period of 2 weeks
@@ -164,5 +165,6 @@ The proposal is activated after a voting period of 2 weeks
 ## Footnotes
 
 [^1]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd007-citycoin-stacking?chain=mainnet
-[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
-[^3]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
+[^2]: https://github.com/citycoins/governance/blob/main/ccips/ccip-016/ccip-016-contract-code.txt
+[^3]: https://github.com/citycoins/governance/blob/main/ccips/ccip-015/ccip-015-community-proposal-voting-process.md
+[^4]: https://github.com/citycoins/governance/blob/main/ccips/ccip-020/ccip-020-graceful-protocol-shutdown.md
