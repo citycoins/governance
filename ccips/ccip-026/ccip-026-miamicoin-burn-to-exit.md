@@ -93,11 +93,11 @@ The vote will:
 - Only count MIA votes
 - Be tallied and available in read-only functions
 - Require 25% of MIA participation to be considered valid
-- Begin when the contract is deployed and continue for 2016 Bitcoin blocks
+- Begin when the contract is deployed and continue for approximately 2 weeks
 
 Upon successful vote:
 
-1. The extension contract will be deployed
+1. The extension contract will be enabled in the protocol
 2. The extension will be granted access to the secondary treasury
 3. The burn-to-exit mechanism will be enabled
 
