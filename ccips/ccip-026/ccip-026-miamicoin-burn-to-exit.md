@@ -30,7 +30,7 @@ The implementation will create a new extension that:
    - This value is hard-coded, preventing access to the original 10.2M STX treasury.
    - The burn-to-exit mechanism can be disabled through a separate proposal.
 
-2. implement a fixed redemption ratio
+2. implement a fixed redemption ratio, which simulates the treasury-to-total-supply calculation used in CCIP-022 for NYC.
 
    - 1,700 STX for every 1,000,000 MiamiCoin (MIA)
    - Ratio calculation:
@@ -38,7 +38,7 @@ The implementation will create a new extension that:
      - Total MIA Supply: ~5,988,905,152 MIA
      - Ratio = (10,241,497 \* 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
 
-4. is designed to run until the contract is empty and can be refilled from future cycles.
+4. is designed to run until the contract is empty and can be refilled from stacking rewards from the main treasury.
 
 5. Functionality:
 
@@ -73,7 +73,7 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 - The original city treasury (~10.2M STX) remains untouched
 - Stacking rewards from the original treasury will continue same as before
 - The extension will maintain a public record of all redemptions
-- The burn-to-exit mechanism will remain enabled until the treasury is empty, and can be refilled.
+- The burn-to-exit mechanism will remain enabled until the treasury is empty, and can be refilled from stacking rewards from the main treasury.
 - The extension can be disabled through a separate governance proposal if needed.
 - The secondary treasury contains 851,724 STX (as of cycle 115), sufficient to redeem ~501M MIA.
 - Participation is optional, allowing holders to maintain positions if desired
@@ -87,7 +87,6 @@ This CCIP supplements CCIP-020 and CCIP-024 but is not backwards compatible.
 This CCIP will be voted on using a vote contract that adheres to CCIP-015 using the last two active stacking cycles for the protocol:
 
 - MIA cycles 82 and 83
-- NYC cycles 82 and 83
 
 No scale factor is required.
 
@@ -95,7 +94,6 @@ The vote will:
 
 - Only count MIA votes
 - Be tallied and available in read-only functions
-- Require 25% of MIA participation to be considered valid
 - Begin when the contract is deployed and continue for approximately 2 weeks
 
 Upon successful vote:
