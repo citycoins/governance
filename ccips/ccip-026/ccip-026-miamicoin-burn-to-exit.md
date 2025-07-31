@@ -23,10 +23,12 @@ Following the MiamiCoin community signal vote[^1] and the graceful protocol shut
 
 The implementation will create a new extension that:
 
-1. can access the approximately 440,000 STX secondary treasury while enabled
+1. will call `revoke-delegate-stx` on the rewards treasury to make the STX liquid.
 
-   - value hard-coded preventing access to the original 10.2M treasury
-   - burn to exit can be disabled through a separate proposal
+2. can access the 851,724 STX in the secondary treasury (as of cycle 115) while enabled.
+
+   - This value is hard-coded, preventing access to the original 10.2M STX treasury.
+   - The burn-to-exit mechanism can be disabled through a separate proposal.
 
 2. implement a fixed redemption ratio
 
@@ -36,13 +38,14 @@ The implementation will create a new extension that:
      - Total MIA Supply: ~5,988,905,152 MIA
      - Ratio = (10,241,497 \* 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
 
-3. Functionality:
+4. is designed to run until the contract is empty and can be refilled from future cycles.
 
-   - Any MIA holder can participate
-   - No minimum or maximum redemption amount
-   - MIA tokens will be burned upon redemption
-   - STX will be transferred to the participant's wallet
-   - Contract will continue functioning as long as enabled
+5. Functionality:
+
+   - Any MIA holder can participate.
+   - Claims are limited to 10,000,000 MIA per address in a single transaction. If a user attempts to burn more, the transaction will process 10,000,000 MIA, and the remainder of the user's balance will be unaffected (soft-fail).
+   - MIA tokens will be burned upon redemption.
+   - STX will be transferred to the participant's wallet.
 
 ### Technical Implementation
 
@@ -70,9 +73,9 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 - The original city treasury (~10.2M STX) remains untouched
 - Stacking rewards from the original treasury will continue same as before
 - The extension will maintain a public record of all redemptions
-- The burn-to-exit mechanism will remain enabled indefinitely
-- The extension can be disabled through a separate governance proposal if needed
-- The secondary treasury contains ~440,000 STX, sufficient to redeem ~260M MIA
+- The burn-to-exit mechanism will remain enabled until the treasury is empty, and can be refilled.
+- The extension can be disabled through a separate governance proposal if needed.
+- The secondary treasury contains 851,724 STX (as of cycle 115), sufficient to redeem ~501M MIA.
 - Participation is optional, allowing holders to maintain positions if desired
 
 ## Backwards Compatibility
