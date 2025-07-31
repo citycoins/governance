@@ -30,7 +30,7 @@ The implementation will create a new extension that:
    - This value is hard-coded, preventing access to the original 10.2M STX treasury.
    - The burn-to-exit mechanism can be disabled through a separate proposal.
 
-2. implement a fixed redemption ratio, which simulates the treasury-to-total-supply calculation used in CCIP-022 for NYC.
+3. implement a fixed redemption ratio, which simulates the treasury-to-total-supply calculation used in CCIP-022 for NYC.
 
    - 1,700 STX for every 1,000,000 MiamiCoin (MIA)
    - Ratio calculation:
@@ -80,7 +80,7 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 
 ## Backwards Compatibility
 
-This CCIP supplements CCIP-020 and CCIP-024 but is not backwards compatible.
+This CCIP supplements CCIP-020 and CCIP-024 by introducing a new, independent mechanism that does not alter the contracts or functionality established by the supplemented CCIPs.
 
 ## Activation
 
