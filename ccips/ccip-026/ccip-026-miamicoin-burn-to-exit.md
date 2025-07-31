@@ -38,7 +38,7 @@ The implementation will create a new extension that:
      - Total MIA Supply: ~5,988,905,152 MIA
      - Ratio = (10,241,497 \* 1,000,000) / 5,988,905,152 = ~1,700 STX per 1M MIA
 
-4. is designed to run until the contract is empty and can be refilled from stacking rewards from the main treasury.
+4. is designed to run until the contract is empty.
 
 5. Functionality:
 
