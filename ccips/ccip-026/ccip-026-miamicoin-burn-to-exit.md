@@ -6,6 +6,8 @@
 | ------------- | ------------------------------------- |
 | Title         | MiamiCoin Burn to Exit                |
 | Author(s)     | Jason Schrader jason@joinfreehold.com |
+|               | Friedger Müffke mail@friedger.de      |
+|               | hanjumeok wnsgur5144@gmail.com        |
 | Consideration | Governance, Economic                  |
 | Type          | Standard                              |
 | Status        | Draft                                 |
