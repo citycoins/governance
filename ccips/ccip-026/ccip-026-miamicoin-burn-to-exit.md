@@ -34,12 +34,13 @@ The implementation will create a new extension that:
 
 3. calculates the redemption ratio dynamically at initialization, using the same treasury-to-total-supply calculation used in CCIP-022 for NYC.
 
-   - Ratio = (Rewards Treasury Balance × Scale Factor) / Total MIA Supply
+   - Ratio = Mining Treasury Balance / Total MIA Supply
+   - The ratio represents each MIA holder's proportional share as if the mining treasury were being liquidated.
    - The ratio is calculated once when redemptions are initialized and remains fixed thereafter.
-   - Example estimate (as of cycle 115):
-     - Rewards Treasury Balance: ~851,724 STX
+   - Example estimate (as of cycle 126):
+     - Mining Treasury Balance: ~10,241,497 STX
      - Total MIA Supply: ~5,988,905,152 MIA (V1 + V2)
-     - This would yield approximately 142 STX per 1M MIA
+     - This yields approximately 1,710 STX per 1M MIA
 
 4. is designed to run until the treasury is empty.
 
@@ -76,12 +77,16 @@ The extension will only have access to the MIA rewards treasury (ccd002-treasury
 
 ### Treasury Management
 
-- The original city treasury (~10.2M STX) remains untouched
-- Stacking rewards from the original treasury will continue same as before
+- The original city treasury (~10.2M STX) remains untouched and continues stacking
+- The rewards treasury receives stacking payouts from two sources (per CCIP-012[^7]/CCIP-013[^8]):
+  - Its own stacked STX (compounding)
+  - The mining treasury's stacking payouts
+- The rewards treasury currently contains ~1,217,764 STX (as of cycle 126)
+- Upon activation, `revoke-delegate-stx` will be called to make the rewards treasury STX liquid for redemptions
+- The rewards treasury will continue to be refilled by stacking payouts as long as the mining treasury remains stacked
 - The extension will maintain a public record of all redemptions
-- The burn-to-exit mechanism will remain enabled until the treasury is empty
+- The burn-to-exit mechanism will remain enabled until the rewards treasury is empty
 - The extension can be disabled through a separate governance proposal if needed
-- The secondary treasury contains ~851,724 STX (as of cycle 115)
 - Participation is optional, allowing holders to maintain positions if desired
 
 ## Backwards Compatibility
@@ -106,7 +111,7 @@ Upon successful vote (more yes votes than no votes):
 
 1. The extension contract (ccd013-burn-to-exit-mia) will be enabled in the DAO
 2. The `initialize-redemption` function will be called to start redemptions
-3. The redemption ratio will be locked based on current treasury balance and total supply
+3. The redemption ratio will be locked based on the mining treasury balance and total MIA supply
 
 ## Reference Implementations
 
@@ -121,3 +126,5 @@ Upon successful vote (more yes votes than no votes):
 [^4]: https://explorer.hiro.so/txid/SP8A9HZ3PKST0S42VM9523Z9NV42SZ026V4K39WH.ccd002-treasury-mia-mining-v3?chain=mainnet
 [^5]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/proposals/ccip026-miamicoin-burn-to-exit.clar
 [^6]: https://github.com/citycoins/protocol/blob/fix/implement-ccip-026/contracts/extensions/ccd013-burn-to-exit-mia.clar
+[^7]: https://github.com/citycoins/governance/blob/main/ccips/ccip-012/ccip-012-stabilize-emissions-and-treasuries.md
+[^8]: https://github.com/citycoins/governance/blob/main/ccips/ccip-013/ccip-013-stabilize-protocol-and-simplify-contracts.md
