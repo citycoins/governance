@@ -10,8 +10,9 @@
 |               | hanjumeok wnsgur5144@gmail.com        |
 | Consideration | Governance, Economic                  |
 | Type          | Standard                              |
-| Status        | Activation-In-Progress                |
+| Status        | Ratified                              |
 | Created       | 2025-02-17                            |
+| Ratified      | 2026-05-15                            |
 | License       | BSD-2-Clause                          |
 | Supplements   | CCIP-020, CCIP-024                    |
 
@@ -134,24 +135,28 @@ Voting ran from Bitcoin block 946,772 to 948,788 (cycles 133–134) and closed w
 
 `is-executable` returns `(ok true)`; `is-vote-active` returns `(some false)`.
 
-### Execution Status
+### Ratification & Execution
 
-Execution is performed by the CityCoins DAO `ccd001-direct-execute` extension[^12], a 3-of-5 multisig over the approver set established by CCIP-012. As of writing, **1 of 3 required signals** has been collected:
+The proposal cleared the `ccd001-direct-execute` 3-of-5 multisig over the approver set established by CCIP-012. Three signals were collected:
 
-| # | Signer | Tx | Bitcoin block | Date |
+| # | Signer | Tx | Bitcoin block | Date (UTC) |
 | - | ------ | -- | -------------:| ---- |
 | 1 | friedger.btc (`SPN4Y…8C3X`) | `0x1f1b9c22d60b4690e21dceaafb83661f0ae40cdf929a52ae433b35fd4e4e99bf` | 948,802 | 2026-05-10 |
+| 2 | `SP3YY…HJQ` | `0x04cd49c2f08ddb5b74ead277995260b1d451e9da184be2a63180165fe360aa80` | 949,528 | 2026-05-15 |
+| 3 | `SP7DG…JDE` | `0x5d9e291f55b59df50608c64fe428e1d0201be4cb760b7db0004e752ea1c6810d` | 949,551 | 2026-05-15 |
 
-Two additional signals are required before `ccd001-direct-execute` calls `ccip026-miamicoin-burn-to-exit.execute`. That single transaction will, atomically:
+The third signal completed the threshold and triggered `ccd001-direct-execute` to call `ccip026-miamicoin-burn-to-exit.execute`, which atomically:
 
-1. Enable the `ccd013-burn-to-exit-mia` extension in the DAO
-2. Call `initialize-redemption`, which:
-   - Revokes the rewards treasury's stacking delegation (`revoke-delegate-stx`)
-   - Snapshots `mining-treasury-ustx` = mining treasury locked + unlocked balance via `stx-account`
-   - Computes and stores the redemption ratio (`mining-treasury-ustx * 10^6 / total-MIA-supply`)
-   - Sets `redemptions-enabled = true`
+1. Enabled the `ccd013-burn-to-exit-mia` extension in the DAO
+2. Called `initialize-redemption`, which:
+   - Revoked the rewards treasury's stacking delegation (`revoke-delegate-stx`)
+   - Snapshotted `mining-treasury-ustx` from the mining treasury's locked + unlocked balance via `stx-account`
+   - Computed and stored the redemption ratio (`mining-treasury-ustx * 10^6 / total-MIA-supply`)
+   - Set `redemptions-enabled = true`
 
-The `ccd001-direct-execute` extension itself has a sunset around tenure 277,428 (early January 2027); after that the proposal can no longer be executed through this path. Proposals have no per-proposal expiry, and signals cannot be retracted.
+**Locked redemption ratio:** `1,710` (µSTX-per-µMIA × 10⁶), equivalent to **1,710 STX per 1,000,000 MIA**.
+
+Redemptions opened at Stacks block 7,961,948 / Bitcoin block 949,551 (2026-05-15) and are running. As of 2026-05-21, ~906.5M MIA has been burned and ~1,550,074 STX has been paid out across the redemption window; the rewards treasury continues to refill from stacking yield on the mining treasury until the latter is drained.
 
 ## Reference Implementations
 
