@@ -36,6 +36,7 @@ None
 | [CCIP-022](./ccips/ccip-022/ccip-022-citycoins-treasury-redemption-nyc.md)         | 2024-04-23 | CityCoins Treasury Redemption NYC         |
 | [CCIP-024](./ccips/ccip-024/ccip-024-miamicoin-community-signal-vote.md)           | 2024-08-01 | Miamicoin Community Signal Vote           |
 | [CCIP-025](./ccips/ccip-025/ccip-025-extend-direct-execute-sunset-period-3.md)     | 2024-10-23 | Extend Sunset Period 3                    |
+| [CCIP-026](./ccips/ccip-026/ccip-026-miamicoin-burn-to-exit.md)                    | 2025-02-17 | MiamiCoin Burn to Exit                    |
 
 ## How to Get Involved
 
