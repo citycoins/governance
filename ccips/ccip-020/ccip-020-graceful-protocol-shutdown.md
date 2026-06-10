@@ -42,7 +42,7 @@ Mining claims are based on block heights and should be routed to the correct con
 | miamicoin-core-v2         | 58921       | 96779     |
 | newyorkcitycoin-core-v2   | 58925       | 96779     |
 | ccd006-citycoin-mining    | 96779       | 107389    |
-| ccd006-citycoin-mining-v2 | 107389      | TBD       |
+| ccd006-citycoin-mining-v2 | 107389      | 148184    |
 
 ### Disable Stacking
 
