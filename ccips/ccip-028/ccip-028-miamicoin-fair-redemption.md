@@ -95,147 +95,183 @@ contract, not a configuration change.
 
 ## Specification
 
-### Overview
+### Flow of funds
 
 ```
   pox-5 rewards (sBTC)
           |
           v
   ccd014-pox5-staking-mia
-          |  forward-rewards           (permissionless, already deployed)
+          |  forward-rewards                 (existing, permissionless)
           v
   ccd002-treasury-mia-rewards-v3
-          |  withdraw-ft via fund-from-treasury   (authorised by this proposal)
+          |  sBTC, whole balance              (new permission, see Activation)
           v
-  ccd016-swap-vault-mia-v2             (new)
-          |  1. patience:    jing-place     resting ask at oracle mid + 1 bp
-          |  2. liquidation: jing-reclaim, router-swap   at oracle floor
-          |  fuel-fair-book                 STX only to ccd015
+  ccd016-swap-vault-mia-v2  <---->  Jing market / smart router
+          |  STX, whole balance               (sBTC out, STX back to the vault)
           v
-  ccd015-redemption-book-mia-stx       (new)
-          |  cross-book: pay sellers in STX, cheapest first, at or below par
+  ccd015-redemption-book-mia-stx
+          |  STX to sellers, at or below par
           v
       MIA v2 burned
 ```
 
-Two new contracts (the book and the swap vault) and one activation proposal are introduced.
+Every arrow is a fixed destination. No caller chooses where funds go, and no
+caller chooses an amount: each step moves the whole available balance, or a
+bounded chunk of it.
 
-### The Book
+The staked treasury in `ccd014-pox5-staking-mia` is not touched. Only staking
+rewards flow through this path.
 
-`ccd015-redemption-book-mia-stx` is an STX-denominated fork of the production
-book `SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.mia-fair-faktory-v2`.
+### Contracts and permissions
 
-Kept unchanged: the sorted offer book, insertion-sort placement, partial fills,
-cheapest-first settlement, and cancellation at any time.
+| Contract                          | New | DAO extension | Holds            |
+| --------------------------------- | --- | ------------- | ---------------- |
+| `ccd002-treasury-mia-rewards-v3`  | no  | yes (exists)  | sBTC rewards     |
+| `ccd016-swap-vault-mia-v2`        | yes | yes (enabled by this CCIP) | sBTC being sold, STX proceeds |
+| `ccd015-redemption-book-mia-stx`  | yes | no            | STX budget, MIA v2 offered by sellers |
 
-Changed:
+The swap vault is the only contract that gains DAO extension rights. It needs
+them to withdraw sBTC from the rewards treasury. Extension rights are not
+limited to one token or one treasury, so the vault's code is part of what is
+being ratified. That code uses the rights only to withdraw sBTC from
+`ccd002-treasury-mia-rewards-v3`.
 
-- **The contract is the only buyer.** `cross-book` is permissionless, takes no
-  arguments, and spends only the STX the contract already holds. There is no
-  settler leg and no surplus to capture.
-- **All acquired MIA is burned** in the same transaction.
-- **Asks are in uSTX**, so the par check is a direct comparison against the
-  stored snapshot, with no oracle.
+The book is not an extension. It can spend only what it holds.
 
-Book limits: at most 50 offers, one offer per address, a minimum of 100,000 MIA
-(set at activation) and a maximum of 10,000,000 MIA per offer. When the book is
-full, a new offer is accepted only at a strictly better price, and the worst
-offer is refunded. Only MIA v2 is accepted. Par counts v1 supply as well, so v1
-holders must convert to v2 before they can offer.
+Functions marked "DAO" below can be called only by `base-dao` or an enabled
+extension, which in practice means an executed proposal.
 
-The book has no STX withdrawal function. STX that cannot be matched against
-offers at or below par stays in the book until eligible offers arrive.
+### The Book: `ccd015-redemption-book-mia-stx`
 
-The accounting consequence of burning is that a fill retires a claim worth
-`par * amount` on the treasury while paying only the seller's ask. Payment comes
-from staking yield and never debits the STX treasury, so the treasury `T` is
-unchanged and only supply `S` shrinks:
+The book is based on the deployed fair book
+`SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.mia-fair-faktory-v2`, in production
+against `ccd013-burn-to-exit-mia` since cycle 138 (see Related Work). It keeps
+that book's offer mechanics: a sorted list of sell offers, cheapest first,
+partial fills, and cancellation at any time.
+
+It differs from the deployed book in three ways:
+
+- **The DAO is the only buyer.** The deployed book lets a settler bring STX and
+  receive MIA. This book spends only STX it already holds, which comes from the
+  swap vault.
+- **All MIA bought is burned.** Nothing is delivered to a settler and no spread
+  is retained.
+- **Asks and par are both in STX.** No price oracle is involved in the book.
+
+**Funds in.** STX from the swap vault. MIA v2 from sellers posting offers.
+
+**Funds out.** STX only to sellers whose offers are filled, at their asks. MIA
+only back to its owner (on cancel or eviction) or into a burn. There is no
+function that withdraws STX, including for the DAO. STX that cannot be matched
+against eligible offers stays in the book until such offers arrive.
+
+**Main functions.**
+
+| Function        | Who    | Effect |
+| --------------- | ------ | ------ |
+| `place-offer`   | anyone | Deposits MIA v2 with an ask in STX. The ask must be at or below par. |
+| `change-offer`  | owner  | Changes the ask, or adds MIA to the offer. Still at or below par. |
+| `cancel-offer`  | owner  | Returns the offered MIA. Works even while the book is paused. |
+| `cross-book`    | anyone | Spends the book's STX on offers at or below par, cheapest first, and burns the MIA bought. |
+| `update-par`    | DAO    | Writes par from the formula below. Takes no value as input. |
+| `set-paused`    | DAO    | Pauses or resumes offers and crossing. |
+| `set-min-deposit` | DAO  | Sets the minimum offer size. |
+
+**Limits.** At most 50 offers and one offer per address. Each offer is between
+the minimum (100,000 MIA at activation) and 10,000,000 MIA. When the book is
+full, a new offer must be cheaper per MIA than the worst resting offer, and the
+worst offer is refunded to its owner. Only MIA v2 is accepted. Par counts v1
+supply as well, so v1 holders must convert to v2 before offering.
+
+### Par
+
+Par is the DAO's backing per MIA, stored in the book as a snapshot:
+
+```
+par = STX held by ccd002-treasury-mia-mining-v3 and ccd014-pox5-staking-mia
+      (locked and unlocked)
+      / (MIA v1 supply + MIA v2 supply)
+```
+
+Only the DAO can update par, and the update takes no value: it writes whatever
+the formula returns at that moment. A proposal decides **when** par moves,
+never **what** it moves to.
+
+Par is set once at activation. Each later refresh is a separate Direct Execute
+proposal, ideally between rounds when the book has been crossed, so that par
+stays fixed while sellers price against it. Offers are checked against par when
+placed and again when crossed, so a refresh never fills an offer above the new
+par.
+
+Each fill burns MIA worth `par * amount` of the treasury while paying only the
+seller's ask. Payment comes from staking rewards, not from the treasury, so the
+treasury `T` is unchanged and only supply `S` shrinks:
 
 ```
 par_before = T / S           par_after = T / (S - burned)
 ```
 
-The full retired claim therefore accrues to holders who did not sell. The
-discount does not create that surplus. It determines how much MIA is retired per
-STX of yield, which is why the book fills cheapest first.
+The retired claim accrues to the holders who did not sell. Cheaper asks retire
+more MIA per STX of rewards, which is why the book fills cheapest first.
 
+There is no fixed-ratio redemption in this design. A holder exits by selling
+into the book at or below par.
 
-### The Swap Vault
+### The Swap Vault: `ccd016-swap-vault-mia-v2`
 
-A new DAO extension that holds sBTC and converts it to
-STX. The price comes from a signed Pyth Lazer update that the Jing market verifies, and the mid
-must agree with the on-chain DIA STX/BTC rate within a configurable band. A
-caller can choose only when to act.
+The vault converts the sBTC rewards to STX and sends the STX to the book.
 
-Required properties, as implemented:
+**Funds in.** sBTC, only from `ccd002-treasury-mia-rewards-v3`.
 
-- **Permissionless funding, no arguments.** `fund-from-treasury` pulls the
-  rewards treasury's whole sBTC balance. The budget is the balance.
-- **Hard-coded destinations.** STX leaves only through `fuel-fair-book`, to the
-  book. sBTC leaves only through `dao-recall-sbtc`, back to the rewards
-  treasury, and only by proposal.
-- **A batch clock.** Funding an empty vault opens a window of 288 Bitcoin blocks
-  (about two days, at most one week). Funds that arrive while the window is open
-  join the batch without resetting the clock.
+**Funds out.**
 
-Each batch is sold in two phases.
+- STX only to the book.
+- sBTC only to the Jing sBTC/STX market and smart router while selling, or back
+  to `ccd002-treasury-mia-rewards-v3` by proposal. sBTC resting on the Jing
+  market remains the vault's position and can only be reclaimed to the vault.
+- A configurable amount of STX is kept back to pay oracle fees, if any (0 at
+  activation).
 
-1. **Patience (window open).** Anyone may call `jing-place`, which rests the
-   vault's entire sBTC balance on the Jing sBTC/STX order book as a pegged ask
-   at the oracle mid + 1 bp. The ask is turned off whenever the mid falls more
-   than the leeway (10%) below the mid at placement, and turns back on when it
-   recovers. The vault never sells to existing orders during this phase, so
-   nobody can sell it below the mid while the window is open.
-2. **Liquidation (window elapsed).** Anyone may call `jing-reclaim` to recover
-   unsold sBTC, then `router-swap` to sell it through the Jing smart router.
-   The router can split across the Jing book, Bitflow DLMM, Bitflow XYK and
-   Velar. Every leg must clear above the floor `mid * (1 - slippage)`
-   (slippage 1%). Each call sells at most one chunk (0.01 sBTC), with at least
-   one Bitcoin block between sales. Whatever no venue takes above the floor
-   stays in the vault.
+**Pricing.** Callers never set a price. Every sale is bounded by the BTC/STX
+mid from a signed Pyth Lazer update, which is verified on-chain and must agree
+with the DIA on-chain rate within a band (10% at activation). A caller can only
+choose when to act.
 
-**Front-running exposure.** The maker phase fills at the oracle mid and cannot
-be sandwiched. The liquidation phase does touch AMM pools. The oracle floor caps
-what a sandwich can extract at the slippage times the chunk, and an attacker pays
-the venue fee twice. With a 1% floor, Bitflow XYK and DLMM (50 bps per side) sit
-at break-even. Velar (30 bps per side) leaves at most 0.4% of a 0.01 sBTC chunk
-per call. The one-block cooldown stops an attacker from chaining chunks within a
-block. These bounds depend on the chunk size, the slippage setting and venue
-fees, so the parameters should be revisited if any of those change.
+**Selling.** Each funding of an empty vault opens a batch with a window of
+288 Bitcoin blocks (about two days). sBTC arriving during the window joins the
+batch.
 
-**DAO-only tools.** By proposal, the DAO can move the floor (`jing-refloor`),
-take against the Jing book at the floor (`jing-take`), run manual or emergency
-router splits (`router-swap-split`, `router-swap-split-dia`), reclaim or recall
-funds at any time, and change any parameter within hard-coded bounds.
+1. While the window is open, the vault's sBTC can only rest on the Jing order
+   book as an ask 1 bp above the mid. It is never sold below the mid in this
+   phase, and the ask switches off if the mid falls more than 10% below its
+   level at placement.
+2. After the window, any unsold sBTC can be reclaimed and sold through the Jing
+   smart router (Jing book, Bitflow, Velar) at no less than 1% below the mid.
+   Each sale is at most 0.01 sBTC, with at least one Bitcoin block between
+   sales. Anything no venue takes above that floor stays in the vault.
 
-### Redemption-rate/Par
+**Main functions.**
 
-The book `ccd015-redemption-book-mia-stx` stores par as a snapshot of the DAO's
-formula:
+| Function             | Who    | Effect |
+| -------------------- | ------ | ------ |
+| `fund-from-treasury` | anyone | Moves the rewards treasury's whole sBTC balance into the vault. |
+| `jing-place`         | anyone | During the window: rests the vault's sBTC on the Jing book at mid + 1 bp. |
+| `jing-reclaim`       | anyone | After the window: returns sBTC from the Jing market to the vault. |
+| `router-swap`        | anyone | After the window: sells one chunk through the smart router at the floor. |
+| `fuel-fair-book`     | anyone | Sends the vault's STX, minus the oracle-fee reserve, to the book. |
+| `close-batch`        | anyone | Clears the batch clock once the vault is empty. |
+| `dao-recall-sbtc`    | DAO    | Returns all sBTC held by the vault to the rewards treasury. |
+| `dao-reclaim`        | DAO    | Returns sBTC from the Jing market to the vault at any time. |
+| `jing-refloor`, `jing-take`, `router-swap-split`, `router-swap-split-dia` | DAO | Manual selling tools, including an emergency mode priced from DIA only. All prices stay oracle-bound. |
+| `set-*`              | DAO    | Changes window, leeway, slippage, chunk size, spread, DIA band, cooldown and oracle-fee reserve, each within a hard-coded maximum. |
 
-```
-par = (mining-v3 locked + unlocked + ccd014 locked + unlocked) STX
-      / (MIA v1 supply * 10^6 + MIA v2 supply)
-```
-
-The treasury is read with `stx-account`, so stacked (locked) STX is counted.
-`update-par` takes no arguments and can only be called by the DAO or an enabled
-extension. It writes the formula's current output. A proposal therefore decides
-**when** par moves, never **what** it moves to.
-
-Par must stay fixed while offers are resting, or sellers cannot price against it.
-It should not stay fixed forever, because each round of burns raises what the
-remaining holders are owed. This proposal sets par once at activation. Each later
-refresh is a separate `ccd001-direct-execute` proposal that calls `update-par`,
-ideally between rounds when the book has been crossed. Offers are checked
-against par both when they are placed and when the book is crossed, so a
-refresh cannot leave the book filling above par.
-
-There is no fixed-ratio redemption in this design. A holder exits by selling into
-the book at or below par. A holder who wants exactly par posts at par and waits
-for rewards to reach their position.
-
-### 2. Swap vault (sBTC -> STX)
+**Front-running exposure.** The resting ask fills at the oracle mid and cannot
+be sandwiched. Router sales do touch AMM pools. The floor caps what a sandwich
+can extract at 1% of a 0.01 sBTC chunk, and the attacker pays the venue fee on
+both legs, which makes it unprofitable on Bitflow and limits it to about 0.4%
+of a chunk on Velar. These bounds depend on chunk size, slippage and venue fees,
+and should be revisited if those change.
 
 ## Disclosure
 
@@ -254,55 +290,45 @@ the ability to recall sBTC and to replace the vault by proposal.
 
 ## Rationale
 
-**Why a maker-first order book instead of an RFQ desk?** An earlier draft of
-this CCIP specified a request-for-quote desk, where the price is committed
-before settlement. RFQ needs a market maker to respond to each request, and the
-vault needs a way to recover if none does. The maker-first design removes the
-counterparty dependency. The vault rests at the oracle mid, which any taker can
-fill, and falls back to oracle-floored router sales only after the window
-elapses. No one is needed to quote, no keeper key exists, and no caller can
-choose the price.
+The earlier draft of this CCIP left four questions open. They are decided as
+follows, and each can be changed later by proposal.
 
-**Why not an AMM swap alone?** A recurring swap of predictable size on a
-predictable schedule against a public pool invites front-running. That is the
-same failure the fair order book removes from the redemption side. Here, AMM
-pools are used only after the maker phase, in capped chunks, behind an oracle
-floor.
+**Par refresh: formula-locked, timed by proposal.** Par is set at activation
+and refreshed by separate Direct Execute proposals, ideally between rounds. An
+automatic refresh would move par while offers rest, and sellers could no longer
+price against it. Because the value always comes from the formula, approvers
+decide the timing but cannot choose a number.
 
-**Why not denominate the order book in sBTC?** Par is not a market price. It is
+**Spread: burned.** The DAO is the only buyer and burns all MIA it acquires.
+Seeding a MIA/sBTC pool instead would create a second venue for MIA and has real
+value. It also requires the DAO to hold and manage a position, decide who
+supplies the paired side, and accept impermanent loss. Burning requires no
+ongoing decision and benefits every holder in proportion. If the community
+prefers the liquidity route, it should be proposed separately.
+
+**Swap cadence: one batch per funding.** Each funding opens a two-day window in
+which the sBTC rests on an order book at the oracle mid, followed by capped
+router sales. Funding during an open window joins the batch.
+
+**Venue: a maker-first order book with a router fallback, not an RFQ desk.** The
+earlier draft specified a request-for-quote desk, where the price is committed
+before settlement. RFQ needs a market maker to respond to each request, and a
+recovery path if none does. Resting at the oracle mid removes that dependency:
+any taker can fill it, no keeper key exists, and no caller can choose the
+price. A plain AMM swap of predictable size on a predictable schedule invites
+front-running, the failure the fair order book removes from the redemption
+side, so AMM pools are used only after the window, in capped chunks, behind an
+oracle floor. The venue is fixed in the vault; changing it needs a new vault and
+a proposal.
+
+**Why the book is denominated in STX.** Par is not a market price. It is
 treasury arithmetic: a known quantity of STX behind a known supply of MIA,
 verifiable by anyone. Nothing backs MIA in sBTC, so an sBTC par would have to be
-derived from an external price rather than from the treasury. Holders would
-redeem against an estimate instead of against the backing.
+derived from an external price rather than from the treasury.
 
-**Why not distribute sBTC directly to redeemers?** The same problem in another
-place. It requires a MIA/sBTC price at distribution time, which must come from an
-oracle.
-
-**Why burn rather than seed liquidity?** Seeding a MIA/sBTC pool would create a
-second venue for MIA and has real value. It also requires the DAO to hold and
-manage a position, decide who supplies the paired side, and accept impermanent
-loss. Burning requires no ongoing decision and benefits every holder in
-proportion. If the community prefers the liquidity route, it should be proposed
-separately.
-
-**Why refresh par by proposal?** An automatic refresh would let par move while
-offers rest, and sellers could no longer price against it. A proposal per
-refresh keeps the timing a deliberate decision. The formula still fixes the
-value, so approvers cannot choose a number.
-
-## Decisions on Earlier Open Questions
-
-The earlier draft left four questions open. The reference implementation decides
-them as follows. Each can be changed later by proposal.
-
-1. **Par refresh.** Set at activation, then refreshed by a separate Direct
-   Execute proposal calling `update-par`, ideally between rounds.
-2. **Spread.** Burned. The DAO is the only buyer and burns all MIA it acquires.
-3. **Swap cadence.** One batch per funding. A 288-block maker window, then
-   chunked router liquidation. Funding during an open window joins the batch.
-4. **Venue.** The Jing market and router are named in the vault as constants.
-   Changing venue requires a new vault and a proposal.
+**Why rewards are not distributed as sBTC directly.** It would require a
+MIA/sBTC price at distribution time, which must come from an oracle, and moves
+the pricing problem rather than removing it.
 
 ## Backwards Compatibility
 
@@ -318,11 +344,48 @@ and repost. Nothing migrates automatically.
 
 Execution through `ccd001-direct-execute` with 3 of 5 approver signals because this proposal is the continuation of CCIP-026 after CCIP-027.
 
-No tokenholder vote is held.
+No tokenholder vote is held. The approver set, threshold and sunset of
+`ccd001-direct-execute` are not changed.
 
-Activation enables the swap vault as an extension and allows to move sBTC from the MIA rewards treasury. It also sets lauch paramters for the vault and the book. 
+Activation enables the swap vault as an extension and allows to move sBTC from the MIA rewards treasury. It also sets launch parameters for the vault and the book.
 
 Activation does not move any funds and performs no swap.
+
+### What the proposal does when executed
+
+When the third approver signals, `ccd001-direct-execute` executes
+`ccip028-activate-mia-fair-redemption` through `base-dao`. In one transaction,
+the proposal:
+
+1. Checks that it is being executed by `base-dao` and that the book's par has
+   not been set yet. Otherwise it fails and nothing changes.
+2. Enables `ccd016-swap-vault-mia-v2` as a DAO extension. This is the only new
+   extension.
+3. Allows sBTC on `ccd002-treasury-mia-rewards-v3`. CCIP-027 already did this,
+   so this step only confirms it.
+4. Sets the swap vault's launch parameters:
+
+   | Setting                      | Value                       |
+   | ---------------------------- | --------------------------- |
+   | Batch window                 | 288 Bitcoin blocks          |
+   | Leeway for the resting ask   | 10% below the mid           |
+   | Router floor                 | 1% below the mid            |
+   | Router chunk                 | 0.01 sBTC                   |
+   | Resting ask spread           | 1 bp above the mid          |
+   | Pyth / DIA agreement band    | 10%                         |
+   | Router cooldown              | 1 Bitcoin block             |
+   | Emergency DIA-only floor     | 10% below the DIA rate      |
+   | Oracle-fee reserve           | 0 STX                       |
+
+5. Sets the book's minimum offer to 100,000 MIA.
+6. Sets par from the formula (2,042.50 STX per 1,000,000 MIA as measured on
+   2026-11-06; the value at execution applies).
+7. Unpauses the book.
+
+If any step fails, the whole execution is reverted and the proposal can be
+executed again. After activation, every step in the flow of funds is a call
+anyone can make. Someone still has to submit those calls; the price-bearing
+vault calls need a fresh signed Pyth Lazer update.
 
 ## Related Work
 
@@ -341,8 +404,8 @@ transaction, paid three sellers at exactly the prices they had posted, and left
 the redemption treasury at zero. The settler took no profit, being capped at par
 by construction.
 
-That implementation lets a settler buy and retains the spread. Section 3 replaces
-the settler with the DAO and burns everything.
+That implementation lets a settler buy and retains the spread. The new book
+replaces the settler with the DAO and burns everything.
 
 ## Reference Implementation
 
