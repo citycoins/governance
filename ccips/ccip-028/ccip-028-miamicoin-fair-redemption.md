@@ -66,21 +66,26 @@ was correct when it was set. Every exit round since has burned MIA, shrinking
 supply while the treasury is untouched, so the true ratio has risen and holders
 redeeming today receive less than their claim is worth.
 
-Measured on-chain on 2026-08-13:
+Measured on-chain on 2026-11-06 (Stacks block 9,427,614, Bitcoin block 974,810):
 
-| Input                          | Value                     |
-| ------------------------------ | ------------------------- |
-| MIA v1 supply                  | 260,130,901 MIA           |
-| MIA v2 supply                  | 4,754,074,853.491373 MIA  |
-| Combined supply                | 5,014,205,754 MIA         |
-| Treasury, now in ccd014        | 10,241,497.066794 STX     |
-| Ratio by the DAO's formula     | 2042                      |
-| Ratio currently paid           | 1710                      |
+| Input                                     | Value                         |
+| ----------------------------------------- | ----------------------------- |
+| MIA v1 supply                             | 260,130,901 MIA               |
+| MIA v2 supply                             | 4,754,074,853.491373 MIA      |
+| Combined supply                           | 5,014,205,754.491373 MIA      |
+| `ccd002-treasury-mia-mining-v3`           | 0 STX                         |
+| `ccd014-pox5-staking-mia` (locked)        | 10,241,497.066794 STX         |
+| Treasury, total                           | 10,241,497.066794 STX         |
+| Ratio by the DAO's formula                | 2,042.50 STX per 1M MIA       |
+| Ratio currently paid by ccd013            | 1,710 STX per 1M MIA          |
 
-The formula gives 19.4% more than holders are currently paid. The figure moves
-with every burn, so what should be ratified is the formula, not the number above.
-A mainnet-fork rehearsal of the activation computed 2,042.49 STX per 1,000,000
-MIA.
+The formula gives 19.4% more than holders are currently paid. The inputs are
+unchanged from the first measurement on 2026-08-13: no MIA has been burned
+since, which is consistent with `ccd013` reading an empty mining treasury.
+The figure will move with every burn once this proposal is active, so what
+should be ratified is the formula, not the number above. A mainnet-fork
+rehearsal of the activation computed 2,042.49 STX per 1,000,000 MIA (the book
+truncates to its 10^-8 precision).
 
 The ratio cannot be corrected in place. `ccd013.initialize-redemption` sets
 `redemptions-enabled` permanently and the contract exposes no setter, so 1710 is
