@@ -114,3 +114,8 @@ Post-execution steps, both permissionless:
 Both must be deployed from the same address for the proposal's `.contract-name` references to resolve.
 
 See https://github.com/friedger/ccip27-pox5
+
+## Mainnet Deployment
+CCIP-027 execution transaction: [0x4d025dfc278e6052e1f48e671637a607af4019e7a8a5e209212ae4061988d484](https://explorer.hiro.so/txid/0x4d025dfc278e6052e1f48e671637a607af4019e7a8a5e209212ae4061988d484?chain=mainnet&tab=overview)
+
+Staking contract: [SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.ccd014-pox5-staking-mia](https://explorer.hiro.so/address/SPN4Y5QPGQA8882ZXW90ADC2DHYXMSTN8VAR8C3X.ccd014-pox5-staking-mia)
