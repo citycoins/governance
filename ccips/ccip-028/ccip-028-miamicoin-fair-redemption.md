@@ -83,9 +83,7 @@ The formula gives 19.4% more than holders are currently paid. The inputs are
 unchanged from the first measurement on 2026-08-13: no MIA has been burned
 since, which is consistent with `ccd013` reading an empty mining treasury.
 The figure will move with every burn once this proposal is active, so what
-should be ratified is the formula, not the number above. A mainnet-fork
-rehearsal of the activation computed 2,042.49 STX per 1,000,000 MIA (the book
-truncates to its 10^-8 precision).
+should be ratified is the formula, not the number above.
 
 The ratio cannot be corrected in place. `ccd013.initialize-redemption` sets
 `redemptions-enabled` permanently and the contract exposes no setter, so 1710 is
@@ -120,42 +118,52 @@ contract, not a configuration change.
       MIA v2 burned
 ```
 
-Two new contracts and one activation proposal are introduced. The book and the
-vault are deployed from the same address, book first, because the vault's STX
-destination is bound to the book by a relative contract reference.
+Two new contracts (the book and the swap vault) and one activation proposal are introduced.
 
-### 1. Par: formula-locked snapshot, refreshed by proposal
+### The Book
 
-The book `ccd015-redemption-book-mia-stx` stores par as a snapshot of the DAO's
-formula:
+`ccd015-redemption-book-mia-stx` is an STX-denominated fork of the production
+book `SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.mia-fair-faktory-v2`.
+
+Kept unchanged: the sorted offer book, insertion-sort placement, partial fills,
+cheapest-first settlement, and cancellation at any time.
+
+Changed:
+
+- **The contract is the only buyer.** `cross-book` is permissionless, takes no
+  arguments, and spends only the STX the contract already holds. There is no
+  settler leg and no surplus to capture.
+- **All acquired MIA is burned** in the same transaction.
+- **Asks are in uSTX**, so the par check is a direct comparison against the
+  stored snapshot, with no oracle.
+
+Book limits: at most 50 offers, one offer per address, a minimum of 100,000 MIA
+(set at activation) and a maximum of 10,000,000 MIA per offer. When the book is
+full, a new offer is accepted only at a strictly better price, and the worst
+offer is refunded. Only MIA v2 is accepted. Par counts v1 supply as well, so v1
+holders must convert to v2 before they can offer.
+
+The book has no STX withdrawal function. STX that cannot be matched against
+offers at or below par stays in the book until eligible offers arrive.
+
+The accounting consequence of burning is that a fill retires a claim worth
+`par * amount` on the treasury while paying only the seller's ask. Payment comes
+from staking yield and never debits the STX treasury, so the treasury `T` is
+unchanged and only supply `S` shrinks:
 
 ```
-par = (mining-v3 locked + unlocked + ccd014 locked + unlocked) STX
-      / (MIA v1 supply * 10^6 + MIA v2 supply)
+par_before = T / S           par_after = T / (S - burned)
 ```
 
-The treasury is read with `stx-account`, so stacked (locked) STX is counted.
-`update-par` takes no arguments and can only be called by the DAO or an enabled
-extension. It writes the formula's current output. A proposal therefore decides
-**when** par moves, never **what** it moves to.
+The full retired claim therefore accrues to holders who did not sell. The
+discount does not create that surplus. It determines how much MIA is retired per
+STX of yield, which is why the book fills cheapest first.
 
-Par must stay fixed while offers are resting, or sellers cannot price against it.
-It should not stay fixed forever, because each round of burns raises what the
-remaining holders are owed. This proposal sets par once at activation. Each later
-refresh is a separate `ccd001-direct-execute` proposal that calls `update-par`,
-ideally between rounds when the book has been crossed. Offers are checked
-against par both when they are placed and when the book is crossed, so a
-refresh cannot leave the book filling above par.
 
-There is no fixed-ratio redemption in this design. A holder exits by selling into
-the book at or below par. A holder who wants exactly par posts at par and waits
-for rewards to reach their position.
+### The Swap Vault
 
-### 2. Swap vault (sBTC -> STX)
-
-`ccd016-swap-vault-mia-v2` is a DAO extension that holds sBTC and converts it to
-STX without a keeper or an operator key. The price never comes from a caller. It
-comes from a signed Pyth Lazer update that the Jing market verifies, and the mid
+A new DAO extension that holds sBTC and converts it to
+STX. The price comes from a signed Pyth Lazer update that the Jing market verifies, and the mid
 must agree with the on-chain DIA STX/BTC rate within a configurable band. A
 caller can choose only when to act.
 
@@ -200,73 +208,41 @@ take against the Jing book at the floor (`jing-take`), run manual or emergency
 router splits (`router-swap-split`, `router-swap-split-dia`), reclaim or recall
 funds at any time, and change any parameter within hard-coded bounds.
 
-### 3. Fair order book, all MIA burned
+### Redemption-rate/Par
 
-`ccd015-redemption-book-mia-stx` is an STX-denominated fork of the production
-book `SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.mia-fair-faktory-v2`.
-
-Kept unchanged: the sorted offer book, insertion-sort placement, partial fills,
-cheapest-first settlement, and cancellation at any time.
-
-Changed:
-
-- **The contract is the only buyer.** `cross-book` is permissionless, takes no
-  arguments, and spends only the STX the contract already holds. There is no
-  settler leg and no surplus to capture.
-- **All acquired MIA is burned** in the same transaction.
-- **Asks are in uSTX**, so the par check is a direct comparison against the
-  stored snapshot, with no oracle.
-
-Book limits: at most 50 offers, one offer per address, a minimum of 100,000 MIA
-(set at activation) and a maximum of 10,000,000 MIA per offer. When the book is
-full, a new offer is accepted only at a strictly better price, and the worst
-offer is refunded. Only MIA v2 is accepted. Par counts v1 supply as well, so v1
-holders must convert to v2 before they can offer.
-
-The book has no STX withdrawal function. STX that cannot be matched against
-offers at or below par stays in the book until eligible offers arrive.
-
-The accounting consequence of burning is that a fill retires a claim worth
-`par * amount` on the treasury while paying only the seller's ask. Payment comes
-from staking yield and never debits the STX treasury, so the treasury `T` is
-unchanged and only supply `S` shrinks:
+The book `ccd015-redemption-book-mia-stx` stores par as a snapshot of the DAO's
+formula:
 
 ```
-par_before = T / S           par_after = T / (S - burned)
+par = (mining-v3 locked + unlocked + ccd014 locked + unlocked) STX
+      / (MIA v1 supply * 10^6 + MIA v2 supply)
 ```
 
-The full retired claim therefore accrues to holders who did not sell. The
-discount does not create that surplus. It determines how much MIA is retired per
-STX of yield, which is why the book fills cheapest first.
+The treasury is read with `stx-account`, so stacked (locked) STX is counted.
+`update-par` takes no arguments and can only be called by the DAO or an enabled
+extension. It writes the formula's current output. A proposal therefore decides
+**when** par moves, never **what** it moves to.
 
-### 4. Related Work
+Par must stay fixed while offers are resting, or sellers cannot price against it.
+It should not stay fixed forever, because each round of burns raises what the
+remaining holders are owed. This proposal sets par once at activation. Each later
+refresh is a separate `ccd001-direct-execute` proposal that calls `update-par`,
+ideally between rounds when the book has been crossed. Offers are checked
+against par both when they are placed and when the book is crossed, so a
+refresh cannot leave the book filling above par.
 
-The order book mechanism has been running in production against
-`ccd013-burn-to-exit-mia` since cycle 138. Lifetime figures as of 2026-08-13:
+There is no fixed-ratio redemption in this design. A holder exits by selling into
+the book at or below par. A holder who wants exactly par posts at par and waits
+for rewards to reach their position.
 
-| Metric                       | Value             |
-| ---------------------------- | ----------------- |
-| MIA cleared out of the queue | 42,903,974.60 MIA |
-| STX paid to sellers          | 62,167.14 STX     |
-| Offers currently resting     | 50                |
-| MIA currently on the book    | 49,769,714.87 MIA |
-
-The most recent settlement, on 2026-08-11, cleared 16,239,028 MIA in a single
-transaction, paid three sellers at exactly the prices they had posted, and left
-the redemption treasury at zero. The settler took no profit, being capped at par
-by construction.
-
-That implementation lets a settler buy and retains the spread. Section 3 replaces
-the settler with the DAO and burns everything.
+### 2. Swap vault (sBTC -> STX)
 
 ## Disclosure
 
 The swap vault trades on the Jing sBTC/STX market and smart router
 (`SPV9K21TBFAK4KNRJXF5DFP8N7W46G4V9RCJDC22.markets-sbtc-stx-jing-v6-4` and
 `.swap-router-sbtc-stx-jing-v5-5`), deployed from the same principal as the
-production fair book. _[Author to confirm: the author's role in building and
-operating Jing, any grant funding, and any fees or rebates the author receives
-from volume routed through it.]_ CityCoins volume routed through Jing would help
+production fair book. CityCoins volume routed through Jing would help
 bootstrap liquidity on that venue.
 
 As a resting maker, the vault pays Jing's 10 bps book fee and collects the
@@ -340,44 +316,33 @@ and repost. Nothing migrates automatically.
 
 ## Activation
 
-Execution through `ccd001-direct-execute` with 3 of 5 approver signals,
-following the pattern established by CCIP-027. No tokenholder vote is held, and
-the approver set, threshold and sunset are not changed.
+Execution through `ccd001-direct-execute` with 3 of 5 approver signals because this proposal is the continuation of CCIP-026 after CCIP-027.
 
-The proposal `ccip028-activate-mia-fair-redemption` executes atomically:
+No tokenholder vote is held.
 
-1. Requires both `contract-caller` and `tx-sender` to be `base-dao`, and
-   rejects a book whose par is already set.
-2. Enables `ccd016-swap-vault-mia-v2` as a DAO extension. The book and the
-   proposal are not enabled. The vault receives general DAO extension authority,
-   not a token-scoped permission. Its code uses that authority only to call
-   `withdraw-ft` for sBTC on the rewards treasury.
-3. Calls `set-allowed` for `sbtc-token` on `ccd002-treasury-mia-rewards-v3`.
-4. Sets the vault's launch parameters:
+Activation enables the swap vault as an extension and allows to move sBTC from the MIA rewards treasury. It also sets lauch paramters for the vault and the book. 
 
-   | Setting                      | Value                       |
-   | ---------------------------- | --------------------------- |
-   | Maker window                 | 288 Bitcoin blocks          |
-   | Placement leeway             | 1,000 bps (10%)             |
-   | Router slippage floor        | 100 bps (1%)                |
-   | Router chunk cap             | 1,000,000 sats (0.01 sBTC)  |
-   | Maker spread                 | 1 bp over the mid           |
-   | DIA agreement band           | 1,000 bps (10%)             |
-   | Router cooldown              | 1 Bitcoin block             |
-   | Emergency no-Pyth slippage   | 1,000 bps (10%), DAO only   |
-   | Pyth fee budget              | 0 uSTX                      |
+Activation does not move any funds and performs no swap.
 
-5. Sets the book's minimum offer to 100,000 MIA, calls `update-par`, and
-   unpauses the book.
+## Related Work
 
-Activation moves no funds and performs no swap. Funding, placement,
-liquidation, book funding and crossing are separate calls anyone can make, so
-execution timing does not depend on approver availability. A runner or
-community member still has to submit them. Price-bearing calls need a fresh
-signed Pyth Lazer update.
+The order book mechanism has been running in production against
+`ccd013-burn-to-exit-mia` since cycle 138. Lifetime figures as of 2026-08-13:
 
-If Pyth Lazer begins charging a fee, a proposal must raise the fee budget.
-Otherwise the price-bearing calls will fail.
+| Metric                       | Value             |
+| ---------------------------- | ----------------- |
+| MIA cleared out of the queue | 42,903,974.60 MIA |
+| STX paid to sellers          | 62,167.14 STX     |
+| Offers currently resting     | 50                |
+| MIA currently on the book    | 49,769,714.87 MIA |
+
+The most recent settlement, on 2026-08-11, cleared 16,239,028 MIA in a single
+transaction, paid three sellers at exactly the prices they had posted, and left
+the redemption treasury at zero. The settler took no profit, being capped at par
+by construction.
+
+That implementation lets a settler buy and retains the spread. Section 3 replaces
+the settler with the DAO and burns everything.
 
 ## Reference Implementation
 
@@ -402,6 +367,3 @@ Verification in the pull request:
 - Several prior aibtc audit bounties on the book and vault, with findings and
   verdicts recorded in `contracts/extensions/README-ccd016-swap-vault-v2.md`.
   An audit bounty on the exact pull request is open until 2026-11-19.
-
-Before approvers signal, the deployed bytes must match the hashes above, the
-book's par must still be zero, and the open audit bounty should be concluded.
